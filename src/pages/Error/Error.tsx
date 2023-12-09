@@ -1,5 +1,7 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
 import styles from './Error.module.scss';
+import Layout from '@layout/Layout';
+import { LanguageContext } from '@context/LanguageContext';
 
 interface ErrorProps {
   children?: ReactNode;
@@ -30,10 +32,14 @@ class ErrorBoundare extends Component<ErrorProps, ErrorState> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className={styles.error_page}>
-          <h1>Something went wrong, but we are working to fix the problem.</h1>
-          <h2>{this.state.message}</h2>
-        </div>
+        <Layout>
+          <div className={styles.error_page}>
+            <LanguageContext.Consumer>
+              {({ data }) => <h1>{data.error}</h1>}
+            </LanguageContext.Consumer>
+            <h2>{this.state.message}</h2>
+          </div>
+        </Layout>
       );
     }
 

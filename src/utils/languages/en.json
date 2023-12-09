@@ -1,5 +1,6 @@
 {
   "notFound":{
     "text": "Page not found"
-  }
+  },
+  "error": "Something went wrong, but we are working to fix the problem."
 }
