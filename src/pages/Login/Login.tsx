@@ -1,9 +1,9 @@
-import Layout from '../../layout/Layout';
+import Layout from '@layout/Layout';
 
 const Login = () => {
   return (
     <Layout>
-      <div>Authorization work</div>
+      <div>Login page work</div>
     </Layout>
   );
 };

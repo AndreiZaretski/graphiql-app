@@ -1,9 +1,6 @@
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
-
-type Props = {
-  children: React.ReactNode[] | React.ReactNode;
-};
+import { Props } from '@type/interfaces/props.interface';
+import Footer from './Footer/Footer';
+import Header from './Header/Header';
 
 const Layout = ({ children }: Props) => {
   return (

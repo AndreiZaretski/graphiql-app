@@ -5,6 +5,20 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@utils/*": ["utils/*"],
+      "@assets/*": ["assets/*"],
+      "@shared/*": ["shared/*"],
+      "@pages/*": ["pages/*"],
+      "@layout/*": ["layout/*"],
+      "@components/*": ["components/*"],
+      "@context/*": ["context/*"],
+      "@services/*": ["services/*"],
+      "@store/*": ["store/*"],
+      "@type/*": ["types/*"],
+      "@views/*": ["views/*"]
+    },
 
     "allowJs": false,
     "esModuleInterop": true,
