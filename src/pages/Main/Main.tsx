@@ -15,7 +15,7 @@ const Main = () => {
     <Layout>
       <main>
         <Request getResponse={getResponse} />
-        <Response data={JSON.stringify(data)} />
+        <Response data={data?.data || {}} />
       </main>
     </Layout>
   );

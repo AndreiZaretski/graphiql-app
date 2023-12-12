@@ -1,19 +1,16 @@
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { tokyoNight } from '@uiw/codemirror-theme-tokyo-night';
+import { prettifyData } from '@utils/prettify/prettify';
 
-const Request = (props: Record<'data', string>) => {
+const Request = (props: Record<'data', Record<string, string>>) => {
   const { data } = props;
-
-  const prettifyData = (data: string) => {
-    return data.split('{').join('\t{').split('},').join('},\n');
-  };
 
   return (
     <section>
       <CodeMirror
         height="500px"
-        value={data ? prettifyData(data) : ''}
+        value={data ? prettifyData(JSON.stringify(data)) : ''}
         editable={false}
         theme={tokyoNight}
         extensions={[javascript({ jsx: true })]}

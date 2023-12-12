@@ -5,3 +5,7 @@ export interface Props {
 export interface RequestProps {
   getResponse: (value: string) => Promise<void>;
 }
+
+export interface APIResponse {
+  data: Record<string, string>;
+}

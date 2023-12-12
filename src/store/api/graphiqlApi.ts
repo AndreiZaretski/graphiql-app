@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { APIResponse } from '@type/interfaces/props.interface';
 
 export const graphiqlApi = createApi({
   reducerPath: 'graphiqlApi',
@@ -6,7 +7,7 @@ export const graphiqlApi = createApi({
     baseUrl: 'https://rickandmortyapi.com/graphql',
   }),
   endpoints: (build) => ({
-    searchByQuery: build.mutation<string, string>({
+    searchByQuery: build.mutation<APIResponse, string>({
       query: (query) => ({
         url: '',
         method: 'POST',
