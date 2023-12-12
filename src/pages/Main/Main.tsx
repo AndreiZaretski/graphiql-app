@@ -1,9 +1,22 @@
 import Layout from '@layout/Layout';
+import Request from './Request/Request';
+import Response from './Response/Response';
+import './Main.module.scss';
+import { useSearchByQueryMutation } from '../../store/api/graphiqlApi';
 
 const Main = () => {
+  const [getResponseMutation, { data }] = useSearchByQueryMutation();
+
+  const getResponse = async (value: string) => {
+    await getResponseMutation(value);
+  };
+
   return (
     <Layout>
-      <div>Main page work!</div>
+      <main>
+        <Request getResponse={getResponse} />
+        <Response data={data?.data || {}} />
+      </main>
     </Layout>
   );
 };

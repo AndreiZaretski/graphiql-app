@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import errorSlice from './features/emptySlice';
+import { graphiqlApi } from './api/graphiqlApi';
 
 export const store = configureStore({
   reducer: {
-    //delete this reducer
-    error: errorSlice,
+    [graphiqlApi.reducerPath]: graphiqlApi.reducer,
   },
 
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(graphiqlApi.middleware),
 });
 
 export type AppState = ReturnType<typeof store.getState>;

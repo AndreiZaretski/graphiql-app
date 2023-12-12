@@ -6,7 +6,7 @@ import { Props } from '../../types/interfaces/props.interface';
 
 const ProtectedRoutes = ({ children }: Props) => {
   //Replace this on logic with firebase
-  const auth = LocalStorageServise.get(LocalStorageKeys.Auth);
+  const auth = LocalStorageServise.get(LocalStorageKeys.Auth) || true;
 
   return auth ? children : <Navigate to={RoutesPath.Login} />;
 };
