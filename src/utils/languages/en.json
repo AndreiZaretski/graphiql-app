@@ -1,6 +1,36 @@
 {
-  "notFound":{
+  "notFound": {
     "text": "Page not found"
   },
-  "error": "Something went wrong, but we are working to fix the problem."
+  "error": "Something went wrong, but we are working to fix the problem",
+  "auth": {
+    "main": "Main Page",
+    "login": "Login",
+    "signUp": "Sign Up",
+    "logOut": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "loginPage": {
+      "header": "Login in account",
+      "subheader": "Do not have an account?"
+    },
+    "signUpPage": {
+      "header": "Create an account",
+      "subheader": "Already have an account"
+    }
+  },
+  "formErrorMessage": {
+    "loginError": "Invalid username or password!",
+    "otherError": "Something went wrong...",
+    "emailError": "The username is occupied by another user!",
+    "emailInvalid": "Email is invalid",
+    "oneNumberError": "Password must contain one number!",
+    "oneUpperLetterError": "Password must contain one uppercase letter!",
+    "oneLowerLetterError": "Password must contain one lower letter!",
+    "oneSpecialCharacterError": "password must contain one special character ~!@#$%^&*()_+\"№;:?*",
+    "passwordNotMatchError": "Passwords not match!",
+    "minLength": "Password must be at least 8 characters",
+    "required": "Required field",
+    "notMatch": "Passwords not match"
+  }
 }
