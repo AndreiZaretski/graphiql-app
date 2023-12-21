@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/store';
 import { setSelectedType } from '@store/features/documentationSlice';
 import ReturnType from './ReturnType';
+import { DocType } from '@type/interfaces/props.interface';
 
 interface Props {
   types: ReadonlyArray<IntrospectionType>;
@@ -25,12 +26,10 @@ function Types(props: Props) {
   useEffect(() => {
     setOpenType(
       types.map((el) => {
-        console.log(el);
-        if (el.name === selectedType) console.log(el);
         return el.name === selectedType;
       })
     );
-  }, [selectedType]);
+  }, [selectedType, types]);
 
   useLayoutEffect(() => {
     openTypeRef.current?.scrollIntoView();
@@ -79,7 +78,7 @@ function Types(props: Props) {
                       <div key={field.name}>
                         <div className="docs-nested-field">
                           <h4>{field.name}: </h4>
-                          <ReturnType type={field.type} />
+                          <ReturnType type={field.type as DocType} />
                         </div>
                         <p>{field.description}</p>
                       </div>
@@ -92,7 +91,7 @@ function Types(props: Props) {
                       <div key={field.name}>
                         <div className="docs-nested-field">
                           <h4>{field.name}: </h4>{' '}
-                          <ReturnType type={field.type} />
+                          <ReturnType type={field.type as DocType} />
                         </div>
                       </div>
                     ))}

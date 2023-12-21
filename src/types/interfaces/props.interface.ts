@@ -11,19 +11,21 @@ export interface APIResponse {
 }
 
 export interface DocTypeProps {
-  type: {
-    kind: 'LIST' | 'NON_NULL';
+  type: DocType;
+}
+
+export type DocType = {
+  kind: 'LIST' | 'NON_NULL';
+  name: string;
+  ofType: {
     name: string;
+    kind: string;
     ofType: {
       name: string;
       kind: string;
       ofType: {
         name: string;
-        kind: string;
-        ofType: {
-          name: string;
-        };
       };
     };
   };
-}
+};
