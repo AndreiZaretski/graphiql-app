@@ -10,7 +10,7 @@ import {
 
 const Main = () => {
   const [getResponseMutation, { data }] = useSearchByQueryMutation();
-  const [getDocumentationMutation, { data: documentation }] =
+  const [getDocumentationMutation, { data: schema }] =
     useGetDocumentationMutation();
 
   const getResponse = async (value: string) => {
@@ -25,7 +25,7 @@ const Main = () => {
         <button type="submit" onClick={getDocumentationMutation}>
           Doc
         </button>
-        {documentation && <Documentation documentation={documentation} />}
+        {schema && <Documentation schema={schema} />}
       </main>
     </Layout>
   );
