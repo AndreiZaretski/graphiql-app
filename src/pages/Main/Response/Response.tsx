@@ -3,8 +3,6 @@ import { javascript } from '@codemirror/lang-javascript';
 import { tokyoNight } from '@uiw/codemirror-theme-tokyo-night';
 import { prettifyData } from '@utils/prettify/prettify';
 
-// comment for test commit
-
 const Request = (props: Record<'data', Record<string, string>>) => {
   const { data } = props;
 

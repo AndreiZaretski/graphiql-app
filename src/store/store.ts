@@ -7,7 +7,9 @@ export const store = configureStore({
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(graphiqlApi.middleware),
+    getDefaultMiddleware({ serializableCheck: false }).concat(
+      graphiqlApi.middleware
+    ),
 });
 
 export type AppState = ReturnType<typeof store.getState>;
