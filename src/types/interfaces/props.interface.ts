@@ -9,3 +9,31 @@ export interface RequestProps {
 export interface APIResponse {
   data: Record<string, string>;
 }
+
+export interface DocTypeProps {
+  type: DocType;
+}
+
+export type DocType = {
+  kind:
+    | 'LIST'
+    | 'NON_NULL'
+    | 'SCALAR'
+    | 'ENUM'
+    | 'INPUT_OBJECT'
+    | 'INTERFACE'
+    | 'UNION'
+    | 'OBJECT';
+  name: string;
+  ofType: {
+    name: string;
+    kind: string;
+    ofType: {
+      name: string;
+      kind: string;
+      ofType: {
+        name: string;
+      };
+    };
+  };
+};
