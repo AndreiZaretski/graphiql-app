@@ -1,5 +1,6 @@
 import { IntrospectionObjectType } from 'graphql';
 import ReturnType from './ReturnType';
+import { DocType } from '@type/interfaces/props.interface';
 
 interface Props {
   queries: IntrospectionObjectType;
@@ -22,7 +23,7 @@ function Queries(props: Props) {
                   query.args.map((arg) => (
                     <div key={arg.name}>
                       <span className="docs-args">{arg.name}</span>:{' '}
-                      <ReturnType type={arg.type} />
+                      <ReturnType type={arg.type as DocType} />
                       {arg.defaultValue && (
                         <span>
                           <span className="docs-defaultValue">
@@ -35,7 +36,7 @@ function Queries(props: Props) {
               </span>
 
               <span>
-                ): <ReturnType type={query.type} />
+                ): <ReturnType type={query.type as DocType} />
               </span>
             </div>
             <div>{query.description}</div>

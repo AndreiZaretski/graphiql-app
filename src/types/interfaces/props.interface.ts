@@ -15,7 +15,15 @@ export interface DocTypeProps {
 }
 
 export type DocType = {
-  kind: 'LIST' | 'NON_NULL';
+  kind:
+    | 'LIST'
+    | 'NON_NULL'
+    | 'SCALAR'
+    | 'ENUM'
+    | 'INPUT_OBJECT'
+    | 'INTERFACE'
+    | 'UNION'
+    | 'OBJECT';
   name: string;
   ofType: {
     name: string;
