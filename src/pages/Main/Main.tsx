@@ -1,7 +1,8 @@
+import { lazy, Suspense } from 'react';
 import Layout from '@layout/Layout';
 import Request from './Request/Request';
 import Response from './Response/Response';
-import Documentation from './Documentation/Documentation';
+const Documentation = lazy(() => import('./Documentation/Documentation'));
 import './Main.module.scss';
 import {
   useSearchByQueryMutation,
@@ -25,7 +26,11 @@ const Main = () => {
         <button type="submit" onClick={getDocumentationMutation}>
           Doc
         </button>
-        {schema && <Documentation schema={schema} />}
+        {schema && (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Documentation schema={schema} />
+          </Suspense>
+        )}
       </main>
     </Layout>
   );
