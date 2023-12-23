@@ -14,8 +14,7 @@ import {
   setVariables,
 } from '@store/features/requestDataSlice';
 import { AppState } from '@store/store';
-import { isValidFormat } from '@utils/checkString';
-import { parseHeaders } from '@utils/parseString';
+import { IsJsonString } from '@utils/isJsonString';
 
 const Request = (props: RequestProps) => {
   const { getResponse } = props;
@@ -49,9 +48,19 @@ const Request = (props: RequestProps) => {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    if (isValidFormat(variables) && isValidFormat(headers)) {
-      const newHeaders = parseHeaders(headers);
-      getResponse({ query, variables, headers: newHeaders, baseUrl });
+
+    if (IsJsonString(headers) && IsJsonString(variables)) {
+      const newHeaders = headers
+        ? new Headers(JSON.parse(headers))
+        : new Headers();
+      const newVariables = variables ? JSON.parse(variables) : {};
+
+      getResponse({
+        query,
+        variables: newVariables,
+        headers: newHeaders,
+        baseUrl,
+      });
     }
   };
 

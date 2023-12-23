@@ -1,8 +1,7 @@
-export const parseHeaders = (str: string) => {
+export const parseVariables = (str: string) => {
   str = str.trim();
   if (str === '') {
-    const headers = new Headers();
-    return headers;
+    return {};
   }
 
   str = str
@@ -12,9 +11,21 @@ export const parseHeaders = (str: string) => {
     .replaceAll(/}/g, '');
 
   const obj = Object.fromEntries(
-    str.split(',').map((pair) => pair.trim().split(':'))
+    str.split(',').map((pair) => {
+      const [key] = pair.trim().split(':');
+      let value: string | number | boolean = pair.trim().split(':')[1];
+      if (/^\d+$/.test(value)) {
+        value = Number(value);
+      }
+      if (!isNaN(+value)) {
+        value = Number(value);
+      }
+      if (value === 'true' || value === 'false') {
+        value = JSON.parse(value);
+      }
+      return [key, value];
+    })
   );
 
-  const headers = new Headers(obj);
-  return headers;
+  return obj;
 };

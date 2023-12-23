@@ -12,7 +12,7 @@ export interface APIResponse {
 
 export type RequestParams = {
   query: string;
-  variables: string;
+  variables: object | string;
   headers: Headers;
   baseUrl: string;
 };
