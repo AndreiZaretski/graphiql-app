@@ -3,12 +3,19 @@ export interface Props {
 }
 
 export interface RequestProps {
-  getResponse: (value: string) => Promise<void>;
+  getResponse: (value: RequestParams) => Promise<void>;
 }
 
 export interface APIResponse {
   data: Record<string, string>;
 }
+
+export type RequestParams = {
+  query: string;
+  variables: string;
+  headers: Headers;
+  baseUrl: string;
+};
 
 export interface DocTypeProps {
   type: DocType;

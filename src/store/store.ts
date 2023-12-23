@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { documentationSlice } from './features/documentationSlice';
 import { graphiqlApi } from './api/graphiqlApi';
+import requestSlice from './features/requestDataSlice';
 
 export const store = configureStore({
   reducer: {
+    request: requestSlice,
     documentationSlice: documentationSlice.reducer,
     [graphiqlApi.reducerPath]: graphiqlApi.reducer,
   },
