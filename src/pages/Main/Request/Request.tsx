@@ -1,7 +1,4 @@
 import { useCallback } from 'react';
-import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
-import { tokyoNight } from '@uiw/codemirror-theme-tokyo-night';
 import { RequestProps } from '@type/interfaces/props.interface';
 import {
   prettifyData,
@@ -15,6 +12,8 @@ import {
 } from '@store/features/requestDataSlice';
 import { AppState } from '@store/store';
 import { IsJsonString } from '@utils/isJsonString';
+import EditorVariablesHeaders from './components/EditorVariablesHeaders/EditorVariablesHeaders';
+import MirrorEditor from './components/MirrorEditor/MirrorEditor';
 
 const Request = (props: RequestProps) => {
   const { getResponse } = props;
@@ -28,20 +27,6 @@ const Request = (props: RequestProps) => {
   const onChangeQuery = useCallback(
     (value: string) => {
       dispatch(setQuery(value));
-    },
-    [dispatch]
-  );
-
-  const onChangeVariables = useCallback(
-    (value: string) => {
-      dispatch(setVariables(value));
-    },
-    [dispatch]
-  );
-
-  const onChangeHeaders = useCallback(
-    (value: string) => {
-      dispatch(setHeaders(value));
     },
     [dispatch]
   );
@@ -76,29 +61,9 @@ const Request = (props: RequestProps) => {
 
   return (
     <section>
-      <CodeMirror
-        height="500px"
-        value={query}
-        theme={tokyoNight}
-        extensions={[javascript({ jsx: true })]}
-        onChange={onChangeQuery}
-      />
+      <MirrorEditor height="500px" value={query} onChange={onChangeQuery} />
+      <EditorVariablesHeaders />
 
-      <CodeMirror
-        height="500px"
-        value={variables}
-        theme={tokyoNight}
-        extensions={[javascript({ jsx: true })]}
-        onChange={onChangeVariables}
-      />
-
-      <CodeMirror
-        height="500px"
-        value={headers}
-        theme={tokyoNight}
-        extensions={[javascript({ jsx: true })]}
-        onChange={onChangeHeaders}
-      />
       <button type="submit" onClick={(e) => handleSubmit(e)}>
         {'>'}
       </button>

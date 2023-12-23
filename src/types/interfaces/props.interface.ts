@@ -6,6 +6,17 @@ export interface RequestProps {
   getResponse: (value: RequestParams) => Promise<void>;
 }
 
+export interface ResponseProps {
+  data: Partial<Record<string, string>>;
+}
+
+export interface MirrorProps {
+  height: string;
+  value: string;
+  onChange?: (value: string) => void;
+  editable?: boolean;
+}
+
 export interface APIResponse {
   data: Record<string, string>;
 }

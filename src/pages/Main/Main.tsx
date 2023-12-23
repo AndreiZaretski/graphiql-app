@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense } from 'react';
 import Layout from '@layout/Layout';
 import Request from './Request/Request';
 import Response from './Response/Response';
@@ -7,37 +7,19 @@ import './Main.module.scss';
 
 import { RequestParams } from '@type/interfaces/props.interface';
 import { AppState } from '@store/store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   useGetDocumentationMutation,
   useSearchByQueryMutation,
 } from '@store/api/graphiqlApi';
-import { setBaseUrl } from '@store/features/requestDataSlice';
-import { isValidUrl } from '@utils/validationUrl';
+import ChangeApi from './Request/components/ChangeApi/ChangeApi';
 
 const Main = () => {
-  const [getResponseMutation, { data }] = useSearchByQueryMutation();
+  const [getResponseMutation, { data, error }] = useSearchByQueryMutation();
   const [getDocumentationMutation, { data: schema }] =
     useGetDocumentationMutation();
 
   const { baseUrl } = useSelector((state: AppState) => state.request);
-
-  const [inputBaseUrl, setInputBaseUrl] = useState(baseUrl);
-
-  const dispatch = useDispatch();
-
-  const handleChangeBaseUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputBaseUrl(e.target.value);
-  };
-
-  const handleClickBaseUrl = () => {
-    if (isValidUrl(inputBaseUrl)) {
-      dispatch(setBaseUrl(inputBaseUrl));
-    } else {
-      //Replace this method
-      alert('Please enter a valid URL');
-    }
-  };
 
   const getResponse = async (value: RequestParams) => {
     await getResponseMutation(value);
@@ -47,20 +29,18 @@ const Main = () => {
     await getDocumentationMutation(baseUrl);
   };
 
+  let errorMessage = undefined;
+
+  if (error && 'data' in error) {
+    errorMessage = error.data;
+  }
   return (
     <Layout>
       <main>
-        <input
-          type="text"
-          value={inputBaseUrl}
-          onChange={handleChangeBaseUrl}
-          placeholder="Enter baseUrl"
-        />
-        <button type="button" onClick={handleClickBaseUrl}>
-          {'Change Api'}
-        </button>
+        <ChangeApi />
         <Request getResponse={getResponse} />
-        <Response data={data?.data || {}} />
+        <Response data={data?.data || errorMessage || {}} />
+
         <button type="submit" onClick={getDocumentation}>
           Doc
         </button>

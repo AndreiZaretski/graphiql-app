@@ -1,22 +1,19 @@
-import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
-import { tokyoNight } from '@uiw/codemirror-theme-tokyo-night';
 import { prettifyData } from '@utils/prettify/prettify';
+import MirrorEditor from '../Request/components/MirrorEditor/MirrorEditor';
+import { ResponseProps } from '@type/interfaces/props.interface';
 
-const Request = (props: Record<'data', Record<string, string>>) => {
+const Response = (props: ResponseProps) => {
   const { data } = props;
 
   return (
     <section>
-      <CodeMirror
+      <MirrorEditor
         height="500px"
         value={data ? prettifyData(JSON.stringify(data)) : ''}
         editable={false}
-        theme={tokyoNight}
-        extensions={[javascript({ jsx: true })]}
       />
     </section>
   );
 };
 
-export default Request;
+export default Response;
