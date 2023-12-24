@@ -44,5 +44,6 @@ export interface LanguageContent {
     loading: string;
     validHeaderMessage: string;
     validVariableMessage: string;
+    validUrlMessage: string;
   };
 }

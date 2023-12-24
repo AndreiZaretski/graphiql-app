@@ -62,8 +62,8 @@ const Main = () => {
   }
   return (
     <Layout>
+      <ChangeApi />
       <main>
-        <ChangeApi />
         <Request getResponse={getResponse} />
         <Response data={errorJSON() || data?.data || errorMessage || {}} />
 

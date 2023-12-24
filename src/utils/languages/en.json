@@ -43,6 +43,7 @@
     "doc": "Docementation",
     "loading": "Loading...",
     "validHeaderMessage": "Please enter valid JSON format for headers",
-    "validVariableMessage": "Please enter valid JSON format for variables"
+    "validVariableMessage": "Please enter valid JSON format for variables",
+    "validUrlMessage": "Please enter valid Url"
   }
 }
