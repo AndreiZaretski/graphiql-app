@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { RequestProps } from '@type/interfaces/props.interface';
 import {
   prettifyData,
@@ -14,6 +14,7 @@ import { AppState } from '@store/store';
 import { IsJsonString } from '@utils/isJsonString';
 import EditorVariablesHeaders from './components/EditorVariablesHeaders/EditorVariablesHeaders';
 import MirrorEditor from './components/MirrorEditor/MirrorEditor';
+import { LanguageContext } from '@context/LanguageContext';
 
 const Request = (props: RequestProps) => {
   const { getResponse } = props;
@@ -30,6 +31,12 @@ const Request = (props: RequestProps) => {
     },
     [dispatch]
   );
+
+  const {
+    data: {
+      mainPage: { prettify },
+    },
+  } = useContext(LanguageContext);
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -68,7 +75,7 @@ const Request = (props: RequestProps) => {
         {'>'}
       </button>
       <button type="button" onClick={handlePrettify}>
-        {'Prettify'}
+        {prettify}
       </button>
     </section>
   );

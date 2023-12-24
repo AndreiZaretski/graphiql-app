@@ -32,5 +32,15 @@
     "minLength": "Password must be at least 8 characters",
     "required": "Required field",
     "notMatch": "Passwords not match"
+  },
+  "mainPage": {
+    "changeApi": "Change Api",
+    "variableName": "Variables",
+    "headersName": "Headers",
+    "prettify":"Prettify",
+    "show": "Show",
+    "hide": "Hide",
+    "doc": "Docementation",
+    "loading": "Loading..."
   }
 }

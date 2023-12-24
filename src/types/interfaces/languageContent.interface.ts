@@ -33,4 +33,14 @@ export interface LanguageContent {
     required: string;
     notMatch: string;
   };
+  mainPage: {
+    changeApi: string;
+    variableName: string;
+    headersName: string;
+    prettify: string;
+    show: string;
+    hide: string;
+    doc: string;
+    loading: string;
+  };
 }

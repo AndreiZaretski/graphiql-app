@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useContext } from 'react';
 import Layout from '@layout/Layout';
 import Request from './Request/Request';
 import Response from './Response/Response';
@@ -13,6 +13,7 @@ import {
   useSearchByQueryMutation,
 } from '@store/api/graphiqlApi';
 import ChangeApi from './Request/components/ChangeApi/ChangeApi';
+import { LanguageContext } from '@context/LanguageContext';
 
 const Main = () => {
   const [getResponseMutation, { data, error }] = useSearchByQueryMutation();
@@ -29,6 +30,12 @@ const Main = () => {
     await getDocumentationMutation(baseUrl);
   };
 
+  const {
+    data: {
+      mainPage: { loading, doc },
+    },
+  } = useContext(LanguageContext);
+
   let errorMessage = undefined;
 
   if (error && 'data' in error) {
@@ -42,10 +49,10 @@ const Main = () => {
         <Response data={data?.data || errorMessage || {}} />
 
         <button type="submit" onClick={getDocumentation}>
-          Doc
+          {doc}
         </button>
         {schema && (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div>{loading}</div>}>
             <Documentation schema={schema} />
           </Suspense>
         )}

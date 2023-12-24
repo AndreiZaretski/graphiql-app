@@ -1,7 +1,8 @@
+import { LanguageContext } from '@context/LanguageContext';
 import { setBaseUrl } from '@store/features/requestDataSlice';
 import { AppState } from '@store/store';
 import { isValidUrl } from '@utils/validationUrl';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const ChangeApi = () => {
@@ -10,6 +11,12 @@ const ChangeApi = () => {
   const [inputBaseUrl, setInputBaseUrl] = useState(baseUrl);
 
   const dispatch = useDispatch();
+
+  const {
+    data: {
+      mainPage: { changeApi },
+    },
+  } = useContext(LanguageContext);
 
   const handleChangeBaseUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputBaseUrl(e.target.value);
@@ -33,7 +40,7 @@ const ChangeApi = () => {
         placeholder="Enter baseUrl"
       />
       <button type="button" onClick={handleClickBaseUrl}>
-        {'Change Api'}
+        {changeApi}
       </button>
     </>
   );

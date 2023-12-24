@@ -1,13 +1,20 @@
 import { setVariables, setHeaders } from '@store/features/requestDataSlice';
 import { AppState } from '@store/store';
-import { useCallback, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MirrorEditor from '../MirrorEditor/MirrorEditor';
+import { LanguageContext } from '@context/LanguageContext';
 
 const EditorVariablesHeaders = () => {
   const { variables, headers } = useSelector(
     (state: AppState) => state.request
   );
+
+  const {
+    data: {
+      mainPage: { headersName, variableName, show, hide },
+    },
+  } = useContext(LanguageContext);
 
   const dispatch = useDispatch();
   const onChangeVariables = useCallback(
@@ -44,12 +51,18 @@ const EditorVariablesHeaders = () => {
     setShowEditor(true);
   };
 
+  const showHideText = () => {
+    return showEditor ? hide : show;
+  };
+
   return (
     <div className="mirror_panel">
       <div className="mirror_panel_header">
-        <button onClick={showVariablesEditor}>1</button>
-        <button onClick={showHeadersEditor}>2</button>
-        <button onClick={() => toggleEditor(showEditor)}>3</button>
+        <button onClick={showVariablesEditor}>{variableName}</button>
+        <button onClick={showHeadersEditor}>{headersName}</button>
+        <button onClick={() => toggleEditor(showEditor)}>
+          {showHideText()}
+        </button>
       </div>
       {showEditor && (
         <div className="mirror_panel_block">
