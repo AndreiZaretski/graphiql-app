@@ -9,6 +9,8 @@ import {
   setHeaders,
   setQuery,
   setVariables,
+  setValidHeaderJson,
+  setValidVariableJson,
 } from '@store/features/requestDataSlice';
 import { AppState } from '@store/store';
 import { IsJsonString } from '@utils/isJsonString';
@@ -40,6 +42,9 @@ const Request = (props: RequestProps) => {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
+
+    dispatch(setValidVariableJson(IsJsonString(variables)));
+    dispatch(setValidHeaderJson(IsJsonString(headers)));
 
     if (IsJsonString(headers) && IsJsonString(variables)) {
       const newHeaders = headers

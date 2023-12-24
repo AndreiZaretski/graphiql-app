@@ -41,6 +41,8 @@
     "show": "Show",
     "hide": "Hide",
     "doc": "Docementation",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "validHeaderMessage": "Please enter valid JSON format for headers",
+    "validVariableMessage": "Please enter valid JSON format for variables"
   }
 }

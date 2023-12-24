@@ -42,5 +42,7 @@ export interface LanguageContent {
     hide: string;
     doc: string;
     loading: string;
+    validHeaderMessage: string;
+    validVariableMessage: string;
   };
 }

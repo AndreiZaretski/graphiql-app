@@ -21,6 +21,8 @@ const initialrequestDataSliceState = {
   variables: '',
   headers: '',
   baseUrl: 'https://rickandmortyapi.com/graphql',
+  validHeaderJson: false,
+  validVariableJson: false,
 };
 
 export const requestSlice = createSlice({
@@ -39,11 +41,23 @@ export const requestSlice = createSlice({
     setBaseUrl: (state, action: PayloadAction<string>) => {
       state.baseUrl = action.payload;
     },
+    setValidHeaderJson: (state, action: PayloadAction<boolean>) => {
+      state.validHeaderJson = !action.payload;
+    },
+    setValidVariableJson: (state, action: PayloadAction<boolean>) => {
+      state.validVariableJson = !action.payload;
+    },
   },
 });
 
 export const selectBaseUrl = (state: AppState) => state.request.baseUrl;
 
-export const { setQuery, setVariables, setHeaders, setBaseUrl } =
-  requestSlice.actions;
+export const {
+  setQuery,
+  setVariables,
+  setHeaders,
+  setBaseUrl,
+  setValidHeaderJson,
+  setValidVariableJson,
+} = requestSlice.actions;
 export default requestSlice.reducer;

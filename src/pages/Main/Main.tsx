@@ -20,7 +20,9 @@ const Main = () => {
   const [getDocumentationMutation, { data: schema }] =
     useGetDocumentationMutation();
 
-  const { baseUrl } = useSelector((state: AppState) => state.request);
+  const { baseUrl, validHeaderJson, validVariableJson } = useSelector(
+    (state: AppState) => state.request
+  );
 
   const getResponse = async (value: RequestParams) => {
     await getResponseMutation(value);
@@ -32,9 +34,26 @@ const Main = () => {
 
   const {
     data: {
-      mainPage: { loading, doc },
+      mainPage: { loading, doc, validHeaderMessage, validVariableMessage },
     },
   } = useContext(LanguageContext);
+
+  const errorJSON = () => {
+    let error: string | string[] = '';
+    if (validHeaderJson) {
+      error = validHeaderMessage;
+    }
+
+    if (validVariableJson) {
+      error = validVariableMessage;
+    }
+
+    if (validVariableJson && validHeaderJson) {
+      error = [validVariableMessage, validHeaderMessage];
+    }
+
+    return error;
+  };
 
   let errorMessage = undefined;
 
@@ -46,7 +65,7 @@ const Main = () => {
       <main>
         <ChangeApi />
         <Request getResponse={getResponse} />
-        <Response data={data?.data || errorMessage || {}} />
+        <Response data={errorJSON() || data?.data || errorMessage || {}} />
 
         <button type="submit" onClick={getDocumentation}>
           {doc}
