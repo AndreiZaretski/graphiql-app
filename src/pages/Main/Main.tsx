@@ -65,7 +65,9 @@ const Main = () => {
       <ChangeApi />
       <main>
         <Request getResponse={getResponse} />
-        <Response data={errorJSON() || data?.data || errorMessage || {}} />
+        <Response
+          data={errorJSON() || data?.data || errorMessage || error || {}}
+        />
 
         <button type="submit" onClick={getDocumentation}>
           {doc}
