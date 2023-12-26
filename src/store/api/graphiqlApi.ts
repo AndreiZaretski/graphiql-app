@@ -1,24 +1,31 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { APIResponse, RequestParams } from '@type/interfaces/props.interface';
 import { getIntrospectionQuery, IntrospectionQuery } from 'graphql';
-import { APIResponse } from '@type/interfaces/props.interface';
 
 export const graphiqlApi = createApi({
   reducerPath: 'graphiqlApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://rickandmortyapi.com/graphql',
+    baseUrl: '',
+    prepareHeaders: (headers) => {
+      headers.set('Content-Type', 'application/json');
+      return headers;
+    },
   }),
   endpoints: (build) => ({
-    searchByQuery: build.mutation<APIResponse, string>({
-      query: (query) => ({
-        url: '',
+    searchByQuery: build.mutation<APIResponse, RequestParams>({
+      query: (params: RequestParams) => ({
+        url: params.baseUrl,
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query }),
+        body: JSON.stringify({
+          query: params.query,
+          variables: params.variables || '',
+        }),
+        headers: params.headers,
       }),
     }),
     getDocumentation: build.mutation({
-      query: () => ({
-        url: '',
+      query: (baseUrl: string) => ({
+        url: baseUrl,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: getIntrospectionQuery() }),

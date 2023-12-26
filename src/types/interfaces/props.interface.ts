@@ -3,12 +3,30 @@ export interface Props {
 }
 
 export interface RequestProps {
-  getResponse: (value: string) => Promise<void>;
+  getResponse: (value: RequestParams) => Promise<void>;
+}
+
+export interface ResponseProps {
+  data: Partial<Record<string, string>>;
+}
+
+export interface MirrorProps {
+  height: string;
+  value: string;
+  onChange?: (value: string) => void;
+  editable?: boolean;
 }
 
 export interface APIResponse {
   data: Record<string, string>;
 }
+
+export type RequestParams = {
+  query: string;
+  variables: object | string;
+  headers: Headers;
+  baseUrl: string;
+};
 
 export interface DocTypeProps {
   type: DocType;

@@ -1,0 +1,23 @@
+.change_api {
+  padding: 12px;
+}
+
+.currnt_url_text {
+  padding-bottom: 12px;
+}
+
+.hide_block,
+.replace_url {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.error_url {
+  color: red;
+}
+
+.succes_message {
+  color: green;
+}

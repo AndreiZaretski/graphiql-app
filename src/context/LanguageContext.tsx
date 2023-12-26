@@ -1,8 +1,9 @@
-import React, { createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import { LanguageKey } from '@type/enums/language.enum';
 import { LanguageContent } from '@type/interfaces/languageContent.interface';
 import en from '@utils/languages/en.json';
 import ru from '@utils/languages/ru.json';
+import { Props } from '@type/interfaces/props.interface';
 
 interface LanguageContextType {
   data: LanguageContent;
@@ -16,14 +17,10 @@ export const LanguageContext = createContext<LanguageContextType>({
   setLanguage: () => {},
 });
 
-type Props = {
-  children: React.ReactNode;
-};
-
 export const LanguageProvider = ({ children }: Props) => {
   const [language, setLanguage] = useState(LanguageKey.En);
 
-  let data;
+  let data: LanguageContent = en;
   switch (language) {
     case LanguageKey.En:
       data = en;

@@ -32,5 +32,21 @@
     "minLength": "Password must be at least 8 characters",
     "required": "Required field",
     "notMatch": "Passwords not match"
+  },
+  "mainPage": {
+    "changeApi": "Change Api",
+    "variableName": "Variables",
+    "headersName": "Headers",
+    "prettify":"Prettify",
+    "show": "Show",
+    "hide": "Hide",
+    "doc": "Docementation",
+    "loading": "Loading...",
+    "validHeaderMessage": "Please enter valid JSON format for headers",
+    "validVariableMessage": "Please enter valid JSON format for variables",
+    "validUrlMessage": "Please enter valid Url",
+    "currentUrl": "Current Url:",
+    "succesChangeUrlMessage": "The api was successfully changed",
+    "errorCorsMessage": "Please enter the correct api address or api that supports cors"
   }
 }

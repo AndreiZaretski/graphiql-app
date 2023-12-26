@@ -1,33 +1,87 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useContext } from 'react';
 import Layout from '@layout/Layout';
 import Request from './Request/Request';
 import Response from './Response/Response';
 const Documentation = lazy(() => import('./Documentation/Documentation'));
 import './Main.module.scss';
+
+import { RequestParams } from '@type/interfaces/props.interface';
+import { AppState } from '@store/store';
+import { useSelector } from 'react-redux';
 import {
-  useSearchByQueryMutation,
   useGetDocumentationMutation,
-} from '../../store/api/graphiqlApi';
+  useSearchByQueryMutation,
+} from '@store/api/graphiqlApi';
+import ChangeApi from './Request/components/ChangeApi/ChangeApi';
+import { LanguageContext } from '@context/LanguageContext';
 
 const Main = () => {
-  const [getResponseMutation, { data }] = useSearchByQueryMutation();
+  const [getResponseMutation, { data, error }] = useSearchByQueryMutation();
   const [getDocumentationMutation, { data: schema }] =
     useGetDocumentationMutation();
 
-  const getResponse = async (value: string) => {
+  const { baseUrl, validHeaderJson, validVariableJson } = useSelector(
+    (state: AppState) => state.request
+  );
+
+  const getResponse = async (value: RequestParams) => {
     await getResponseMutation(value);
   };
 
+  const getDocumentation = async () => {
+    await getDocumentationMutation(baseUrl);
+  };
+
+  const {
+    data: {
+      mainPage: {
+        loading,
+        doc,
+        validHeaderMessage,
+        validVariableMessage,
+        errorCorsMessage,
+      },
+    },
+  } = useContext(LanguageContext);
+
+  const errorJSON = () => {
+    let error: string | string[] = '';
+    if (validHeaderJson) {
+      error = validHeaderMessage;
+    }
+
+    if (validVariableJson) {
+      error = validVariableMessage;
+    }
+
+    if (validVariableJson && validHeaderJson) {
+      error = [validVariableMessage, validHeaderMessage];
+    }
+
+    return error;
+  };
+
+  let errorMessage: unknown | undefined | unknown[] = undefined;
+
+  if (error && 'data' in error) {
+    errorMessage = error.data;
+  }
+
+  if (error && !('data' in error)) {
+    errorMessage = [errorCorsMessage, error];
+  }
   return (
     <Layout>
+      <ChangeApi />
       <main>
         <Request getResponse={getResponse} />
-        <Response data={data?.data || {}} />
-        <button type="submit" onClick={getDocumentationMutation}>
-          Doc
+        <Response data={errorJSON() || data?.data || errorMessage || {}} />
+
+        <button type="submit" onClick={getDocumentation}>
+          {doc}
         </button>
         {schema && (
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div>{loading}</div>}>
             <Documentation schema={schema} />
           </Suspense>
         )}

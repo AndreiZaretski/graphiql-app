@@ -32,5 +32,22 @@
     "minLength": "Минимальная длинна пароля 8 символов",
     "required": "Обязательное поле",
     "notMatch": "Пароли не совпадают"
+  },
+  "mainPage": {
+    "changeApi": "Сменить Api",
+    "variableName": "Переменные",
+    "headersName": "Заголовки",
+    "prettify":"Формотировать код",
+    "show": "Показать",
+    "hide": "Скрыть",
+    "doc": "Документация",
+    "loading": "Загрузка...",
+    "validHeaderMessage": "Пожалуйста введите корректный JSON формат для заголовков",
+    "validVariableMessage": "Пожалуйста введите корректный JSON формат для переменных",
+    "validUrlMessage": "Пожалуйста введите корректный Url",
+    "currentUrl": "Текущий адрес:",
+    "succesChangeUrlMessage": "Api был успешно изменен",
+    "errorCorsMessage": "Пожалуйста введите корректный адрес api или api которая поддерживает корс"
   }
 }
+
