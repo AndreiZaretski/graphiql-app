@@ -73,19 +73,19 @@ const Main = () => {
   return (
     <Layout>
       <ChangeApi />
-      <main>
-        <Request getResponse={getResponse} />
-        <Response data={errorJSON() || data?.data || errorMessage || {}} />
+      {/* <main> */}
+      <Request getResponse={getResponse} />
+      <Response data={errorJSON() || data?.data || errorMessage || {}} />
 
-        <button type="submit" onClick={getDocumentation}>
-          {doc}
-        </button>
-        {schema && (
-          <Suspense fallback={<div>{loading}</div>}>
-            <Documentation schema={schema} />
-          </Suspense>
-        )}
-      </main>
+      <button type="submit" onClick={getDocumentation}>
+        {doc}
+      </button>
+      {schema && (
+        <Suspense fallback={<div>{loading}</div>}>
+          <Documentation schema={schema} />
+        </Suspense>
+      )}
+      {/* </main> */}
     </Layout>
   );
 };

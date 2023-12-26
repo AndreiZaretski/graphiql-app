@@ -47,7 +47,7 @@
     "validVariableMessage": "Please enter valid JSON format for variables",
     "validUrlMessage": "Please enter valid Url",
     "currentUrl": "Current Url:",
-    "succesChangeUrlMessage": "The api was successfully changed",
+    "successChangeUrlMessage": "The api was successfully changed",
     "errorCorsMessage": "Please enter the correct api address or api that supports cors"
   },
   "welcome": {

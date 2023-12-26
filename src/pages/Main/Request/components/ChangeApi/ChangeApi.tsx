@@ -25,7 +25,7 @@ const ChangeApi = () => {
         currentUrl,
         hide,
         show,
-        succesChangeUrlMessage,
+        successChangeUrlMessage,
       },
     },
   } = useContext(LanguageContext);
@@ -89,7 +89,7 @@ const ChangeApi = () => {
         <span className={styles.error_url}>{validUrlMessage}</span>
       )}
       {hasSuccesMessage && (
-        <span className={styles.succes_message}>{succesChangeUrlMessage}</span>
+        <span className={styles.succes_message}>{successChangeUrlMessage}</span>
       )}
     </div>
   );

@@ -9,6 +9,7 @@ import { RoutesPath } from '@type/enums/routes.enum';
 import { LanguageContext } from '@context/LanguageContext';
 import { FirebaseError } from '@firebase/util';
 import { Inputs } from '@type/interfaces/auth.interface';
+import styles from './Login.module.scss';
 
 const SignIn = () => {
   const { user, signIn } = useContext(UserContext) || {};
@@ -72,9 +73,11 @@ const SignIn = () => {
       {!user ? (
         <>
           <h1>{header}</h1>
-          <p>
+          <p className={styles.subheader}>
             {subheader}
-            <Link to={RoutesPath.SignUp}> {signUp}</Link>
+            <Link to={RoutesPath.SignUp} className="link link_s">
+              {signUp}
+            </Link>
           </p>
           <form className="form" onSubmit={handleSubmit(onSubmitHandler)}>
             <div className="form__field">
@@ -101,7 +104,11 @@ const SignIn = () => {
                 {errors.password?.message ? errors.password.message : ''}
               </p>
             </div>
-            <button disabled={!isValid}>{login}</button>
+            <div className="button_wrapper">
+              <button disabled={!isValid} className="button">
+                {login}
+              </button>
+            </div>
             <p className="form__error-server">{error ? error : ''}</p>
           </form>
         </>

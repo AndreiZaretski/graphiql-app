@@ -1,0 +1,39 @@
+@import '../../styles/abstract/mixins';
+@import '../../styles/abstract/constant';
+
+.footer_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  @include font();
+  color: $color-light;
+
+  @include media-mobile {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.github_wrapper {
+  display: flex;
+  justify-content: space-around;
+
+  width: 100%;
+}
+
+.rs_logo {
+  width: 140px;
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.git_logo {
+  width: 50px;
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
