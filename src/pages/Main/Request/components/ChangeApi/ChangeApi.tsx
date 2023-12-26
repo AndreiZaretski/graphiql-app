@@ -38,6 +38,7 @@ const ChangeApi = () => {
     if (isValidUrl(inputBaseUrl)) {
       dispatch(setBaseUrl(inputBaseUrl));
       setHasMessageUrl(false);
+      setHasShowBlockChange(false);
       showSuccesMessage();
     } else {
       setHasMessageUrl(true);
