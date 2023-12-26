@@ -34,7 +34,13 @@ const Main = () => {
 
   const {
     data: {
-      mainPage: { loading, doc, validHeaderMessage, validVariableMessage },
+      mainPage: {
+        loading,
+        doc,
+        validHeaderMessage,
+        validVariableMessage,
+        errorCorsMessage,
+      },
     },
   } = useContext(LanguageContext);
 
@@ -55,19 +61,21 @@ const Main = () => {
     return error;
   };
 
-  let errorMessage = undefined;
+  let errorMessage: unknown | undefined | unknown[] = undefined;
 
   if (error && 'data' in error) {
     errorMessage = error.data;
+  }
+
+  if (error && !('data' in error)) {
+    errorMessage = [errorCorsMessage, error];
   }
   return (
     <Layout>
       <ChangeApi />
       <main>
         <Request getResponse={getResponse} />
-        <Response
-          data={errorJSON() || data?.data || errorMessage || error || {}}
-        />
+        <Response data={errorJSON() || data?.data || errorMessage || {}} />
 
         <button type="submit" onClick={getDocumentation}>
           {doc}

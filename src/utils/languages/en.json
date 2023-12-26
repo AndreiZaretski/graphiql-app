@@ -44,6 +44,9 @@
     "loading": "Loading...",
     "validHeaderMessage": "Please enter valid JSON format for headers",
     "validVariableMessage": "Please enter valid JSON format for variables",
-    "validUrlMessage": "Please enter valid Url"
+    "validUrlMessage": "Please enter valid Url",
+    "currentUrl": "Current Url:",
+    "succesChangeUrlMessage": "The api was successfully changed",
+    "errorCorsMessage": "Please enter the correct api address or api that supports cors"
   }
 }

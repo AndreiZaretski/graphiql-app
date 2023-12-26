@@ -2,6 +2,11 @@
   padding: 12px;
 }
 
+.currnt_url_text {
+  padding-bottom: 12px;
+}
+
+.hide_block,
 .replace_url {
   display: flex;
   justify-content: center;
@@ -9,4 +14,8 @@
 
 .error_url {
   color: red;
+}
+
+.succes_message {
+  color: green;
 }

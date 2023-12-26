@@ -45,5 +45,8 @@ export interface LanguageContent {
     validHeaderMessage: string;
     validVariableMessage: string;
     validUrlMessage: string;
+    currentUrl: string;
+    succesChangeUrlMessage: string;
+    errorCorsMessage: string;
   };
 }

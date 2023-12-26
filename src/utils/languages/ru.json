@@ -44,6 +44,10 @@
     "loading": "Загрузка...",
     "validHeaderMessage": "Пожалуйста введите корректный JSON формат для заголовков",
     "validVariableMessage": "Пожалуйста введите корректный JSON формат для переменных",
-    "validUrlMessage": "Пожалуйста введите корректный Url"
+    "validUrlMessage": "Пожалуйста введите корректный Url",
+    "currentUrl": "Текущий адрес:",
+    "succesChangeUrlMessage": "Api был успешно изменен",
+    "errorCorsMessage": "Пожалуйста введите корректный адрес api или api которая поддерживает корс"
   }
 }
+
