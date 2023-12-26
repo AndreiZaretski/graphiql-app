@@ -1,0 +1,43 @@
+.main-wrapper {
+  background-image: url('./assets/img/main-background.jpg');
+  background-size: cover;
+  width: 100vw;
+  min-height: 100vh;
+
+  .main {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    section {
+      width: 40rem;
+    }
+
+    button {
+      background-color: #d600b6;
+      color: white;
+    }
+
+    &__btn_docs {
+      width: fit-content;
+    }
+  }
+}
+
+.cm-line {
+  text-align: left;
+}
+
+.cm-editor {
+  background-color: #320163;
+  border-radius: 5px;
+  box-shadow: 15px 15px 35px 10px rgba(182, 0, 175, 0.36);
+}
+
+.cm-gutters * {
+  background-color: #4d059b;
+  color: azure;
+}

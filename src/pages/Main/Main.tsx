@@ -3,7 +3,6 @@ import Layout from '@layout/Layout';
 import Request from './Request/Request';
 import Response from './Response/Response';
 const Documentation = lazy(() => import('./Documentation/Documentation'));
-import './Main.module.scss';
 import {
   useSearchByQueryMutation,
   useGetDocumentationMutation,
@@ -19,20 +18,26 @@ const Main = () => {
   };
 
   return (
-    <Layout>
-      <main>
-        <Request getResponse={getResponse} />
-        <Response data={data?.data || {}} />
-        <button type="submit" onClick={getDocumentationMutation}>
-          Doc
-        </button>
-        {schema && (
-          <Suspense fallback={<div>Loading...</div>}>
-            <Documentation schema={schema} />
-          </Suspense>
-        )}
-      </main>
-    </Layout>
+    <div className="main-wrapper">
+      <Layout>
+        <main className="main">
+          <Request getResponse={getResponse} />
+          <Response data={data?.data || {}} />
+          <button
+            className="main__btn_docs"
+            type="submit"
+            onClick={getDocumentationMutation}
+          >
+            Doc
+          </button>
+          {schema && (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Documentation schema={schema} />
+            </Suspense>
+          )}
+        </main>
+      </Layout>
+    </div>
   );
 };
 

@@ -1,4 +1,6 @@
 @import './pages/Authorization/form';
+@import './pages/Main/main';
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -66,10 +68,6 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
-
-.cm-line {
-  text-align: left !important;
 }
 
 html,
