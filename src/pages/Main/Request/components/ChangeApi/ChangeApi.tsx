@@ -67,6 +67,7 @@ const ChangeApi = () => {
         <b> {baseUrl}</b>
       </p>
       <div className={styles.replace_url}>
+        <p>{changeApi} </p>
         {hasShowBlockChange && (
           <div className={styles.hide_block}>
             <input
