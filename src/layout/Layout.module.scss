@@ -19,4 +19,8 @@
   @include media-tablet {
     padding: 10rem 2rem 0 2rem;
   }
+
+  @include media-mobile {
+    padding: 14rem 2rem 0 2rem;
+  }
 }

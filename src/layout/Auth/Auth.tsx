@@ -26,7 +26,7 @@ const Auth = () => {
             <button className="button">{login}</button>
           </Link>
           <Link to={RoutesPath.SignUp}>
-            <button className="button">{signUp}</button>
+            <button className="button button_l">{signUp}</button>
           </Link>
         </div>
       )}

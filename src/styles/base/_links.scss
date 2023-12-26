@@ -3,7 +3,7 @@
 
 .link {
   position: relative;
-  @include font($size: 3rem, $weight: 700);
+  @include font($size: 2.6rem, $weight: 700);
   color: $color-light;
   text-decoration: none;
   transition: all 0.3s;
@@ -26,7 +26,7 @@
     width: 100%;
   }
 
-  @include media-tablet {
+  @include media-laptop {
     @include font($size: 2rem, $weight: 700);
   }
 }

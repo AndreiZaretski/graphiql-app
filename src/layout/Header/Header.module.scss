@@ -25,11 +25,17 @@
   width: 80px;
   animation: logo_impossible 5s infinite;
 
+  @include media-desktop {
+    display: none;
+  }
+
+  @include media-laptop {
+  }
+
   @include media-tablet {
-    animation: logo_impossible_small 5s infinite;
+    // animation: logo_impossible_small 5s infinite;
   }
   @include media-mobile {
-    display: none;
   }
 }
 
@@ -39,7 +45,13 @@
 
 .header_wrapper {
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-columns: 1fr 2fr 1fr;
+
+  @include media-desktop {
+    justify-items: center;
+    grid-template-columns: 2fr 1fr;
+  }
+
   @include media-mobile {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
@@ -48,7 +60,7 @@
 }
 
 .dummy {
-  @include media-mobile {
+  @include media-desktop {
     display: none;
   }
 }
@@ -56,8 +68,9 @@
 .auth_wrapper {
   display: flex;
   align-items: center;
-  justify-content: end;
+  gap: 1rem;
   @include media-mobile {
+    flex-direction: column-reverse;
     justify-content: center;
     grid-row-start: 1;
   }
@@ -67,7 +80,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 3rem;
 }
 
 @keyframes logo_impossible {
@@ -82,14 +95,14 @@
   }
 }
 
-@keyframes logo_impossible_small {
-  from {
-    top: calc(-100% - 3rem);
-  }
-  50% {
-    top: -50%;
-  }
-  to {
-    top: calc(-100% - 3rem);
-  }
-}
+// @keyframes logo_impossible_small {
+//   from {
+//     top: calc(-100% - 3rem);
+//   }
+//   50% {
+//     top: -50%;
+//   }
+//   to {
+//     top: calc(-100% - 3rem);
+//   }
+// }
