@@ -1,7 +1,10 @@
+import styles from '../../layout/Header/Header.module.scss';
+
 import { UserContext } from '@context/AuthContext';
 import { LanguageContext } from '@context/LanguageContext';
+import { RoutesPath } from '@type/enums/routes.enum';
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Logout = () => {
   const { logout } = useContext(UserContext) || {};
@@ -23,9 +26,15 @@ const Logout = () => {
   };
 
   return (
-    <button onClick={handleLogout} className="button">
-      {logOut}
-    </button>
+    // <button onClick={handleLogout} className="button">
+    //   {logOut}
+    // </button>
+
+    <li className={styles.navigation__item}>
+      <Link to={RoutesPath.Main} className="link" onClick={handleLogout}>
+        {logOut}
+      </Link>
+    </li>
   );
 };
 

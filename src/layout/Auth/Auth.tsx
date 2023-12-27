@@ -1,4 +1,5 @@
-import styles from './Auth.module.scss';
+import styles from '../Header/Header.module.scss';
+
 import Logout from '@components/Logout/Logout';
 import { UserContext } from '@context/AuthContext';
 import { LanguageContext } from '@context/LanguageContext';
@@ -21,14 +22,18 @@ const Auth = () => {
           <Logout />
         </>
       ) : (
-        <div className={styles.wrapper}>
-          <Link to={RoutesPath.Login}>
-            <button className="button">{login}</button>
-          </Link>
-          <Link to={RoutesPath.SignUp}>
-            <button className="button button_l">{signUp}</button>
-          </Link>
-        </div>
+        <>
+          <li className={styles.navigation__item}>
+            <Link to={RoutesPath.Login} className="link">
+              {login}
+            </Link>
+          </li>
+          <li className={styles.navigation__item}>
+            <Link to={RoutesPath.SignUp} className="link">
+              {signUp}
+            </Link>
+          </li>
+        </>
       )}
     </>
   );

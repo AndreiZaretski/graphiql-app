@@ -73,9 +73,10 @@ const Main = () => {
   return (
     <Layout>
       <ChangeApi />
-      {/* <main> */}
-      <Request getResponse={getResponse} />
-      <Response data={errorJSON() || data?.data || errorMessage || {}} />
+      <div>
+        <Request getResponse={getResponse} />
+        <Response data={errorJSON() || data?.data || errorMessage || {}} />
+      </div>
 
       <button type="submit" onClick={getDocumentation}>
         {doc}
@@ -85,7 +86,6 @@ const Main = () => {
           <Documentation schema={schema} />
         </Suspense>
       )}
-      {/* </main> */}
     </Layout>
   );
 };
