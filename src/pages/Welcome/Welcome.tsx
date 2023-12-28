@@ -1,8 +1,8 @@
 import styles from './Welcome.module.scss';
 import Layout from '@layout/Layout';
-import AndreiPhoto from '../../images/And.png';
-import OksanaPhoto from '../../images/Oks.png';
-import MaxPhoto from '../../images/Max.png';
+import AndreiPhoto from '@assets/images/And.png';
+import OksanaPhoto from '@assets/images/Oks.png';
+import MaxPhoto from '@assets/images/Max.png';
 import { useContext } from 'react';
 import { LanguageContext } from '@context/LanguageContext';
 

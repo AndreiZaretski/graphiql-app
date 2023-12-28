@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from '@context/LanguageContext';
 import { UserContext } from '@context/AuthContext';
-import logo from '../../icons/logo.svg';
+import logo from '@assets/icons/logo.svg';
 
 const Header = () => {
   const {

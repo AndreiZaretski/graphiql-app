@@ -1,6 +1,6 @@
 import styles from './Footer.module.scss';
-import rsLogo from '../../icons/rs_school.svg';
-import githubLogo from '../../icons/github.svg';
+import rsLogo from '@assets/icons/rs_school.svg';
+import githubLogo from '@assets/icons/github.svg';
 
 const Footer = () => {
   return (

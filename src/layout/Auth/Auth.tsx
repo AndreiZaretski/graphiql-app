@@ -1,4 +1,4 @@
-import styles from '../Header/Header.module.scss';
+import styles from '@layout/Header/Header.module.scss';
 
 import Logout from '@components/Logout/Logout';
 import { UserContext } from '@context/AuthContext';

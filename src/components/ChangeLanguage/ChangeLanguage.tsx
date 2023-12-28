@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { LanguageContext } from '@context/LanguageContext';
 import styles from './ChangeLanguage.module.scss';
+
 import { LanguageKey } from '@type/enums/language.enum';
 
 const ChangeLanguage = () => {

@@ -1,4 +1,4 @@
-import styles from '../../layout/Header/Header.module.scss';
+import styles from '@layout/Header/Header.module.scss';
 
 import { UserContext } from '@context/AuthContext';
 import { LanguageContext } from '@context/LanguageContext';

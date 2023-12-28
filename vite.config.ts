@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { configDefaults } from 'vitest/config';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,7 +10,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: './src/setupTests.ts',
+    setupFiles: ['./src/setupTests.ts'],
     css: false,
     coverage: {
       provider: 'v8',
@@ -23,6 +24,11 @@ export default defineConfig({
         'src/mock/*',
         'src/main.tsx',
       ],
+    },
+  },
+  resolve: {
+    alias: {
+      '@styles': path.resolve(__dirname, 'src/styles'),
     },
   },
 });
