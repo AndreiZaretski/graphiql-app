@@ -7,7 +7,8 @@ import {
   onAuthStateChanged,
   IdTokenResult,
 } from 'firebase/auth';
-import { auth } from '../services/firebaseSettings';
+import { auth } from '@services/firebaseSettings';
+
 import { UserContextType } from '@type/interfaces/auth.interface';
 import { Props } from '@type/interfaces/props.interface';
 
