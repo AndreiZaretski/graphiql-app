@@ -12,7 +12,7 @@ interface ErrorState {
   message: string;
 }
 
-class ErrorBoundare extends Component<ErrorProps, ErrorState> {
+class ErrorBoundary extends Component<ErrorProps, ErrorState> {
   state: ErrorState = {
     hasError: false,
     message: '',
@@ -47,4 +47,4 @@ class ErrorBoundare extends Component<ErrorProps, ErrorState> {
   }
 }
 
-export default ErrorBoundare;
+export default ErrorBoundary;

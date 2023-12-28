@@ -5,27 +5,45 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  IdTokenResult,
 } from 'firebase/auth';
-import { auth } from '../services/firebaseSettings';
+import { auth } from '@services/firebaseSettings';
+
 import { UserContextType } from '@type/interfaces/auth.interface';
 import { Props } from '@type/interfaces/props.interface';
-// import { User } from '@firebase/auth';
-
-// interface UserContextType {
-//   createUser: (email: string, password: string) => Promise<UserCredential>;
-//   signIn: (email: string, password: string) => Promise<UserCredential>;
-//   logout: () => Promise<void>;
-//   user: User | null;
-// }
-
-// type Props = {
-//   children: React.ReactNode;
-// };
 
 const UserContext = createContext<UserContextType | null>(null);
 
 const AuthContextProvider = ({ children }: Props) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User>({
+    uid: '',
+    displayName: '',
+    email: '',
+    photoURL: '',
+    emailVerified: false,
+    isAnonymous: false,
+    metadata: {},
+    providerData: [],
+    refreshToken: '',
+    tenantId: '',
+    delete: async () => {},
+    getIdToken: async () => '',
+    getIdTokenResult: async (): Promise<IdTokenResult> => {
+      return {
+        token: '',
+        expirationTime: '',
+        issuedAtTime: '',
+        authTime: '',
+        signInProvider: '',
+        claims: {},
+        signInSecondFactor: '',
+      };
+    },
+    reload: async () => {},
+    toJSON: () => ({}),
+    phoneNumber: '',
+    providerId: '',
+  });
 
   const createUser = (email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -40,10 +58,8 @@ const AuthContextProvider = ({ children }: Props) => {
   };
 
   useEffect(() => {
-    console.log('Use Effect with current user');
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
-      setUser(currentUser);
+      setUser(currentUser as User);
     });
     return () => {
       unsubscribe();

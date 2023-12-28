@@ -1,0 +1,84 @@
+@import '../../styles/abstract/constant';
+@import '../../styles/abstract/mixins';
+
+.info_header {
+  display: flex;
+  gap: 10rem;
+  transition: all 0.3s;
+
+  width: 100%;
+  margin-bottom: 6rem;
+
+  @include media-tablet {
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+  @include media-mobile {
+    display: block;
+  }
+}
+
+.info_rs {
+  width: 35%;
+  @include media-mobile {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+.info_project {
+  width: 65%;
+  @include media-mobile {
+    width: 100%;
+  }
+}
+
+.header {
+  text-align: center;
+  @include font($size: 2rem, $weight: 700);
+  margin-bottom: 1rem;
+}
+
+.description {
+  width: 100%;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+.name {
+  text-align: center;
+  @include font($size: 2rem, $weight: 500);
+}
+
+.position {
+  text-align: center;
+  @include font($size: 2rem, $weight: 300);
+}
+
+.about_item {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  margin-bottom: 4rem;
+  @include media-mobile {
+    display: block;
+  }
+}
+
+.image_wrapper {
+  width: 30rem;
+  @include media-mobile {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.image {
+  display: block;
+  margin: 0 auto 1rem auto;
+  width: 80%;
+  @include media-mobile {
+    margin: 0;
+    width: 50%;
+  }
+}

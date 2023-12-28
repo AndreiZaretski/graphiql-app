@@ -1,0 +1,29 @@
+@import '@styles/abstract/constant';
+@import '@styles/abstract/mixins';
+
+.button {
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  padding: 1rem 2rem;
+
+  @include font($size: 1.8rem, $weight: 700);
+  background-color: $color-light;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-dark;
+  }
+
+  @include media-laptop {
+    padding: 0.6rem 1rem;
+    @include font($size: 1.6rem, $weight: 700);
+  }
+}
+
+.button_l {
+  width: 22rem;
+  @include media-tablet {
+    width: 16rem;
+  }
+}

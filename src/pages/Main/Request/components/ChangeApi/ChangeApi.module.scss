@@ -1,9 +1,11 @@
+@import '../../../../../styles/abstract/constant';
+
 .change_api {
-  padding: 12px;
+  padding: 1.2rem;
 }
 
-.currnt_url_text {
-  padding-bottom: 12px;
+.current_url_text {
+  padding-bottom: 1.2rem;
 }
 
 .hide_block,
@@ -11,13 +13,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 8px;
+  column-gap: 0.8rem;
 }
 
 .error_url {
-  color: red;
+  color: $color-danger;
 }
 
-.succes_message {
-  color: green;
+.success_message {
+  color: $color-success;
 }

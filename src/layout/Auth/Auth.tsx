@@ -1,3 +1,5 @@
+import styles from '@layout/Header/Header.module.scss';
+
 import Logout from '@components/Logout/Logout';
 import { UserContext } from '@context/AuthContext';
 import { LanguageContext } from '@context/LanguageContext';
@@ -9,7 +11,7 @@ const Auth = () => {
   const { user } = useContext(UserContext) || {};
   const {
     data: {
-      auth: { main, login, signUp },
+      auth: { login, signUp },
     },
   } = useContext(LanguageContext);
 
@@ -17,13 +19,20 @@ const Auth = () => {
     <>
       {user ? (
         <>
-          <Link to={RoutesPath.Main}>{main}</Link>
           <Logout />
         </>
       ) : (
         <>
-          <Link to={RoutesPath.Login}>{login}</Link>
-          <Link to={RoutesPath.SignUp}>{signUp}</Link>
+          <li className={styles.navigation__item}>
+            <Link to={RoutesPath.Login} className="link">
+              {login}
+            </Link>
+          </li>
+          <li className={styles.navigation__item}>
+            <Link to={RoutesPath.SignUp} className="link">
+              {signUp}
+            </Link>
+          </li>
         </>
       )}
     </>

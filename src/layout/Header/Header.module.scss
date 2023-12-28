@@ -1,6 +1,157 @@
+@import '../../styles/abstract/mixins';
+@import '../../styles/abstract/constant';
+
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  padding: 2rem 3rem;
+
+  @include font($weight: 700);
+  color: $color-light;
+
+  z-index: 1;
+  transition: all 1s;
+}
+
+.header_logo {
+  position: absolute;
+  width: 8rem;
+  animation: logo_impossible 5s infinite;
+}
+
+.scrolled {
+  background: $color-header-scrolled;
+}
+
+.header_wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dummy {
+  width: 8rem;
+}
+
+.auth_wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  gap: 1rem;
+}
+
+.navigation_wrapper {
+  @include media-tablet {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 32rem;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s;
+    z-index: 1;
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  z-index: 1;
+
+  @include media-tablet {
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 32rem;
+    background-color: $color-background-menu;
+  }
+}
+
+.navigation__item {
+  margin-right: 2rem;
+
+  @include media-tablet {
+    margin-bottom: 4rem;
+  }
+}
+
+.navigation__overlay {
+  @include media-tablet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color-black;
+    opacity: 0.7;
+  }
+}
+
+.navigation__wrapper_active {
+  right: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  @include media-tablet {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    transition: all 0.5s;
+
+    z-index: 2;
+  }
+}
+
+.hamburger_active {
+  transition: all 0.5s;
+  transform: rotate(90deg);
+}
+
+.hamburger_icon {
+  top: 1rem;
+  width: 3rem;
+  height: 0.2rem;
+  // background: #fcfcfc;
+  position: absolute;
+  background-color: $color-hamburger;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    width: 3rem;
+    height: 0.2rem;
+    background-color: $color-hamburger;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: -1rem;
+    width: 3rem;
+    height: 0.2rem;
+    background-color: $color-hamburger;
+  }
+}
+@keyframes logo_impossible {
+  from {
+    top: -10rem;
+  }
+  50% {
+    top: -2rem;
+  }
+  to {
+    top: -10rem;
+  }
 }

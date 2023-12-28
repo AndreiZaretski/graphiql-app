@@ -5,6 +5,7 @@ export interface LanguageContent {
   error: string;
   auth: {
     main: string;
+    welcome: string;
     login: string;
     signUp: string;
     logOut: string;
@@ -46,7 +47,29 @@ export interface LanguageContent {
     validVariableMessage: string;
     validUrlMessage: string;
     currentUrl: string;
-    succesChangeUrlMessage: string;
+    successChangeUrlMessage: string;
     errorCorsMessage: string;
+  };
+  welcome: {
+    rsSchool: string;
+    aboutProject: string;
+    projectDescription: string;
+    developer: string;
+    positionTeamLead: string;
+    position: string;
+    info: {
+      andrei: {
+        name: string;
+        description: string;
+      };
+      oksana: {
+        name: string;
+        description: string;
+      };
+      max: {
+        name: string;
+        description: string;
+      };
+    };
   };
 }
