@@ -14,6 +14,7 @@ import {
 } from '@store/api/graphiqlApi';
 import ChangeApi from './Request/components/ChangeApi/ChangeApi';
 import { LanguageContext } from '@context/LanguageContext';
+import styles from './Main.module.scss';
 
 const Main = () => {
   const [getResponseMutation, { data, error }] = useSearchByQueryMutation();
@@ -70,22 +71,23 @@ const Main = () => {
   if (error && !('data' in error)) {
     errorMessage = [errorCorsMessage, error];
   }
+
   return (
     <Layout>
       <ChangeApi />
-      <div>
+      <div className={styles.code_wrapper}>
         <Request getResponse={getResponse} />
         <Response data={errorJSON() || data?.data || errorMessage || {}} />
-      </div>
 
-      <button type="submit" onClick={getDocumentation}>
-        {doc}
-      </button>
-      {schema && (
-        <Suspense fallback={<div>{loading}</div>}>
-          <Documentation schema={schema} />
-        </Suspense>
-      )}
+        <button type="submit" onClick={getDocumentation}>
+          {doc}
+        </button>
+        {schema && (
+          <Suspense fallback={<div>{loading}</div>}>
+            <Documentation schema={schema} />
+          </Suspense>
+        )}
+      </div>
     </Layout>
   );
 };

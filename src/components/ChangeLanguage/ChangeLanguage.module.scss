@@ -4,8 +4,8 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 30px;
-  height: 17px;
+  width: 3rem;
+  height: 1.7rem;
 }
 
 .switch input {
@@ -28,10 +28,10 @@
 .slider:before {
   position: absolute;
   content: '';
-  height: 13px;
-  width: 13px;
-  left: 2px;
-  bottom: 2px;
+  height: 1.3rem;
+  width: 1.3rem;
+  left: 0.2rem;
+  bottom: 0.2rem;
   background-color: $color-light;
   transition: 0.3s;
 }
@@ -45,11 +45,11 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(13px);
+  transform: translateX(1.3rem);
 }
 
 .slider.round {
-  border-radius: 17px;
+  border-radius: 1.7rem;
 }
 
 .slider.round:before {
@@ -60,5 +60,4 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   gap: 1rem;
-  // width: 100px;
 }

@@ -62,7 +62,7 @@ const ChangeApi = () => {
 
   return (
     <div className={styles.change_api}>
-      <p className={styles.currnt_url_text}>
+      <p className={styles.current_url_text}>
         {currentUrl}
         <b> {baseUrl}</b>
       </p>
@@ -89,7 +89,9 @@ const ChangeApi = () => {
         <span className={styles.error_url}>{validUrlMessage}</span>
       )}
       {hasSuccesMessage && (
-        <span className={styles.succes_message}>{successChangeUrlMessage}</span>
+        <span className={styles.success_message}>
+          {successChangeUrlMessage}
+        </span>
       )}
     </div>
   );

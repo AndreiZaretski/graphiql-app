@@ -41,6 +41,7 @@
 .description {
   width: 100%;
   text-align: justify;
+  line-height: 1.5;
 }
 
 .name {
@@ -64,7 +65,7 @@
 }
 
 .image_wrapper {
-  width: 300px;
+  width: 30rem;
   @include media-mobile {
     width: 100%;
     display: flex;
