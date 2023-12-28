@@ -35,7 +35,6 @@ const Header = () => {
   }, []);
 
   const handleToggle = () => {
-    // Toggle the state value between true and false
     setIsActive((prev) => !prev);
   };
 
@@ -50,21 +49,6 @@ const Header = () => {
           <div className={styles.header_wrapper}>
             <div className={styles.dummy}></div>
             <img src={logo} alt="logo" className={styles.header_logo} />
-            {/* <div className={styles.navigation_wrapper}>
-              <Link to={RoutesPath.Welcome} className="link">
-                {welcome}
-              </Link>
-              {user ? (
-                <Link to={RoutesPath.Main} className="link">
-                  {main}
-                </Link>
-              ) : null}
-            </div>
-            <div className={styles.auth_wrapper}>
-              <ChangeLanguage />
-              <Auth />
-            </div> */}
-
             <div
               className={
                 isActive

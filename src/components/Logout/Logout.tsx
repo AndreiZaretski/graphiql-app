@@ -26,10 +26,6 @@ const Logout = () => {
   };
 
   return (
-    // <button onClick={handleLogout} className="button">
-    //   {logOut}
-    // </button>
-
     <li className={styles.navigation__item}>
       <Link to={RoutesPath.Main} className="link" onClick={handleLogout}>
         {logOut}

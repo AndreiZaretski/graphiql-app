@@ -4,6 +4,13 @@
   font-weight: $weight;
 }
 
+//Если понадобится подключить еще один шрифт
+// @mixin fontAdditional($size: 2rem, $weight: 500) {
+//   font-family: 'Avenir', sans-serif;
+//   font-size: $size;
+//   font-weight: $weight;
+// }
+
 @mixin media-desktop {
   @media (max-width: $desktop-width) {
     @content;
