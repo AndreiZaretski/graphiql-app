@@ -35,18 +35,16 @@
     "notMatch": "Passwords not match"
   },
   "mainPage": {
-    "changeApi": "Change Api",
+    "changeApi": "Change API",
+    "changeApiBtn": "Change",
     "variableName": "Variables",
     "headersName": "Headers",
-    "prettify": "Prettify",
-    "show": "Show",
-    "hide": "Hide",
     "doc": "Documentation",
     "loading": "Loading...",
     "validHeaderMessage": "Please enter valid JSON format for headers",
     "validVariableMessage": "Please enter valid JSON format for variables",
     "validUrlMessage": "Please enter valid Url",
-    "currentUrl": "Current Url:",
+    "currentUrl": "Current URL:",
     "successChangeUrlMessage": "The api was successfully changed",
     "errorCorsMessage": "Please enter the correct api address or api that supports cors"
   },

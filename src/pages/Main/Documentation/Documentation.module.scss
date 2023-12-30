@@ -1,0 +1,99 @@
+@import '@styles/abstract/constant';
+
+.docs {
+  display: flex;
+  width: 35rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0.5rem;
+  gap: 1rem;
+  color: $color-light;
+  font-size: 1.7rem;
+  height: 500px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-light;
+    border-radius: 1rem;
+  }
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: $color-header-scrolled;
+    width: 1rem;
+    border-radius: 1rem;
+  }
+
+  & button {
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+
+  &__types,
+  &__queries {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  &__defaultValue {
+    color: #2bab7c;
+  }
+
+  &__symbol {
+    color: $color-header-scrolled;
+    font-size: 1.2rem;
+  }
+
+  &__args {
+    padding-left: 2rem;
+    color: #ff6b8b;
+  }
+
+  &__link {
+    cursor: pointer;
+  }
+
+  &__query {
+    color: #7aa2f7;
+  }
+
+  &__base {
+    color: $color-light;
+    font-size: 2rem;
+    background-color: transparent;
+    border: none;
+  }
+
+  &__nested {
+    padding: 0.5rem;
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    &_field {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      color: $color-hamburger;
+    }
+  }
+
+  &__type {
+    background-color: transparent;
+    color: $color-light;
+    padding: 0.5rem;
+    font-size: 1.7rem;
+    border: 1px solid transparent;
+  }
+
+  &__description {
+    padding: 1rem 0;
+    font-size: 1.7rem;
+  }
+}

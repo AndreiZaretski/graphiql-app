@@ -1,0 +1,9 @@
+@import '@styles/abstract/constant';
+
+.editor {
+  background-color: $color-form;
+
+  &_request {
+    padding-right: 6rem;
+  }
+}

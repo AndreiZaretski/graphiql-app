@@ -6,14 +6,34 @@
 
 .current_url_text {
   padding-bottom: 1.2rem;
+  font-size: 2.5rem;
+  text-shadow: 0.5rem 0.3rem 0.3rem $color-dark;
+  font-weight: 800;
+  color: $color-hamburger;
+  text-align: left;
+}
+
+.input_url {
+  width: 70rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: left;
+  &:focus {
+    outline: none;
+  }
 }
 
 .hide_block,
 .replace_url {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   column-gap: 0.8rem;
+}
+
+.message {
+  min-height: 3rem;
+  text-align: center;
 }
 
 .error_url {

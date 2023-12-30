@@ -5,13 +5,13 @@ import {
 } from 'graphql';
 import Queries from './components/Queries';
 import Types from './components/Types';
-import './Documentation.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/store';
 import {
   setOpenQueries,
   setOpenTypes,
 } from '@store/features/documentationSlice';
+import styles from './Documentation.module.scss';
 
 interface Props {
   schema: IntrospectionSchema;
@@ -33,10 +33,10 @@ function Documentation(props: Props) {
 
   return (
     schema && (
-      <div className="docs">
+      <div className={styles.docs}>
         <span>
           <button
-            className="docs-link docs-base"
+            className={`link ${styles.docs__link} ${styles.docs__base}`}
             onClick={() => {
               dispatch(setOpenTypes(true));
               dispatch(setOpenQueries(false));
@@ -44,17 +44,17 @@ function Documentation(props: Props) {
           >
             Types
           </button>
-          {!openTypes && <span className="docs-symbol"> ▼</span>}
+          {!openTypes && <span className={styles.docs__symbol}> ▼</span>}
         </span>
 
         {openTypes && (
-          <div className="docs-nested">
+          <div className={styles.docs__nested}>
             <Types types={mainTypes as ReadonlyArray<IntrospectionType>} />
           </div>
         )}
         <span>
           <button
-            className="docs-link docs-base"
+            className={`link ${styles.docs__link} ${styles.docs__base}`}
             onClick={() => {
               dispatch(setOpenTypes(false));
               dispatch(setOpenQueries(true));
@@ -62,11 +62,11 @@ function Documentation(props: Props) {
           >
             Query
           </button>
-          {!openQueries && <span className="docs-symbol"> ▼</span>}
+          {!openQueries && <span className={styles.docs__symbol}> ▼</span>}
         </span>
 
         {openQueries && (
-          <div className="docs-nested">
+          <div className={styles.docs__nested}>
             <Queries queries={queryType as IntrospectionObjectType} />
           </div>
         )}

@@ -5,6 +5,7 @@ import { RootState } from '@store/store';
 import { setSelectedType } from '@store/features/documentationSlice';
 import ReturnType from './ReturnType';
 import { DocType } from '@type/interfaces/props.interface';
+import styles from '../Documentation.module.scss';
 
 interface Props {
   types: ReadonlyArray<IntrospectionType>;
@@ -37,15 +38,15 @@ function Types(props: Props) {
 
   return (
     types && (
-      <div className="docs-types">
+      <div className={styles.docs__types}>
         {types.map((type, index) => (
           <div key={type.name} ref={openType[index] ? openTypeRef : null}>
             <span>
               <button
                 className={
                   type.description || (type.kind === 'OBJECT' && type.fields)
-                    ? 'docs-type docs-link'
-                    : 'docs-type'
+                    ? `link ${styles.docs__type} ${styles.docs__link}`
+                    : `link ${styles.docs__type}`
                 }
                 onClick={() => {
                   if (
@@ -70,13 +71,13 @@ function Types(props: Props) {
             </span>
 
             {openType[index] && (
-              <div className="docs-nested">
+              <div className={styles.docs__nested}>
                 {type.description && <div>{type.description}</div>}
                 {type.kind === 'OBJECT' && type.fields && (
                   <div>
                     {type.fields.map((field) => (
                       <div key={field.name}>
-                        <div className="docs-nested-field">
+                        <div className={styles.docs__nested_field}>
                           <h4>{field.name}: </h4>
                           <ReturnType type={field.type as DocType} />
                         </div>
@@ -89,7 +90,7 @@ function Types(props: Props) {
                   <div>
                     {type.inputFields.map((field) => (
                       <div key={field.name}>
-                        <div className="docs-nested-field">
+                        <div className={styles.docs__nested_field}>
                           <h4>{field.name}: </h4>{' '}
                           <ReturnType type={field.type as DocType} />
                         </div>
@@ -101,7 +102,7 @@ function Types(props: Props) {
                   <div>
                     {type.enumValues.map((field) => (
                       <div key={field.name}>
-                        <div className="docs-nested-field">
+                        <div className={styles.docs__nested_field}>
                           <h4>{field.name}</h4>
                         </div>
                       </div>

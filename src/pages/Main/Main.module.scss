@@ -1,7 +1,35 @@
+@import '@styles/abstract/constant';
+
+.main__section {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 7rem;
+}
+
 .code_wrapper {
   width: 100vw;
   display: grid;
   column-gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 50%);
+  align-items: flex-start;
+  max-width: 100%;
   min-height: 80vh;
+}
+
+.button_doc_open {
+  background-color: aquamarine;
+  background-image: url(../src/assets/icons/book-opened.png);
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 1rem;
+}
+
+.button_doc_closed {
+  background-color: aquamarine;
+  background-image: url(../src/assets/icons/book-closed.png);
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 1rem;
 }
