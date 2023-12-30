@@ -24,6 +24,10 @@
   &_square {
     width: 5rem;
     height: 5rem;
+    @include media-laptop {
+      width: 4rem;
+      height: 4rem;
+    }
   }
 
   &:hover {

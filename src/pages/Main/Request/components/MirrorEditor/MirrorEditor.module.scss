@@ -1,9 +1,14 @@
 @import '@styles/abstract/constant';
+@import '@styles/abstract/mixins';
 
 .editor {
   background-color: $color-form;
 
   &_request {
     padding-right: 6rem;
+
+    @include media-mobile {
+      padding-right: 5rem;
+    }
   }
 }

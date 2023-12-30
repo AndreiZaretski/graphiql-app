@@ -12,13 +12,14 @@
 
 .cm-scroller {
   &::-webkit-scrollbar {
-    width: 0.7rem;
+    width: 1rem;
+    height: 1rem;
   }
   &::-webkit-scrollbar-thumb {
     background-color: lighten($color-form, 15);
     border-radius: 1rem;
   }
   &::-webkit-scrollbar-track {
-    background-color: $color-form;
+    background-color: darken($color-form, 2);
   }
 }

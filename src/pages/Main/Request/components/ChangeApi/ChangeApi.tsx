@@ -56,6 +56,9 @@ const ChangeApi = () => {
   };
 
   const showHideText = () => {
+    if (window.innerWidth < 576) {
+      return hasShowBlockChange ? '⮝' : '⮟';
+    }
     return hasShowBlockChange ? '❮' : '❯';
   };
 
@@ -78,7 +81,7 @@ const ChangeApi = () => {
             />
             <button
               type="button"
-              className="button button_colored"
+              className={`button button_colored ${styles.hide_block__button}`}
               onClick={handleClickBaseUrl}
             >
               {changeApiBtn}

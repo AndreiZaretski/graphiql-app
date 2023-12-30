@@ -34,7 +34,7 @@ function Types(props: Props) {
 
   useLayoutEffect(() => {
     openTypeRef.current?.scrollIntoView();
-  }, []);
+  });
 
   return (
     types && (

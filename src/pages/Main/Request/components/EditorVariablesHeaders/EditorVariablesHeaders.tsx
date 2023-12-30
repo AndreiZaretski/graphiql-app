@@ -53,7 +53,7 @@ const EditorVariablesHeaders = () => {
   };
 
   const showHideText = () => {
-    return showEditor ? '▲' : '▼';
+    return showEditor ? '⮝' : '⮟';
   };
 
   return (

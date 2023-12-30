@@ -1,16 +1,18 @@
-@import '../../../../../styles/abstract/constant';
-
-.change_api {
-  padding: 1.2rem;
-}
+@import '@styles/abstract/constant';
+@import '@styles/abstract/mixins';
 
 .current_url_text {
-  padding-bottom: 1.2rem;
+  margin-bottom: 3rem;
   font-size: 2.5rem;
   text-shadow: 0.5rem 0.3rem 0.3rem $color-dark;
   font-weight: 800;
   color: $color-hamburger;
   text-align: left;
+
+  @include media-mobile {
+    font-size: 1.5rem;
+    text-align: center;
+  }
 }
 
 .input_url {
@@ -18,8 +20,15 @@
   padding: 1rem;
   border-radius: 1rem;
   text-align: left;
+
   &:focus {
     outline: none;
+  }
+
+  @include media-laptop {
+    padding: 0.6rem 1rem;
+    width: auto;
+    flex-grow: 10;
   }
 }
 
@@ -29,6 +38,20 @@
   justify-content: flex-start;
   align-items: center;
   column-gap: 0.8rem;
+  @include media-laptop {
+    flex-grow: 10;
+  }
+}
+
+.replace_url {
+  @include media-mobile {
+    flex-direction: column;
+    row-gap: 0.8rem;
+  }
+}
+
+.hide_block__button {
+  flex-grow: 0;
 }
 
 .message {
