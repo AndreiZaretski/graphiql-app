@@ -15,10 +15,12 @@ import {
 import ChangeApi from './Request/components/ChangeApi/ChangeApi';
 import { LanguageContext } from '@context/LanguageContext';
 import styles from './Main.module.scss';
+import Spinner from '@components/Spinner/Spinner';
 
 const Main = () => {
-  const [getResponseMutation, { data, error }] = useSearchByQueryMutation();
-  const [getDocumentationMutation, { data: schema }] =
+  const [getResponseMutation, { isLoading: isFetching, data, error }] =
+    useSearchByQueryMutation();
+  const [getDocumentationMutation, { isLoading: isFetchingDoc, data: schema }] =
     useGetDocumentationMutation();
 
   const { baseUrl, validHeaderJson, validVariableJson } = useSelector(
@@ -73,22 +75,26 @@ const Main = () => {
   }
 
   return (
-    <Layout>
-      <ChangeApi />
-      <div className={styles.code_wrapper}>
-        <Request getResponse={getResponse} />
-        <Response data={errorJSON() || data?.data || errorMessage || {}} />
+    <>
+      {isFetching && <Spinner />}
+      {isFetchingDoc && <Spinner />}
+      <Layout>
+        <ChangeApi />
+        <div className={styles.code_wrapper}>
+          <Request getResponse={getResponse} />
+          <Response data={errorJSON() || data?.data || errorMessage || {}} />
 
-        <button type="submit" onClick={getDocumentation}>
-          {doc}
-        </button>
-        {schema && (
-          <Suspense fallback={<div>{loading}</div>}>
-            <Documentation schema={schema} />
-          </Suspense>
-        )}
-      </div>
-    </Layout>
+          <button type="submit" onClick={getDocumentation}>
+            {doc}
+          </button>
+          {schema && (
+            <Suspense fallback={<div>{loading}</div>}>
+              <Documentation schema={schema} />
+            </Suspense>
+          )}
+        </div>
+      </Layout>
+    </>
   );
 };
 
