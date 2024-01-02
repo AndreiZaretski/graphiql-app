@@ -10,6 +10,11 @@ import { LanguageContext } from '@context/LanguageContext';
 import { FirebaseError } from '@firebase/util';
 import { Inputs } from '@type/interfaces/auth.interface';
 import styles from './SignUp.module.scss';
+import { useEmailError } from '@utils/customHooks/useEmailError';
+import {
+  usePasswordError,
+  usePasswordRepeatError,
+} from '@utils/customHooks/usePasswordError';
 
 const SignUp = () => {
   const { user, createUser } = useContext(UserContext) || {};
@@ -82,6 +87,23 @@ const SignUp = () => {
     reset();
   };
 
+  const emailErrorMessage = useEmailError(errors, required, emailInvalid);
+  const passwordErrorMessage = usePasswordError(
+    errors,
+    required,
+    minLength,
+    oneNumberError,
+    oneUpperLetterError,
+    oneLowerLetterError,
+    oneSpecialCharacterError
+  );
+
+  const passwordRepeatErrorMessage = usePasswordRepeatError(
+    errors,
+    required,
+    notMatch
+  );
+
   return (
     <Layout>
       {!user ? (
@@ -103,7 +125,8 @@ const SignUp = () => {
                 {...register('email')}
               />
               <p className="form__error">
-                {errors.email?.message ? errors.email.message : ''}
+                {/* {errors.email?.message ? errors.email.message : ''} */}
+                {emailErrorMessage}
               </p>
             </div>
             <div className="form__field">
@@ -115,7 +138,8 @@ const SignUp = () => {
                 {...register('password')}
               />
               <p className="form__error">
-                {errors.password?.message ? errors.password.message : ''}
+                {/* {errors.password?.message ? errors.password.message : ''} */}
+                {passwordErrorMessage}
               </p>
             </div>
             <div className="form__field">
@@ -127,9 +151,10 @@ const SignUp = () => {
                 {...register('passwordRepeat')}
               />
               <p className="form__error">
-                {errors.passwordRepeat?.message
+                {/* {errors.passwordRepeat?.message
                   ? errors.passwordRepeat.message
-                  : ''}
+                  : ''} */}
+                {passwordRepeatErrorMessage}
               </p>
             </div>
             <div className="button_wrapper">

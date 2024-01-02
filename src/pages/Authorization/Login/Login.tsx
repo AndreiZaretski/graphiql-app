@@ -10,6 +10,8 @@ import { LanguageContext } from '@context/LanguageContext';
 import { FirebaseError } from '@firebase/util';
 import { Inputs } from '@type/interfaces/auth.interface';
 import styles from './Login.module.scss';
+import { useEmailError } from '@utils/customHooks/useEmailError';
+import { usePasswordError } from '@utils/customHooks/usePasswordError';
 
 const SignIn = () => {
   const { user, signIn } = useContext(UserContext) || {};
@@ -43,13 +45,13 @@ const SignIn = () => {
   } = useForm({
     mode: 'all',
     resolver: yupResolver(SchemaLogin),
-    context: {
-      languageError: {
-        emailInvalid,
-        minLength,
-        required,
-      },
-    },
+    // context: {
+    //   languageError: {
+    //     emailInvalid,
+    //     minLength,
+    //     required,
+    //   },
+    // },
   });
 
   const onSubmitHandler = async ({ email, password }: Inputs) => {
@@ -67,6 +69,52 @@ const SignIn = () => {
     }
     reset();
   };
+
+  // const errorEmail = () => {
+  //   if (errors.email?.type === 'required') {
+  //     return required;
+  //   } else if (errors.email?.type === 'email') {
+  //     return emailInvalid;
+  //   } else {
+  //     return '';
+  //   }
+  // };
+
+  // const messageRequired = 'password is a required field';
+  // const messageLength =
+  //   'Password must be at least 8 characters' ||
+  //   'Минимальная длинна пароля 8 символов';
+
+  // const errorPassword = () => {
+  //   console.log(errors.password);
+  //   if (errors.password?.message === messageRequired) {
+  //     return required;
+  //   } else if (errors.password?.message === messageLength) {
+  //     return minLength;
+  //   } else {
+  //     return '';
+  //   }
+  // };
+
+  // const errorPassword = () => {
+  //   if (errors.password?.type === 'required') {
+  //     return required;
+  //   } else if (errors.password?.type === 'min') {
+  //     return minLength;
+  //   } else {
+  //     return '';
+  //   }
+  // };
+
+  // const passwordError = usePasswordError(
+  //   errors.password?.message,
+  //   errors,
+  //   required,
+  //   minLength
+  // );
+  const passwordErrorMessage = usePasswordError(errors, required, minLength);
+
+  const emailErrorMessage = useEmailError(errors, required, emailInvalid);
 
   return (
     <Layout>
@@ -89,7 +137,9 @@ const SignIn = () => {
                 {...register('email')}
               />
               <p className="form__error">
-                {errors.email?.message ? errors.email.message : ''}
+                {/* {errors.email?.message ? errors.email.message : ''} */}
+                {/* {errorEmail()} */}
+                {emailErrorMessage}
               </p>
             </div>
             <div className="form__field">
@@ -101,7 +151,9 @@ const SignIn = () => {
                 {...register('password')}
               />
               <p className="form__error">
-                {errors.password?.message ? errors.password.message : ''}
+                {/* {errors.password?.message ? errors.password.message : ''} */}
+                {/* {errorPassword()} */}
+                {passwordErrorMessage}
               </p>
             </div>
             <div className="button_wrapper">
