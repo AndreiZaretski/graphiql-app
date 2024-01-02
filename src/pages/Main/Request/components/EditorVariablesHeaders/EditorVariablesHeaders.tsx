@@ -4,6 +4,7 @@ import { useCallback, useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MirrorEditor from '../MirrorEditor/MirrorEditor';
 import { LanguageContext } from '@context/LanguageContext';
+import styles from './EditorVariablesHeaders.module.scss';
 
 const EditorVariablesHeaders = () => {
   const { variables, headers } = useSelector(
@@ -12,7 +13,7 @@ const EditorVariablesHeaders = () => {
 
   const {
     data: {
-      mainPage: { headersName, variableName, show, hide },
+      mainPage: { headersName, variableName },
     },
   } = useContext(LanguageContext);
 
@@ -52,20 +53,34 @@ const EditorVariablesHeaders = () => {
   };
 
   const showHideText = () => {
-    return showEditor ? hide : show;
+    return showEditor ? '⮝' : '⮟';
   };
 
   return (
-    <div className="mirror_panel">
-      <div className="mirror_panel_header">
-        <button onClick={showVariablesEditor}>{variableName}</button>
-        <button onClick={showHeadersEditor}>{headersName}</button>
-        <button onClick={() => toggleEditor(showEditor)}>
+    <div className={styles.mirror_panel}>
+      <div className={styles.mirror_panel_header}>
+        <div className={styles.mirror_panel_header__buttons}>
+          <button
+            className={showVariables ? 'button button_colored' : 'button'}
+            onClick={showVariablesEditor}
+          >
+            {variableName}
+          </button>
+          <button
+            className={showHeaders ? 'button button_colored' : 'button'}
+            onClick={showHeadersEditor}
+          >
+            {headersName}
+          </button>
+        </div>
+
+        <button className="button" onClick={() => toggleEditor(showEditor)}>
           {showHideText()}
         </button>
       </div>
+
       {showEditor && (
-        <div className="mirror_panel_block">
+        <div>
           {showVariables && (
             <MirrorEditor
               height="250px"

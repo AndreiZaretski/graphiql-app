@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
 import { RequestProps } from '@type/interfaces/props.interface';
 import {
   prettifyData,
@@ -16,7 +16,7 @@ import { AppState } from '@store/store';
 import { IsJsonString } from '@utils/isJsonString';
 import EditorVariablesHeaders from './components/EditorVariablesHeaders/EditorVariablesHeaders';
 import MirrorEditor from './components/MirrorEditor/MirrorEditor';
-import { LanguageContext } from '@context/LanguageContext';
+import styles from './Request.module.scss';
 
 const Request = (props: RequestProps) => {
   const { getResponse } = props;
@@ -33,12 +33,6 @@ const Request = (props: RequestProps) => {
     },
     [dispatch]
   );
-
-  const {
-    data: {
-      mainPage: { prettify },
-    },
-  } = useContext(LanguageContext);
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
@@ -72,16 +66,28 @@ const Request = (props: RequestProps) => {
   };
 
   return (
-    <section>
-      <MirrorEditor height="500px" value={query} onChange={onChangeQuery} />
+    <section className={styles.request}>
+      <MirrorEditor
+        height="500px"
+        value={query}
+        onChange={onChangeQuery}
+        editable={true}
+      />
       <EditorVariablesHeaders />
-
-      <button type="submit" onClick={(e) => handleSubmit(e)}>
-        {'>'}
-      </button>
-      <button type="button" onClick={handlePrettify}>
-        {prettify}
-      </button>
+      <div className={styles.request__buttons}>
+        <button
+          type="submit"
+          className={`button button_colored button_square`}
+          onClick={(e) => handleSubmit(e)}
+        >
+          &#9654;
+        </button>
+        <button
+          type="button"
+          className={`button button_colored button_square ${styles.button_prettify}`}
+          onClick={handlePrettify}
+        ></button>
+      </div>
     </section>
   );
 };

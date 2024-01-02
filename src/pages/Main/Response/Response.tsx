@@ -1,14 +1,15 @@
 import { prettifyData } from '@utils/prettify/prettify';
 import MirrorEditor from '../Request/components/MirrorEditor/MirrorEditor';
 import { ResponseProps } from '@type/interfaces/props.interface';
+import styles from './Response.module.scss';
 
 const Response = (props: ResponseProps) => {
   const { data } = props;
 
   return (
-    <section>
+    <section className={styles.response}>
       <MirrorEditor
-        height="500px"
+        height="550px"
         value={data ? prettifyData(JSON.stringify(data)) : ''}
         editable={false}
       />

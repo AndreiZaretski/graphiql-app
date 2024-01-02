@@ -1,4 +1,4 @@
-import { lazy, Suspense, useContext } from 'react';
+import { lazy, Suspense, useContext, useState } from 'react';
 import Layout from '@layout/Layout';
 import Request from './Request/Request';
 import Response from './Response/Response';
@@ -22,6 +22,7 @@ const Main = () => {
     useSearchByQueryMutation();
   const [getDocumentationMutation, { isLoading: isFetchingDoc, data: schema }] =
     useGetDocumentationMutation();
+  const [schemaVisible, setSchemaVisible] = useState(false);
 
   const { baseUrl, validHeaderJson, validVariableJson } = useSelector(
     (state: AppState) => state.request
@@ -32,14 +33,16 @@ const Main = () => {
   };
 
   const getDocumentation = async () => {
-    await getDocumentationMutation(baseUrl);
+    if (!schemaVisible) {
+      await getDocumentationMutation(baseUrl);
+    }
+    setSchemaVisible((prev) => !prev);
   };
 
   const {
     data: {
       mainPage: {
         loading,
-        doc,
         validHeaderMessage,
         validVariableMessage,
         errorCorsMessage,
@@ -80,19 +83,29 @@ const Main = () => {
       {isFetchingDoc && <Spinner />}
       <Layout>
         <ChangeApi />
-        <div className={styles.code_wrapper}>
-          <Request getResponse={getResponse} />
-          <Response data={errorJSON() || data?.data || errorMessage || {}} />
+        <section className={styles.main__section}>
+          <div>
+            <button
+              type="submit"
+              onClick={getDocumentation}
+              className={
+                schemaVisible
+                  ? `button button_square ${styles.button_doc_open}`
+                  : `button button_square ${styles.button_doc_closed}`
+              }
+            ></button>
+            {schemaVisible && schema && (
+              <Suspense fallback={<div>{loading}</div>}>
+                <Documentation schema={schema} />
+              </Suspense>
+            )}
+          </div>
 
-          <button type="submit" onClick={getDocumentation}>
-            {doc}
-          </button>
-          {schema && (
-            <Suspense fallback={<div>{loading}</div>}>
-              <Documentation schema={schema} />
-            </Suspense>
-          )}
-        </div>
+          <div className={styles.code_wrapper}>
+            <Request getResponse={getResponse} />
+            <Response data={errorJSON() || data?.data || errorMessage || {}} />
+          </div>
+        </section>
       </Layout>
     </>
   );
