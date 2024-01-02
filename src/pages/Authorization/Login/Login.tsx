@@ -86,6 +86,7 @@ const SignIn = () => {
                 type="email"
                 placeholder={email}
                 {...register('email')}
+                autoComplete="username"
               />
               <p className="form__error">{emailErrorMessage}</p>
             </div>
@@ -96,6 +97,7 @@ const SignIn = () => {
                 type="password"
                 placeholder={password}
                 {...register('password')}
+                autoComplete="current-password"
               />
               <p className="form__error">{passwordErrorMessage}</p>
             </div>

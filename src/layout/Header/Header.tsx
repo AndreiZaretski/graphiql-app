@@ -2,11 +2,11 @@ import ChangeLanguage from '@components/ChangeLanguage/ChangeLanguage';
 import styles from './Header.module.scss';
 import Auth from '@layout/Auth/Auth';
 import { RoutesPath } from '@type/enums/routes.enum';
-import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from '@context/LanguageContext';
 import { UserContext } from '@context/AuthContext';
 import logo from '@assets/icons/logo.svg';
+import { NavigationLink } from '@components/NavigationLink/NavigationLink';
 
 const Header = () => {
   const {
@@ -58,17 +58,9 @@ const Header = () => {
             >
               <nav>
                 <ul className={styles.navigation}>
-                  <li className={styles.navigation__item}>
-                    <Link to={RoutesPath.Welcome} className="link">
-                      {welcome}
-                    </Link>
-                  </li>
+                  <NavigationLink to={RoutesPath.Welcome} text={welcome} />
                   {user ? (
-                    <li className={styles.navigation__item}>
-                      <Link to={RoutesPath.Main} className="link">
-                        {main}
-                      </Link>
-                    </li>
+                    <NavigationLink to={RoutesPath.Main} text={main} />
                   ) : null}
                   <Auth />
                   <li className={styles.navigation__item}>

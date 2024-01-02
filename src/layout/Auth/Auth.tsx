@@ -1,11 +1,9 @@
-import styles from '@layout/Header/Header.module.scss';
-
 import Logout from '@components/Logout/Logout';
 import { UserContext } from '@context/AuthContext';
 import { LanguageContext } from '@context/LanguageContext';
 import { RoutesPath } from '@type/enums/routes.enum';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavigationLink } from '@components/NavigationLink/NavigationLink';
 
 const Auth = () => {
   const { user } = useContext(UserContext) || {};
@@ -21,16 +19,8 @@ const Auth = () => {
         <Logout />
       ) : (
         <>
-          <li className={styles.navigation__item}>
-            <Link to={RoutesPath.Login} className="link">
-              {login}
-            </Link>
-          </li>
-          <li className={styles.navigation__item}>
-            <Link to={RoutesPath.SignUp} className="link">
-              {signUp}
-            </Link>
-          </li>
+          <NavigationLink to={RoutesPath.Login} text={login} />
+          <NavigationLink to={RoutesPath.SignUp} text={signUp} />
         </>
       )}
     </>

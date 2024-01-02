@@ -119,15 +119,19 @@ const SignUp = () => {
             <div className="form__field">
               <label htmlFor="email">{email}</label>
               <input
+                type="text"
+                style={{ position: 'absolute', left: '-9999px' }}
+                {...register('email')}
+                autoComplete="username"
+              />
+              <input
                 id="email"
                 type="string"
                 placeholder={email}
                 {...register('email')}
+                autoComplete="username"
               />
-              <p className="form__error">
-                {/* {errors.email?.message ? errors.email.message : ''} */}
-                {emailErrorMessage}
-              </p>
+              <p className="form__error">{emailErrorMessage}</p>
             </div>
             <div className="form__field">
               <label htmlFor="password">{password}</label>
@@ -136,11 +140,9 @@ const SignUp = () => {
                 type="password"
                 placeholder={password}
                 {...register('password')}
+                autoComplete="new-password"
               />
-              <p className="form__error">
-                {/* {errors.password?.message ? errors.password.message : ''} */}
-                {passwordErrorMessage}
-              </p>
+              <p className="form__error">{passwordErrorMessage}</p>
             </div>
             <div className="form__field">
               <label htmlFor="passwordRepeat">{password}</label>
@@ -149,13 +151,9 @@ const SignUp = () => {
                 type="password"
                 placeholder={password}
                 {...register('passwordRepeat')}
+                autoComplete="new-password"
               />
-              <p className="form__error">
-                {/* {errors.passwordRepeat?.message
-                  ? errors.passwordRepeat.message
-                  : ''} */}
-                {passwordRepeatErrorMessage}
-              </p>
+              <p className="form__error">{passwordRepeatErrorMessage}</p>
             </div>
             <div className="button_wrapper">
               <button disabled={!isValid} className="button">
