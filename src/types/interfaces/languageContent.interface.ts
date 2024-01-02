@@ -39,8 +39,6 @@ export interface LanguageContent {
     changeApiBtn: string;
     variableName: string;
     headersName: string;
-    show: string;
-    hide: string;
     doc: string;
     loading: string;
     validHeaderMessage: string;
