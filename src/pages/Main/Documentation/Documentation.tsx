@@ -19,6 +19,7 @@ interface Props {
 
 function Documentation(props: Props) {
   const { schema } = props;
+  console.log(schema);
   const openTypes = useSelector(
     (state: RootState) => state.documentationSlice.openTypes
   );
@@ -26,7 +27,9 @@ function Documentation(props: Props) {
     (state: RootState) => state.documentationSlice.openQueries
   );
   const dispatch = useDispatch();
-  const queryType = schema?.types.find(({ name }) => name === 'Query');
+  const queryType = schema?.types.find(
+    ({ name }) => name === 'Query' || name === 'Root' || name === 'query_root'
+  );
   const mainTypes = schema?.types.filter(
     ({ name }) => name !== 'Query' && !name.startsWith('__')
   );

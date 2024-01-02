@@ -81,7 +81,7 @@ const ChangeApi = () => {
             />
             <button
               type="button"
-              className={`button button_colored ${styles.hide_block__button}`}
+              className={`button button_colored ${styles.change_api__button}`}
               onClick={handleClickBaseUrl}
             >
               {changeApiBtn}
@@ -89,7 +89,7 @@ const ChangeApi = () => {
           </div>
         )}
         <button
-          className="button"
+          className={`button ${styles.hide_block__button}`}
           onClick={() => toggleBlockChange(hasShowBlockChange)}
         >
           {showHideText()}
