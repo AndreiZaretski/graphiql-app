@@ -21,6 +21,7 @@ const ChangeLanguage = () => {
       <span>{language}</span>
       <label className={styles.switch}>
         <input
+          data-testid="checkbox"
           type="checkbox"
           onChange={handleChange}
           checked={language === LanguageKey.Ru}

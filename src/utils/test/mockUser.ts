@@ -1,4 +1,6 @@
-export const mockUser = {
+import { IdTokenResult } from 'firebase/auth';
+
+export const mockUserAuth = {
   uid: '123',
   displayName: 'Test User',
   email: 'test@example.com',
@@ -11,11 +13,11 @@ export const mockUser = {
   tenantId: 'xyz',
   delete: async () => {},
   getIdToken: async () => 'token',
-  getIdTokenResult: async () => ({
+  getIdTokenResult: async (): Promise<IdTokenResult> => ({
     token: 'token',
-    expirationTime: '2021-12-31',
-    issuedAtTime: '2021-12-01',
-    authTime: '2021-12-01',
+    expirationTime: '2023-12-31',
+    issuedAtTime: '2023-12-01',
+    authTime: '2023-12-01',
     signInProvider: 'password',
     claims: {},
     signInSecondFactor: '',
@@ -25,3 +27,5 @@ export const mockUser = {
   phoneNumber: '+1234567890',
   providerId: 'password',
 };
+
+export const mockUserUnauth = null;

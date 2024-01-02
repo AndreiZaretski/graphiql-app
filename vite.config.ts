@@ -19,10 +19,8 @@ export default defineConfig({
       exclude: [
         ...configDefaults.exclude,
         'src/types/*',
-        'src/constants/*',
         '**/*.d.ts ',
-        'src/mock/*',
-        'src/main.tsx',
+        'src/utils/test/*',
       ],
     },
   },

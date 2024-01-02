@@ -74,6 +74,7 @@ const ChangeApi = () => {
           <div className={styles.hide_block}>
             <input
               type="text"
+              data-testid="inputUrl"
               className={styles.input_url}
               value={inputBaseUrl}
               onChange={handleChangeBaseUrl}
@@ -81,6 +82,7 @@ const ChangeApi = () => {
             />
             <button
               type="button"
+              data-testid="changeUrl"
               className={`button button_colored ${styles.change_api__button}`}
               onClick={handleClickBaseUrl}
             >
@@ -90,18 +92,22 @@ const ChangeApi = () => {
         )}
         <button
           className={`button ${styles.hide_block__button}`}
+          data-testid="toggleButton"
           onClick={() => toggleBlockChange(hasShowBlockChange)}
         >
           {showHideText()}
         </button>
       </div>
       {hasMessageUrl && (
-        <p className={`${styles.message} ${styles.error_url}`}>
+        <p className={`${styles.message} ${styles.error_url}`} role="message">
           {validUrlMessage}
         </p>
       )}
       {hasSuccesMessage && (
-        <p className={`${styles.message} ${styles.success_message}`}>
+        <p
+          className={`${styles.message} ${styles.success_message}`}
+          role="message"
+        >
           {successChangeUrlMessage}
         </p>
       )}

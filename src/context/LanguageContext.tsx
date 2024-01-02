@@ -6,7 +6,7 @@ import ru from '@utils/languages/ru.json';
 import { Props } from '@type/interfaces/props.interface';
 import { LocalStorageServise } from '@services/localStorageService';
 
-interface LanguageContextType {
+export interface LanguageContextType {
   data: LanguageContent;
   language: LanguageKey | string;
   setLanguage: (language: LanguageKey) => void;
