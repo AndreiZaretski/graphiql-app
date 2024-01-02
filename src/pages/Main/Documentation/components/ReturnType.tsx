@@ -4,6 +4,7 @@ import {
   setSelectedType,
   setOpenQueries,
 } from '@store/features/documentationSlice';
+import styles from '../Documentation.module.scss';
 import { DocTypeProps } from '@type/interfaces/props.interface';
 
 function ReturnType(props: DocTypeProps) {
@@ -21,7 +22,7 @@ function ReturnType(props: DocTypeProps) {
       <span>
         [
         <button
-          className="docs-type"
+          className={`button button_colored ${styles.docs__type}`}
           onClick={() => selectType(type.ofType.name)}
         >
           {type.ofType.name}
@@ -33,7 +34,10 @@ function ReturnType(props: DocTypeProps) {
 
   if (type.name) {
     return (
-      <button className="docs-type" onClick={() => selectType(type.name)}>
+      <button
+        className={`button button_colored ${styles.docs__type}`}
+        onClick={() => selectType(type.name)}
+      >
         {type.name}
       </button>
     );
@@ -44,7 +48,7 @@ function ReturnType(props: DocTypeProps) {
       return (
         <span>
           <button
-            className="docs-type"
+            className={`button button_colored ${styles.docs__type}`}
             onClick={() => selectType(type.ofType.name)}
           >
             {type.ofType.name}
@@ -55,7 +59,7 @@ function ReturnType(props: DocTypeProps) {
     }
     return (
       <button
-        className="docs-type"
+        className={`button button_colored ${styles.docs__type}`}
         onClick={() => selectType(type.ofType.name)}
       >
         {type.ofType.name}
@@ -69,7 +73,7 @@ function ReturnType(props: DocTypeProps) {
         <span>
           [
           <button
-            className="docs-type"
+            className={`button button_colored ${styles.docs__type}`}
             onClick={() => selectType(type.ofType.ofType.name)}
           >
             {type.ofType.ofType.name}
@@ -82,7 +86,7 @@ function ReturnType(props: DocTypeProps) {
       <span>
         [
         <button
-          className="docs-type"
+          className={`button button_colored ${styles.docs__type}`}
           onClick={() => selectType(type.ofType.ofType.name)}
         >
           {type.ofType.ofType.name}
@@ -98,7 +102,7 @@ function ReturnType(props: DocTypeProps) {
         <span>
           [
           <button
-            className="docs-type"
+            className={`button button_colored ${styles.docs__type}`}
             onClick={() => selectType(type.ofType.ofType.ofType.name)}
           >
             {type.ofType.ofType.ofType.name}
@@ -111,7 +115,7 @@ function ReturnType(props: DocTypeProps) {
       <span>
         [
         <button
-          className="docs-type"
+          className={`button button_colored ${styles.docs__type}`}
           onClick={() => selectType(type.ofType.ofType.ofType.name)}
         >
           {type.ofType.ofType.ofType.name}
@@ -121,7 +125,11 @@ function ReturnType(props: DocTypeProps) {
     );
   }
 
-  return <button className="docs-type">TYPE</button>;
+  return (
+    <button className={`button button_colored ${styles.docs__type}`}>
+      TYPE
+    </button>
+  );
 }
 
 export default ReturnType;

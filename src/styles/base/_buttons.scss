@@ -11,6 +11,25 @@
   transition: all 0.3s;
   cursor: pointer;
 
+  &_colored {
+    color: $color-light;
+    background-color: $color-header-scrolled !important;
+    border: 1px solid $color-light;
+
+    &:hover {
+      background-color: lighten($color-header-scrolled, 15) !important;
+    }
+  }
+
+  &_square {
+    width: 5rem;
+    height: 5rem;
+    @include media-laptop {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
   &:hover {
     border-color: $color-dark;
   }

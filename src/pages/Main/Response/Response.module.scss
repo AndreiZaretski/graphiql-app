@@ -1,0 +1,7 @@
+@import '@styles/abstract/constant';
+
+.response {
+  border: 0.3rem solid $color-form-border;
+  border-radius: 0.2rem;
+  box-shadow: -0.5rem 0.3rem 0.9rem $color-dark;
+}

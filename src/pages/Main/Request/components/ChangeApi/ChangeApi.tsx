@@ -21,10 +21,9 @@ const ChangeApi = () => {
     data: {
       mainPage: {
         changeApi,
+        changeApiBtn,
         validUrlMessage,
         currentUrl,
-        hide,
-        show,
         successChangeUrlMessage,
       },
     },
@@ -57,7 +56,10 @@ const ChangeApi = () => {
   };
 
   const showHideText = () => {
-    return hasShowBlockChange ? hide : show;
+    if (window.innerWidth < 576) {
+      return hasShowBlockChange ? '⮝' : '⮟';
+    }
+    return hasShowBlockChange ? '❮' : '❯';
   };
 
   return (
@@ -72,26 +74,39 @@ const ChangeApi = () => {
           <div className={styles.hide_block}>
             <input
               type="text"
+              className={styles.input_url}
               value={inputBaseUrl}
               onChange={handleChangeBaseUrl}
               placeholder="Enter baseUrl"
             />
-            <button type="button" onClick={handleClickBaseUrl}>
-              {changeApi}
+            <button
+              type="button"
+              className={`button button_colored ${styles.change_api__button}`}
+              onClick={handleClickBaseUrl}
+            >
+              {changeApiBtn}
             </button>
           </div>
         )}
-        <button onClick={() => toggleBlockChange(hasShowBlockChange)}>
+        <button
+          className={`button ${styles.hide_block__button}`}
+          onClick={() => toggleBlockChange(hasShowBlockChange)}
+        >
           {showHideText()}
         </button>
       </div>
       {hasMessageUrl && (
-        <span className={styles.error_url}>{validUrlMessage}</span>
+        <p className={`${styles.message} ${styles.error_url}`}>
+          {validUrlMessage}
+        </p>
       )}
       {hasSuccesMessage && (
-        <span className={styles.success_message}>
+        <p className={`${styles.message} ${styles.success_message}`}>
           {successChangeUrlMessage}
-        </span>
+        </p>
+      )}
+      {!hasSuccesMessage && !hasMessageUrl && (
+        <p className={styles.message}> </p>
       )}
     </div>
   );
