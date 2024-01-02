@@ -43,6 +43,7 @@
   }
   @include media-mobile {
     flex-direction: column;
+    text-align: center;
     align-items: stretch;
     row-gap: 0.8rem;
   }
