@@ -12,7 +12,6 @@ import Login from '@pages/Authorization/Login/Login';
 import { AuthContextProvider } from '@context/AuthContext';
 
 function App() {
-  //throw new Error('ha ha ha');
   return (
     <>
       <Provider store={store}>

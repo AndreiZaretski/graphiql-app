@@ -22,7 +22,8 @@
     border-radius: 1rem;
   }
   &::-webkit-scrollbar-track {
-    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    box-shadow: 5px 5px 5px -5px rgba(38, 188, 56, 0.2) inset;
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(38, 188, 56, 0.2) inset;
     background-color: $color-header-scrolled;
     width: 1rem;
     border-radius: 1rem;

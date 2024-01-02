@@ -18,9 +18,7 @@ const Auth = () => {
   return (
     <>
       {user ? (
-        <>
-          <Logout />
-        </>
+        <Logout />
       ) : (
         <>
           <li className={styles.navigation__item}>

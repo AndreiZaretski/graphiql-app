@@ -18,11 +18,8 @@
   position: absolute;
   cursor: pointer;
   top: 0;
-  left: 0;
   right: 0;
-  bottom: 0;
-  background-color: $color-light;
-  transition: 0.3s;
+  @include sliderSwitchLanguage();
 }
 
 .slider:before {
@@ -30,10 +27,7 @@
   content: '';
   height: 1.3rem;
   width: 1.3rem;
-  left: 0.2rem;
-  bottom: 0.2rem;
-  background-color: $color-light;
-  transition: 0.3s;
+  @include sliderSwitchLanguage($left: 0.2rem, $bottom: 0.2rem);
 }
 
 input:checked + .slider {

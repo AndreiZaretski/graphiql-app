@@ -4,12 +4,17 @@
   font-weight: $weight;
 }
 
-//Если понадобится подключить еще один шрифт
-// @mixin fontAdditional($size: 2rem, $weight: 500) {
-//   font-family: 'Avenir', sans-serif;
-//   font-size: $size;
-//   font-weight: $weight;
-// }
+@mixin sliderSwitchLanguage(
+  $left: 0,
+  $bottom: 0,
+  $background-color: $color-light,
+  $transition: 0.3s
+) {
+  left: $left;
+  bottom: $bottom;
+  background-color: $background-color;
+  transition: $transition;
+}
 
 @mixin media-desktop {
   @media (max-width: $desktop-width) {
