@@ -3,7 +3,7 @@ import { UserContext } from '@context/AuthContext';
 import { LanguageContext } from '@context/LanguageContext';
 import { RoutesPath } from '@type/enums/routes.enum';
 import { useContext } from 'react';
-import { NavigationLink } from '@components/NavigationLink/NavigationLink';
+import { NavigationLink } from '@layout/Header/NavigationLink';
 
 const Auth = () => {
   const { user } = useContext(UserContext) || {};

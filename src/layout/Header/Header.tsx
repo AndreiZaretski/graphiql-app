@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from '@context/LanguageContext';
 import { UserContext } from '@context/AuthContext';
 import logo from '@assets/icons/logo.svg';
-import { NavigationLink } from '@components/NavigationLink/NavigationLink';
+import { NavigationLink } from '@layout/Header/NavigationLink';
 
 const Header = () => {
   const {

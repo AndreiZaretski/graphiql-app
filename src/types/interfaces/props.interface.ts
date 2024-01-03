@@ -55,9 +55,3 @@ export type DocType = {
     };
   };
 };
-
-export interface NavigationLinkProps {
-  to: string;
-  text: string;
-  onClick?: () => void;
-}

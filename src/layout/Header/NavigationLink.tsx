@@ -1,6 +1,11 @@
 import styles from '@layout/Header/Header.module.scss';
-import { NavigationLinkProps } from '@type/interfaces/props.interface';
 import { Link } from 'react-router-dom';
+
+interface NavigationLinkProps {
+  to: string;
+  text: string;
+  onClick?: () => void;
+}
 
 const NavigationLink: React.FC<NavigationLinkProps> = ({
   to,

@@ -53,21 +53,23 @@
     "aboutProject": "About Project",
     "projectDescription": "The Mission Impossible team is glad to see you! We will make a project of any complexity according to the requirements of the terms of reference, within the agreed time frame. We will provide technical support for the project and further product development. Individual approach to each client. If you have any questions, you can contact any of us. GraphiQL is a playground/IDE for graphQL requests. You can use any API that supports CORS to work. We hope you will be satisfied with the quality of our application. Please send all suggestions for improving the operation of the application to the developers.",
     "developer": "Developer Team",
-    "positionTeamLead": "Team Lead",
     "position": "Frontend Developer",
-    "info": {
-      "andrei": {
+    "info": [
+      {
         "name": "Andrei",
+        "position": "Team Lead",
         "description": "Head of the development team. Andrey has extensive management experience from his previous job - bridge construction and design. Andrey had up to 50 people under his command, so leading a small development team is not a problem for him. He clearly sets tasks for each member of his team and demands an appropriate result. I am always ready to help and additionally explain the task. He has two years of experience in application development. Andrey is a FullStack developer, able to write both the backend and frontend parts of the application."
       },
-      "oksana": {
+      {
         "name": "Oksana",
+        "position": "Frontend Developer",
         "description": "Frontend developer. Oksana has one year of professional development. Economics education and financial experience help Oksana solve algorithmic problems of any complexity. I was lucky enough to work with Oksana on several joint projects, so I can safely say that she is able to figure out and solve any task. She chose frontend because she likes the variety it provides. It has a balance between creating beautiful and interactive websites, as well as writing complex logic. I like to do layout and create great sites using different styles, although often the design of sites is reduced to a theme with touching cats =). In the future, he wants to develop in the backend direction and become a FullStack developer."
       },
-      "max": {
+      {
         "name": "Maxim",
+        "position": "Frontend Developer",
         "description": "Frontend developer. Maxim has a professional technical education, a master's degree in Computer Science and Computer Engineering. He started developing at the university. He found himself in the frontend direction and has been creating modern and responsive web applications for a year now. Maxim enjoys what he does and believes that this is the most important thing - you should like your job, because only then can you succeed. He likes that in frontend development you can immediately feel and see the result of the work done."
       }
-    }
+    ]
   }
 }

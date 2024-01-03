@@ -54,21 +54,28 @@ export interface LanguageContent {
     aboutProject: string;
     projectDescription: string;
     developer: string;
-    positionTeamLead: string;
     position: string;
-    info: {
-      andrei: {
-        name: string;
-        description: string;
-      };
-      oksana: {
-        name: string;
-        description: string;
-      };
-      max: {
-        name: string;
-        description: string;
-      };
-    };
+    info: DevelopersInfo[];
   };
 }
+
+interface DevelopersInfo {
+  name: string;
+  position: string;
+  description: string;
+}
+
+// info: {
+//   andrei: {
+//     name: string;
+//     description: string;
+//   };
+//   oksana: {
+//     name: string;
+//     description: string;
+//   };
+//   max: {
+//     name: string;
+//     description: string;
+//   };
+// };

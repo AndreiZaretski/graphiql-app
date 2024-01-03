@@ -3,7 +3,7 @@ import { LanguageContext } from '@context/LanguageContext';
 import { RoutesPath } from '@type/enums/routes.enum';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { NavigationLink } from '@components/NavigationLink/NavigationLink';
+import { NavigationLink } from '@layout/Header/NavigationLink';
 
 const Logout = () => {
   const { logout } = useContext(UserContext) || {};
