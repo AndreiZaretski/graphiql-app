@@ -30,7 +30,6 @@ export interface LanguageContent {
     oneUpperLetterError: string;
     oneLowerLetterError: string;
     oneSpecialCharacterError: string;
-    passwordNotMatchError: string;
     minLength: string;
     required: string;
     notMatch: string;
@@ -54,7 +53,6 @@ export interface LanguageContent {
     aboutProject: string;
     projectDescription: string;
     developer: string;
-    position: string;
     info: DevelopersInfo[];
   };
 }
@@ -64,18 +62,3 @@ interface DevelopersInfo {
   position: string;
   description: string;
 }
-
-// info: {
-//   andrei: {
-//     name: string;
-//     description: string;
-//   };
-//   oksana: {
-//     name: string;
-//     description: string;
-//   };
-//   max: {
-//     name: string;
-//     description: string;
-//   };
-// };

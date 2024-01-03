@@ -15,7 +15,7 @@ const WelcomeDeveloperItem: React.FC<DeveloperProps> = ({
   description,
 }) => {
   return (
-    <div className={`${styles.about_item} shadow`}>
+    <div className={styles.about_item}>
       <div className={styles.image_wrapper}>
         <img src={image} alt="Developer photo" className={styles.image} />
         <div>

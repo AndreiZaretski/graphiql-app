@@ -1,5 +1,5 @@
-@import '../../styles/abstract/constant';
-@import '../../styles/abstract/mixins';
+@import '@styles/abstract/constant';
+@import '@styles/abstract/mixins';
 
 .switch {
   position: relative;
@@ -16,10 +16,10 @@
 
 .slider {
   position: absolute;
-  cursor: pointer;
   top: 0;
   right: 0;
-  @include sliderSwitchLanguage();
+  @include sliderSwitchLanguage($background-color: $color-dark);
+  cursor: pointer;
 }
 
 .slider:before {
