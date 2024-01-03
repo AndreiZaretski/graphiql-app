@@ -1,4 +1,4 @@
-import Layout from '@layout/Layout';
+import { Layout } from '@layout/Layout';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
@@ -76,7 +76,7 @@ const SignIn = () => {
 
   return (
     <Layout>
-      {!user ? (
+      {!user && (
         <>
           <h1>{header}</h1>
           <p className={styles.subheader}>
@@ -117,16 +117,14 @@ const SignIn = () => {
                 {login}
               </button>
             </div>
-            <p className="form__error-server">
-              {errorMessage ? firebaseError : ''}
-            </p>
+            {errorMessage && (
+              <p className="form__error-server">{firebaseError}</p>
+            )}
           </form>
         </>
-      ) : (
-        ''
       )}
     </Layout>
   );
 };
 
-export default SignIn;
+export { SignIn };

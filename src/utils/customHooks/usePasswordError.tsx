@@ -55,7 +55,6 @@ const usePasswordRepeatError = (
 
   useEffect(() => {
     const errorPassword = () => {
-      console.log(errors.passwordRepeat?.message);
       switch (errors.passwordRepeat?.message) {
         case 'passwordRepeat is a required field':
           return required;

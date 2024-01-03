@@ -14,8 +14,8 @@ import {
 } from '@store/features/requestDataSlice';
 import { AppState } from '@store/store';
 import { IsJsonString } from '@utils/isJsonString';
-import EditorVariablesHeaders from './components/EditorVariablesHeaders/EditorVariablesHeaders';
-import MirrorEditor from './components/MirrorEditor/MirrorEditor';
+import { EditorVariablesHeaders } from './components/EditorVariablesHeaders/EditorVariablesHeaders';
+import { MirrorEditor } from './components/MirrorEditor/MirrorEditor';
 import styles from './Request.module.scss';
 
 const Request = (props: RequestProps) => {
@@ -92,4 +92,4 @@ const Request = (props: RequestProps) => {
   );
 };
 
-export default Request;
+export { Request };

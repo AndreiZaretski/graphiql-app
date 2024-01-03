@@ -11,7 +11,6 @@ const useFirebaseError = (
 
   useEffect(() => {
     const errorFirebase = () => {
-      console.log(errorCode);
       switch (errorCode) {
         case 'auth/email-already-in-use':
           return emailError;

@@ -1,4 +1,4 @@
-import Logout from '@components/Logout/Logout';
+import { Logout } from '@components/Logout/Logout';
 import { UserContext } from '@context/AuthContext';
 import { LanguageContext } from '@context/LanguageContext';
 import { RoutesPath } from '@type/enums/routes.enum';
@@ -27,4 +27,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export { Auth };

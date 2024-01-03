@@ -20,4 +20,4 @@ const MirrorEditor = ({ height, value, onChange, editable }: MirrorProps) => {
   );
 };
 
-export default MirrorEditor;
+export { MirrorEditor };

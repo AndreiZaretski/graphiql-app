@@ -20,7 +20,7 @@ const Logout = () => {
       await logout?.();
       navigate('/');
     } catch (err) {
-      console.error(err);
+      return;
     }
   };
 
@@ -29,4 +29,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export { Logout };

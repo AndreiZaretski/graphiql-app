@@ -1,6 +1,6 @@
-import ChangeLanguage from '@components/ChangeLanguage/ChangeLanguage';
+import { ChangeLanguage } from '@components/ChangeLanguage/ChangeLanguage';
 import styles from './Header.module.scss';
-import Auth from '@layout/Auth/Auth';
+import { Auth } from '@layout/Auth/Auth';
 import { RoutesPath } from '@type/enums/routes.enum';
 import { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from '@context/LanguageContext';
@@ -34,7 +34,7 @@ const Header = () => {
     };
   }, []);
 
-  const handleToggle = () => {
+  const handleIsActiveToggle = () => {
     setIsActive((prev) => !prev);
   };
 
@@ -70,7 +70,7 @@ const Header = () => {
               </nav>
               <div
                 className={styles.navigation__overlay}
-                onClick={() => handleToggle()}
+                onClick={handleIsActiveToggle}
               ></div>
             </div>
           </div>
@@ -80,9 +80,7 @@ const Header = () => {
                 ? `${styles.hamburger} ${styles.hamburger_active}`
                 : styles.hamburger
             }
-            onClick={() => {
-              handleToggle();
-            }}
+            onClick={handleIsActiveToggle}
           >
             <span className={styles.hamburger_icon}></span>
           </div>
@@ -92,4 +90,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export { Header };

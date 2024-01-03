@@ -2,7 +2,7 @@ import { setVariables, setHeaders } from '@store/features/requestDataSlice';
 import { AppState } from '@store/store';
 import { useCallback, useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import MirrorEditor from '../MirrorEditor/MirrorEditor';
+import { MirrorEditor } from '../MirrorEditor/MirrorEditor';
 import { LanguageContext } from '@context/LanguageContext';
 import styles from './EditorVariablesHeaders.module.scss';
 
@@ -102,4 +102,4 @@ const EditorVariablesHeaders = () => {
   );
 };
 
-export default EditorVariablesHeaders;
+export { EditorVariablesHeaders };

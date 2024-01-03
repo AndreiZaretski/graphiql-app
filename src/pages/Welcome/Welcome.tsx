@@ -1,5 +1,5 @@
 import styles from './Welcome.module.scss';
-import Layout from '@layout/Layout';
+import { Layout } from '@layout/Layout';
 import AndreiPhoto from '@assets/images/And.png';
 import OksanaPhoto from '@assets/images/Oks.png';
 import MaxPhoto from '@assets/images/Max.png';
@@ -44,4 +44,4 @@ const Welcome = () => {
   );
 };
 
-export default Welcome;
+export { Welcome };

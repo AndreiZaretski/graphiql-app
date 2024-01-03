@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
-import Main from '@pages/Main/Main';
-import NotFound from '@pages/NotFound/NotFound';
-import Welcome from '@pages/Welcome/Welcome';
+import { Main } from '@pages/Main/Main';
+import { NotFound } from '@pages/NotFound/NotFound';
+import { Welcome } from '@pages/Welcome/Welcome';
 import { store } from '@store/store';
 import { RoutesPath } from '@type/enums/routes.enum';
-import ProtectedRoutes from '@utils/protectedRoutes/ProtectedRoute';
+import { ProtectedRoutes } from '@utils/protectedRoutes/ProtectedRoute';
 import { Provider } from 'react-redux';
-import SignUp from '@pages/Authorization/SignUp/SignUp';
-import Login from '@pages/Authorization/Login/Login';
+import { SignUp } from '@pages/Authorization/SignUp/SignUp';
+import { SignIn } from '@pages/Authorization/SignIn/SignIn';
 import { AuthContextProvider } from '@context/AuthContext';
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
               />
               <Route
                 path={RoutesPath.Login}
-                element={<Login />}
+                element={<SignIn />}
                 errorElement={<NotFound />}
               />
               <Route
@@ -52,4 +52,4 @@ function App() {
   );
 }
 
-export default App;
+export { App };
