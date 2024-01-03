@@ -15,6 +15,7 @@ import {
   usePasswordError,
   usePasswordRepeatError,
 } from '@utils/customHooks/usePasswordError';
+import { useFirebaseError } from '@utils/customHooks/useFirebaseError';
 
 const SignUp = () => {
   const { user, createUser } = useContext(UserContext) || {};
@@ -29,13 +30,14 @@ const SignUp = () => {
       },
       formErrorMessage: {
         emailError,
+        loginError,
         emailInvalid,
         otherError,
+        tooManyRequests,
         oneNumberError,
         oneUpperLetterError,
         oneLowerLetterError,
         oneSpecialCharacterError,
-        passwordNotMatchError,
         minLength,
         required,
         notMatch,
@@ -43,7 +45,7 @@ const SignUp = () => {
     },
   } = useContext(LanguageContext);
 
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -55,19 +57,6 @@ const SignUp = () => {
   } = useForm({
     mode: 'all',
     resolver: yupResolver(SchemaRegistration),
-    context: {
-      languageError: {
-        emailInvalid,
-        oneNumberError,
-        oneUpperLetterError,
-        oneLowerLetterError,
-        oneSpecialCharacterError,
-        passwordNotMatchError,
-        minLength,
-        required,
-        notMatch,
-      },
-    },
   });
 
   const onSubmitHandler = async ({ email, password }: Inputs) => {
@@ -77,11 +66,7 @@ const SignUp = () => {
         navigate('/main');
       } catch (err) {
         if (err instanceof FirebaseError) {
-          if (String(err.code) === 'auth/email-already-in-use') {
-            setError(emailError);
-          } else {
-            setError(otherError);
-          }
+          setErrorMessage(err.code);
         }
       }
     reset();
@@ -104,6 +89,14 @@ const SignUp = () => {
     notMatch
   );
 
+  const firebaseError = useFirebaseError(
+    errorMessage,
+    emailError,
+    loginError,
+    tooManyRequests,
+    otherError
+  );
+
   return (
     <Layout>
       {!user ? (
@@ -124,43 +117,51 @@ const SignUp = () => {
                 {...register('email')}
                 autoComplete="username"
               />
-              <input
-                id="email"
-                type="string"
-                placeholder={email}
-                {...register('email')}
-                autoComplete="username"
-              />
-              <p className="form__error">{emailErrorMessage}</p>
+              <div className="input_wrapper">
+                <input
+                  id="email"
+                  type="string"
+                  placeholder={email}
+                  {...register('email')}
+                  autoComplete="username"
+                />
+                <p className="form__error">{emailErrorMessage}</p>
+              </div>
             </div>
             <div className="form__field">
               <label htmlFor="password">{password}</label>
-              <input
-                id="password"
-                type="password"
-                placeholder={password}
-                {...register('password')}
-                autoComplete="new-password"
-              />
-              <p className="form__error">{passwordErrorMessage}</p>
+              <div className="input_wrapper">
+                <input
+                  id="password"
+                  type="password"
+                  placeholder={password}
+                  {...register('password')}
+                  autoComplete="new-password"
+                />
+                <p className="form__error">{passwordErrorMessage}</p>
+              </div>
             </div>
             <div className="form__field">
               <label htmlFor="passwordRepeat">{password}</label>
-              <input
-                id="passwordRepeat"
-                type="password"
-                placeholder={password}
-                {...register('passwordRepeat')}
-                autoComplete="new-password"
-              />
-              <p className="form__error">{passwordRepeatErrorMessage}</p>
+              <div className="input_wrapper">
+                <input
+                  id="passwordRepeat"
+                  type="password"
+                  placeholder={password}
+                  {...register('passwordRepeat')}
+                  autoComplete="new-password"
+                />
+                <p className="form__error">{passwordRepeatErrorMessage}</p>
+              </div>
             </div>
             <div className="button_wrapper">
               <button disabled={!isValid} className="button">
                 {signUp}
               </button>
             </div>
-            <p className="form__error-server">{error ? error : ''}</p>
+            <p className="form__error-server">
+              {errorMessage ? firebaseError : ''}
+            </p>
           </form>
         </>
       ) : (

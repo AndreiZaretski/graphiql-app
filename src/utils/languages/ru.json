@@ -23,16 +23,16 @@
   "formErrorMessage": {
     "loginError": "Неверный логин или пароль",
     "otherError": "Что-то пошло не так...",
+    "tooManyRequests": "Слишком много запросов",
     "emailError": "Логин занят другим пользователем",
     "emailInvalid": "Недопустимый формат",
-    "oneNumberError": "Пароль должен содержать число!",
-    "oneUpperLetterError": "Пароль должен сожеражть заглавную букву!",
-    "oneLowerLetterError": "Пароль должен сожеражть строчную букву!",
-    "oneSpecialCharacterError": "Пароль должен содержать спецсимвол ~!@#$%^&*()_+\"№;:?*",
-    "passwordNotMatchError": "Пароли не совпадают!",
-    "minLength": "Минимальная длинна пароля 8 символов",
-    "required": "Обязательное поле",
-    "notMatch": "Пароли не совпадают"
+    "oneNumberError": "Требуется число!",
+    "oneUpperLetterError": "Требуется заглавная буква!",
+    "oneLowerLetterError": "Требуется строчная буква!",
+    "oneSpecialCharacterError": "Требуется спецсимвол ~!@#$%^&*()_+\"№;:?*",
+    "minLength": "Минимум 8 символов!",
+    "required": "Обязательное поле!",
+    "notMatch": "Пароли не совпадают!"
   },
   "mainPage": {
     "changeApi": "Сменить API",

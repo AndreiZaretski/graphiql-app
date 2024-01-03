@@ -23,16 +23,16 @@
   "formErrorMessage": {
     "loginError": "Invalid username or password!",
     "otherError": "Something went wrong...",
+    "tooManyRequests": "Too many requests",
     "emailError": "The username is occupied by another user!",
     "emailInvalid": "Email is invalid",
-    "oneNumberError": "Password must contain one number!",
-    "oneUpperLetterError": "Password must contain one uppercase letter!",
-    "oneLowerLetterError": "Password must contain one lower letter!",
-    "oneSpecialCharacterError": "password must contain one special character ~!@#$%^&*()_+\"№;:?*",
-    "passwordNotMatchError": "Passwords not match!",
-    "minLength": "Password must be at least 8 characters",
-    "required": "Required field",
-    "notMatch": "Passwords not match"
+    "oneNumberError": "Must contain number!",
+    "oneUpperLetterError": "Must contain one uppercase letter!",
+    "oneLowerLetterError": "Must contain one lower letter!",
+    "oneSpecialCharacterError": "Must contain one character ~!@#$%^&*()_+\"№;:?*",
+    "minLength": "Minimum 8 characters!",
+    "required": "Required field!",
+    "notMatch": "Passwords not match!"
   },
   "mainPage": {
     "changeApi": "Change API",

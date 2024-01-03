@@ -23,6 +23,7 @@ export interface LanguageContent {
   formErrorMessage: {
     loginError: string;
     otherError: string;
+    tooManyRequests: string;
     emailError: string;
     emailInvalid: string;
     oneNumberError: string;
