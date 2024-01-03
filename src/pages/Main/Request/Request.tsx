@@ -34,26 +34,29 @@ const Request = (props: RequestProps) => {
     [dispatch]
   );
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      e.preventDefault();
 
-    dispatch(setValidVariableJson(IsJsonString(variables)));
-    dispatch(setValidHeaderJson(IsJsonString(headers)));
+      dispatch(setValidVariableJson(IsJsonString(variables)));
+      dispatch(setValidHeaderJson(IsJsonString(headers)));
 
-    if (IsJsonString(headers) && IsJsonString(variables)) {
-      const newHeaders = headers
-        ? new Headers(JSON.parse(headers))
-        : new Headers();
-      const newVariables = variables ? JSON.parse(variables) : {};
+      if (IsJsonString(headers) && IsJsonString(variables)) {
+        const newHeaders = headers
+          ? new Headers(JSON.parse(headers))
+          : new Headers();
+        const newVariables = variables ? JSON.parse(variables) : {};
 
-      getResponse({
-        query,
-        variables: newVariables,
-        headers: newHeaders,
-        baseUrl,
-      });
-    }
-  };
+        getResponse({
+          query,
+          variables: newVariables,
+          headers: newHeaders,
+          baseUrl,
+        });
+      }
+    },
+    [baseUrl, dispatch, getResponse, headers, query, variables]
+  );
 
   const handlePrettify = () => {
     dispatch(setQuery(prettifyData(removeTrailingSpacesEnterComments(query))));
@@ -66,7 +69,7 @@ const Request = (props: RequestProps) => {
   };
 
   return (
-    <section className={styles.request}>
+    <section className={styles.request} data-testid="request">
       <MirrorEditor
         height="500px"
         value={query}
@@ -77,6 +80,7 @@ const Request = (props: RequestProps) => {
       <div className={styles.request__buttons}>
         <button
           type="submit"
+          data-testid="submitButton"
           className={`button button_colored button_square`}
           onClick={(e) => handleSubmit(e)}
         >
@@ -84,6 +88,7 @@ const Request = (props: RequestProps) => {
         </button>
         <button
           type="button"
+          data-testid="prettifyButton"
           className={`button button_colored button_square ${styles.button_prettify}`}
           onClick={handlePrettify}
         ></button>

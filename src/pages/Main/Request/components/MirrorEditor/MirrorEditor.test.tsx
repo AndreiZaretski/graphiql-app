@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MirrorEditorBase from './MirrorEditor';
+import MirrorEditor from './MirrorEditor';
 import { MirrorProps } from '@type/interfaces/props.interface';
 
 const renderMirrorEditor = ({
@@ -9,7 +9,7 @@ const renderMirrorEditor = ({
   editable,
 }: MirrorProps) => {
   return render(
-    <MirrorEditorBase
+    <MirrorEditor
       height={height}
       value={value}
       onChange={onChange}
