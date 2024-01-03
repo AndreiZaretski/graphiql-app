@@ -25,9 +25,9 @@
     ]
   },
   "dependencies": {
-    "@codemirror/lang-javascript": "^6.2.1",
     "@hookform/resolvers": "^3.3.2",
     "@reduxjs/toolkit": "^1.9.7",
+    "@uiw/codemirror-extensions-langs": "^4.21.21",
     "@uiw/codemirror-themes-all": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "firebase": "^10.7.1",

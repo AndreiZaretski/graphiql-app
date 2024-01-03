@@ -13,7 +13,7 @@ const ChangeApi = () => {
   const [hasMessageUrl, setHasMessageUrl] = useState(false);
 
   const [hasShowBlockChange, setHasShowBlockChange] = useState(false);
-  const [hasSuccesMessage, setHasSuccesMessage] = useState(false);
+  const [hasSuccessMessage, setHasSuccessMessage] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -45,9 +45,9 @@ const ChangeApi = () => {
   };
 
   const showSuccesMessage = () => {
-    setHasSuccesMessage(true);
+    setHasSuccessMessage(true);
     setTimeout(() => {
-      setHasSuccesMessage(false);
+      setHasSuccessMessage(false);
     }, 5000);
   };
 
@@ -103,7 +103,7 @@ const ChangeApi = () => {
           {validUrlMessage}
         </p>
       )}
-      {hasSuccesMessage && (
+      {hasSuccessMessage && (
         <p
           className={`${styles.message} ${styles.success_message}`}
           role="message"
@@ -111,7 +111,7 @@ const ChangeApi = () => {
           {successChangeUrlMessage}
         </p>
       )}
-      {!hasSuccesMessage && !hasMessageUrl && (
+      {!hasSuccessMessage && !hasMessageUrl && (
         <p className={styles.message}> </p>
       )}
     </div>
