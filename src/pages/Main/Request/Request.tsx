@@ -58,7 +58,7 @@ const Request = (props: RequestProps) => {
     [baseUrl, dispatch, getResponse, headers, query, variables]
   );
 
-  const handlePrettify = () => {
+  const handlePrettify = useCallback(() => {
     dispatch(setQuery(prettifyData(removeTrailingSpacesEnterComments(query))));
     dispatch(
       setVariables(prettifyData(removeTrailingSpacesEnterComments(variables)))
@@ -66,7 +66,7 @@ const Request = (props: RequestProps) => {
     dispatch(
       setHeaders(prettifyData(removeTrailingSpacesEnterComments(headers)))
     );
-  };
+  }, [dispatch, headers, query, variables]);
 
   return (
     <section className={styles.request} data-testid="request">
