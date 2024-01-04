@@ -30,6 +30,7 @@ const renderRequest = (valueLang: LanguageContextType) => {
 };
 
 describe('Request', () => {
+  console.error = vi.fn();
   it('components should be render', () => {
     renderRequest(mockValueRu);
     const request = screen.getByTestId('request');
