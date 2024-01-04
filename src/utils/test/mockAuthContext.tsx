@@ -3,8 +3,9 @@ import { render } from '@testing-library/react';
 import { mockUserAuth, mockUserUnauth } from './mockUser';
 import { Props } from '@type/interfaces/props.interface';
 import { UserCredential } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
 
-const mockCreateUserAuth = vi.fn(
+export const mockCreateUserAuth = vi.fn(
   (): Promise<UserCredential> =>
     Promise.resolve({
       user: mockUserAuth,
@@ -13,7 +14,7 @@ const mockCreateUserAuth = vi.fn(
     })
 );
 
-const mockSignInAuth = vi.fn(
+export const mockSignInAuth = vi.fn(
   (): Promise<UserCredential> =>
     Promise.resolve({
       user: mockUserAuth,
@@ -21,15 +22,25 @@ const mockSignInAuth = vi.fn(
       operationType: 'signIn',
     })
 );
-const mockLogoutAuth = vi.fn(() => Promise.resolve());
+export const mockLogoutAuth = vi.fn(() => Promise.resolve());
 
 const mockCreateUserUnauth = vi.fn(() =>
-  Promise.reject(new Error('User not found'))
+  Promise.reject(
+    new FirebaseError(
+      'auth/email-already-in-use',
+      'The username is occupied by another user!'
+    )
+  )
 );
-const mockSignInUnauth = vi.fn(() =>
-  Promise.reject(new Error('Invalid credentials'))
+
+export const mockSignInUnauth = vi.fn(() =>
+  Promise.reject(
+    new FirebaseError(
+      'auth/invalid-credential',
+      'The email or password is incorrect'
+    )
+  )
 );
-const mockLogoutUnauth = vi.fn(() => Promise.resolve());
 
 export const AuthUserValue = {
   createUser: mockCreateUserAuth,
@@ -42,7 +53,14 @@ export const UnauthUserValue = {
   createUser: mockCreateUserUnauth,
   user: mockUserUnauth,
   signIn: mockSignInUnauth,
-  logout: mockLogoutUnauth,
+  logout: mockLogoutAuth,
+};
+
+export const SignInUserValue = {
+  createUser: mockCreateUserAuth,
+  user: mockUserUnauth,
+  signIn: mockSignInAuth,
+  logout: mockLogoutAuth,
 };
 
 //ToDo Delete this after writen test if you don't need it
