@@ -8,19 +8,19 @@ import { mockValueEn } from '@utils/test/mockLanguageContext';
 import { Provider } from 'react-redux';
 import { store } from '@store/store';
 
+const routes = [
+  {
+    element: <Main />,
+    path: RoutesPath.Main,
+  },
+  {
+    element: <NotFound />,
+    path: '*',
+  },
+];
+
 describe('NotFound', () => {
   it('Ensure that the 404 page is displayed when navigating to an invalid route', async () => {
-    const routes = [
-      {
-        element: <Main />,
-        path: RoutesPath.Main,
-      },
-      {
-        element: <NotFound />,
-        path: '*',
-      },
-    ];
-
     const router = createMemoryRouter(routes, {
       initialEntries: ['/foo'],
     });
@@ -34,17 +34,6 @@ describe('NotFound', () => {
   });
 
   it('Ensure that the 404 page is not displayed when navigating to an correct route', async () => {
-    const routes = [
-      {
-        element: <Main />,
-        path: RoutesPath.Main,
-      },
-      {
-        element: <NotFound />,
-        path: '*',
-      },
-    ];
-
     const router = createMemoryRouter(routes, {
       initialEntries: [RoutesPath.Main],
     });
