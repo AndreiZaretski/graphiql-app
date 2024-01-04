@@ -1,6 +1,6 @@
 import { fireEvent, screen, render } from '@testing-library/react';
 import { mockValueEn, mockValueRu } from '@utils/test/mockLanguageContext';
-import ChangeLanguage from './ChangeLanguage';
+import { ChangeLanguage } from './ChangeLanguage';
 import { LanguageContext, LanguageContextType } from '@context/LanguageContext';
 import { LanguageKey } from '@type/enums/language.enum';
 

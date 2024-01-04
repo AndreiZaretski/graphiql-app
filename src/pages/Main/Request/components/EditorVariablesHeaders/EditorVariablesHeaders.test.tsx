@@ -1,7 +1,7 @@
 import { LanguageContextType, LanguageContext } from '@context/LanguageContext';
 import { store } from '@store/store';
 import { Provider } from 'react-redux';
-import EditorVariablesHeaders from './EditorVariablesHeaders';
+import { EditorVariablesHeaders } from './EditorVariablesHeaders';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { mockValueEn } from '@utils/test/mockLanguageContext';
 

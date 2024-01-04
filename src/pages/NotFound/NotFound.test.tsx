@@ -1,6 +1,6 @@
-import Main from '@pages/Main/Main';
+import { Main } from '@pages/Main/Main';
 import { RoutesPath } from '@type/enums/routes.enum';
-import NotFound from './NotFound';
+import { NotFound } from './NotFound';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { LanguageContext } from '@context/LanguageContext';

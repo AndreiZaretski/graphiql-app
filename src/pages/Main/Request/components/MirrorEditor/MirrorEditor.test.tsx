@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import MirrorEditor from './MirrorEditor';
+import { MirrorEditor } from './MirrorEditor';
 import { MirrorProps } from '@type/interfaces/props.interface';
 
 const renderMirrorEditor = ({

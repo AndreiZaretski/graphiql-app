@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Response from './Response';
+import { Response } from './Response';
 import { succesAnswer } from '@utils/test/mockData';
 
 const renderResponse = () => {

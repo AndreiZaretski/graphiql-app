@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ErrorBoundary from './Error';
+import { ErrorBoundary } from './Error';
 import { LanguageContext } from '@context/LanguageContext';
 import { mockValueEn } from '@utils/test/mockLanguageContext';
 

@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { UserContext } from '@context/AuthContext';
 import { UserContextType } from '@type/interfaces/auth.interface';
 import { AuthUserValue, UnauthUserValue } from '@utils/test/mockAuthContext';
-import ProtectedRoutes from './ProtectedRoute';
+import { ProtectedRoutes } from './ProtectedRoute';
 
 const Home = () => <h1>Home</h1>;
 const Login = () => <h1>Login</h1>;

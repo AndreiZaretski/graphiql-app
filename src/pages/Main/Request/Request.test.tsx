@@ -2,7 +2,7 @@ import { LanguageContextType, LanguageContext } from '@context/LanguageContext';
 import { store } from '@store/store';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import Request from './Request';
+import { Request } from './Request';
 import { mockValueRu } from '@utils/test/mockLanguageContext';
 import configureStore from 'redux-mock-store';
 import { IsJsonString } from '@utils/isJsonString';
