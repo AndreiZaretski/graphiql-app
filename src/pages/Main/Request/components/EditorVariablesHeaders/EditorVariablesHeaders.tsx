@@ -52,30 +52,34 @@ const EditorVariablesHeaders = () => {
     setShowEditor(true);
   };
 
-  const showHideText = () => {
-    return showEditor ? '⮝' : '⮟';
-  };
+  const showHideText = showEditor ? '⮝' : '⮟';
 
   return (
-    <div className={styles.mirror_panel}>
+    <div className={styles.mirror_panel} role="editorVariable">
       <div className={styles.mirror_panel_header}>
         <div className={styles.mirror_panel_header__buttons}>
           <button
             className={showVariables ? 'button button_colored' : 'button'}
+            data-testid="showVariables"
             onClick={showVariablesEditor}
           >
             {variableName}
           </button>
           <button
             className={showHeaders ? 'button button_colored' : 'button'}
+            data-testid="showHeaders"
             onClick={showHeadersEditor}
           >
             {headersName}
           </button>
         </div>
 
-        <button className="button" onClick={() => toggleEditor(showEditor)}>
-          {showHideText()}
+        <button
+          className="button"
+          data-testid="toggleButtonEditor"
+          onClick={() => toggleEditor(showEditor)}
+        >
+          {showHideText}
         </button>
       </div>
 

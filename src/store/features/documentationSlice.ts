@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   selectedType: '',
@@ -10,13 +10,13 @@ export const documentationSlice = createSlice({
   name: 'documentation',
   initialState: initialState,
   reducers: {
-    setOpenTypes: (state, action) => {
+    setOpenTypes: (state, action: PayloadAction<boolean>) => {
       state.openTypes = action.payload;
     },
-    setOpenQueries: (state, action) => {
+    setOpenQueries: (state, action: PayloadAction<boolean>) => {
       state.openQueries = action.payload;
     },
-    setSelectedType: (state, action) => {
+    setSelectedType: (state, action: PayloadAction<string>) => {
       state.selectedType = action.payload;
     },
   },

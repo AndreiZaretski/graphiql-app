@@ -8,5 +8,6 @@ import '@testing-library/jest-dom';
 expect.extend(matchers);
 
 afterEach(() => {
+  vi.clearAllMocks();
   cleanup();
 });

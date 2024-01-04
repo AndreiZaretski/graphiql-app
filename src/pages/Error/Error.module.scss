@@ -3,8 +3,15 @@
 .error_page {
   display: flex;
   flex-direction: column;
+  background-color: $color-danger;
+  width: 100%;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: $color-danger;
+
+  h1,
+  h2 {
+    width: 100%;
+    overflow: hidden;
+  }
 }

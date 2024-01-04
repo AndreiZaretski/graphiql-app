@@ -13,7 +13,7 @@ const ChangeApi = () => {
   const [hasMessageUrl, setHasMessageUrl] = useState(false);
 
   const [hasShowBlockChange, setHasShowBlockChange] = useState(false);
-  const [hasSuccesMessage, setHasSuccesMessage] = useState(false);
+  const [hasSuccessMessage, setHasSuccessMessage] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -45,9 +45,9 @@ const ChangeApi = () => {
   };
 
   const showSuccesMessage = () => {
-    setHasSuccesMessage(true);
+    setHasSuccessMessage(true);
     setTimeout(() => {
-      setHasSuccesMessage(false);
+      setHasSuccessMessage(false);
     }, 5000);
   };
 
@@ -74,6 +74,7 @@ const ChangeApi = () => {
           <div className={styles.hide_block}>
             <input
               type="text"
+              data-testid="inputUrl"
               className={styles.input_url}
               value={inputBaseUrl}
               onChange={handleChangeBaseUrl}
@@ -81,6 +82,7 @@ const ChangeApi = () => {
             />
             <button
               type="button"
+              data-testid="changeUrl"
               className={`button button_colored ${styles.change_api__button}`}
               onClick={handleClickBaseUrl}
             >
@@ -90,22 +92,26 @@ const ChangeApi = () => {
         )}
         <button
           className={`button ${styles.hide_block__button}`}
+          data-testid="toggleButton"
           onClick={() => toggleBlockChange(hasShowBlockChange)}
         >
           {showHideText()}
         </button>
       </div>
       {hasMessageUrl && (
-        <p className={`${styles.message} ${styles.error_url}`}>
+        <p className={`${styles.message} ${styles.error_url}`} role="message">
           {validUrlMessage}
         </p>
       )}
-      {hasSuccesMessage && (
-        <p className={`${styles.message} ${styles.success_message}`}>
+      {hasSuccessMessage && (
+        <p
+          className={`${styles.message} ${styles.success_message}`}
+          role="message"
+        >
           {successChangeUrlMessage}
         </p>
       )}
-      {!hasSuccesMessage && !hasMessageUrl && (
+      {!hasSuccessMessage && !hasMessageUrl && (
         <p className={styles.message}> </p>
       )}
     </div>

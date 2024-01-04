@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AppState } from '@store/store';
 
-const initialrequestDataSliceState = {
+const initialRequest = {
   query: `query Query {
     characters(page: 2, filter: { name: "Morty" }) {
       info {
@@ -27,7 +27,7 @@ const initialrequestDataSliceState = {
 
 export const requestSlice = createSlice({
   name: 'request',
-  initialState: initialrequestDataSliceState,
+  initialState: initialRequest,
   reducers: {
     setQuery: (state, action: PayloadAction<string>) => {
       state.query = action.payload;

@@ -15,10 +15,12 @@ import {
 import { ChangeApi } from './Request/components/ChangeApi/ChangeApi';
 import { LanguageContext } from '@context/LanguageContext';
 import styles from './Main.module.scss';
+import Spinner from '@components/Spinner/Spinner';
 
 const Main = () => {
-  const [getResponseMutation, { data, error }] = useSearchByQueryMutation();
-  const [getDocumentationMutation, { data: schema }] =
+  const [getResponseMutation, { isLoading: isFetching, data, error }] =
+    useSearchByQueryMutation();
+  const [getDocumentationMutation, { isLoading: isFetchingDoc, data: schema }] =
     useGetDocumentationMutation();
   const [schemaVisible, setSchemaVisible] = useState(false);
 
@@ -76,32 +78,36 @@ const Main = () => {
   }
 
   return (
-    <Layout>
-      <ChangeApi />
-      <section className={styles.main__section}>
-        <div>
-          <button
-            type="submit"
-            onClick={getDocumentation}
-            className={
-              schemaVisible
-                ? `button button_square ${styles.button_doc_open}`
-                : `button button_square ${styles.button_doc_closed}`
-            }
-          ></button>
-          {schemaVisible && schema && (
-            <Suspense fallback={<div>{loading}</div>}>
-              <Documentation schema={schema} />
-            </Suspense>
-          )}
-        </div>
+    <>
+      {isFetching && <Spinner />}
+      {isFetchingDoc && <Spinner />}
+      <Layout>
+        <ChangeApi />
+        <section className={styles.main__section}>
+          <div>
+            <button
+              type="submit"
+              onClick={getDocumentation}
+              className={
+                schemaVisible
+                  ? `button button_square ${styles.button_doc_open}`
+                  : `button button_square ${styles.button_doc_closed}`
+              }
+            ></button>
+            {schemaVisible && schema && (
+              <Suspense fallback={<div>{loading}</div>}>
+                <Documentation schema={schema} />
+              </Suspense>
+            )}
+          </div>
 
-        <div className={styles.code_wrapper}>
-          <Request getResponse={getResponse} />
-          <Response data={errorJSON() || data?.data || errorMessage || {}} />
-        </div>
-      </section>
-    </Layout>
+          <div className={styles.code_wrapper}>
+            <Request getResponse={getResponse} />
+            <Response data={errorJSON() || data?.data || errorMessage || {}} />
+          </div>
+        </section>
+      </Layout>
+    </>
   );
 };
 

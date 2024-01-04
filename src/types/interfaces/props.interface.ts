@@ -7,7 +7,7 @@ export interface RequestProps {
 }
 
 export interface ResponseProps {
-  data: Partial<Record<string, string>>;
+  data: Partial<Record<string, string>> | object;
 }
 
 export interface MirrorProps {

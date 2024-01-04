@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { LanguageContext } from '@context/LanguageContext';
 import styles from './ChangeLanguage.module.scss';
-
 import { LanguageKey } from '@type/enums/language.enum';
 
 const ChangeLanguage = () => {
@@ -21,7 +20,12 @@ const ChangeLanguage = () => {
     <div className={styles.wrapper}>
       <span>{language}</span>
       <label className={styles.switch}>
-        <input type="checkbox" onChange={handleChange} />
+        <input
+          data-testid="checkbox"
+          type="checkbox"
+          onChange={handleChange}
+          checked={language === LanguageKey.Ru}
+        />
         <span className={`${styles.slider} ${styles.round}`}></span>
       </label>
     </div>
