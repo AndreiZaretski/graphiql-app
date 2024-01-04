@@ -1,25 +1,20 @@
 import styles from './Welcome.module.scss';
-import Layout from '@layout/Layout';
+import { Layout } from '@layout/Layout';
 import AndreiPhoto from '@assets/images/And.png';
 import OksanaPhoto from '@assets/images/Oks.png';
 import MaxPhoto from '@assets/images/Max.png';
 import { useContext } from 'react';
 import { LanguageContext } from '@context/LanguageContext';
+import { WelcomeDeveloperItem } from './WelcomeItem';
 
 const Welcome = () => {
   const {
     data: {
-      welcome: {
-        rsSchool,
-        aboutProject,
-        projectDescription,
-        developer,
-        positionTeamLead,
-        position,
-        info: { andrei, oksana, max },
-      },
+      welcome: { rsSchool, aboutProject, projectDescription, developer, info },
     },
   } = useContext(LanguageContext);
+
+  const developerImages = [AndreiPhoto, OksanaPhoto, MaxPhoto];
 
   return (
     <Layout>
@@ -35,40 +30,18 @@ const Welcome = () => {
       </div>
       <div className={styles.about_us}>
         <div className={styles.header}>{developer}</div>
-
-        <div className={`${styles.about_item} shadow`}>
-          <div className={styles.image_wrapper}>
-            <img src={AndreiPhoto} alt="Andrei" className={styles.image} />
-            <div>
-              <div className={styles.name}>{andrei.name}</div>
-              <div className={styles.position}>{positionTeamLead}</div>
-            </div>
-          </div>
-          <div className={styles.description}>{andrei.description}</div>
-        </div>
-        <div className={`${styles.about_item} shadow`}>
-          <div className={styles.image_wrapper}>
-            <img src={OksanaPhoto} alt="Oksana" className={styles.image} />
-            <div>
-              <div className={styles.name}>{oksana.name}</div>
-              <div className={styles.position}>{position}</div>
-            </div>
-          </div>
-          <div className={styles.description}>{oksana.description}</div>
-        </div>
-        <div className={`${styles.about_item} shadow`}>
-          <div className={styles.image_wrapper}>
-            <img src={MaxPhoto} alt="Max" className={styles.image} />
-            <div>
-              <div className={styles.name}>{max.name}</div>
-              <div className={styles.position}>{position}</div>
-            </div>
-          </div>
-          <div className={styles.description}>{max.description}</div>
-        </div>
+        {developerImages.map((item, index) => (
+          <WelcomeDeveloperItem
+            key={index}
+            image={item}
+            name={info[index].name}
+            position={info[index].position}
+            description={info[index].description}
+          />
+        ))}
       </div>
     </Layout>
   );
 };
 
-export default Welcome;
+export { Welcome };

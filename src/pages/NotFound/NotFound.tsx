@@ -1,5 +1,5 @@
 import { LanguageContext } from '@context/LanguageContext';
-import Layout from '@layout/Layout';
+import { Layout } from '@layout/Layout';
 import { useContext } from 'react';
 
 const NotFound = () => {
@@ -15,4 +15,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export { NotFound };

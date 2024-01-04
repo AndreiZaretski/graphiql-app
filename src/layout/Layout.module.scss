@@ -1,5 +1,5 @@
-@import '../styles/abstract/mixins';
-@import '../styles/abstract/constant';
+@import '@styles/abstract/mixins';
+@import '@styles/abstract/constant';
 
 .main {
   display: flex;
@@ -8,9 +8,8 @@
   transition: all 0.3s;
 
   @include font($size: 1.8rem, $weight: 300);
-  color: $color-light;
-
   padding: 12rem 2rem 0 2rem;
+  color: $color-light;
 
   @include media-tablet {
     @include font($size: 1.6rem, $weight: 300);

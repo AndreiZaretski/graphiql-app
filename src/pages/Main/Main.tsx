@@ -1,7 +1,7 @@
 import { lazy, Suspense, useContext, useState } from 'react';
-import Layout from '@layout/Layout';
-import Request from './Request/Request';
-import Response from './Response/Response';
+import { Layout } from '@layout/Layout';
+import { Request } from './Request/Request';
+import { Response } from './Response/Response';
 const Documentation = lazy(() => import('./Documentation/Documentation'));
 import './Main.module.scss';
 
@@ -12,7 +12,7 @@ import {
   useGetDocumentationMutation,
   useSearchByQueryMutation,
 } from '@store/api/graphiqlApi';
-import ChangeApi from './Request/components/ChangeApi/ChangeApi';
+import { ChangeApi } from './Request/components/ChangeApi/ChangeApi';
 import { LanguageContext } from '@context/LanguageContext';
 import styles from './Main.module.scss';
 import Spinner from '@components/Spinner/Spinner';
@@ -111,4 +111,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export { Main };

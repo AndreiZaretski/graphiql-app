@@ -118,4 +118,4 @@ const ChangeApi = () => {
   );
 };
 
-export default ChangeApi;
+export { ChangeApi };

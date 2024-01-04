@@ -1,10 +1,9 @@
-import styles from '@layout/Header/Header.module.scss';
-
 import { UserContext } from '@context/AuthContext';
 import { LanguageContext } from '@context/LanguageContext';
 import { RoutesPath } from '@type/enums/routes.enum';
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { NavigationLink } from '@layout/Header/NavigationLink';
 
 const Logout = () => {
   const { logout } = useContext(UserContext) || {};
@@ -21,17 +20,13 @@ const Logout = () => {
       await logout?.();
       navigate('/');
     } catch (err) {
-      console.error(err);
+      return;
     }
   };
 
   return (
-    <li className={styles.navigation__item}>
-      <Link to={RoutesPath.Main} className="link" onClick={handleLogout}>
-        {logOut}
-      </Link>
-    </li>
+    <NavigationLink to={RoutesPath.Main} text={logOut} onClick={handleLogout} />
   );
 };
 
-export default Logout;
+export { Logout };

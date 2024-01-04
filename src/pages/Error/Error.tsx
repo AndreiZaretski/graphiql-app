@@ -43,4 +43,4 @@ class ErrorBoundary extends Component<ErrorProps, ErrorState> {
   }
 }
 
-export default ErrorBoundary;
+export { ErrorBoundary };

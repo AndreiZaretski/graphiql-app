@@ -3,7 +3,7 @@ import { IntrospectionType } from 'graphql';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/store';
 import { setSelectedType } from '@store/features/documentationSlice';
-import ReturnType from './ReturnType';
+import { ReturnType } from './ReturnType';
 import { DocType } from '@type/interfaces/props.interface';
 import styles from '../Documentation.module.scss';
 
@@ -118,4 +118,4 @@ function Types(props: Props) {
   );
 }
 
-export default Types;
+export { Types };

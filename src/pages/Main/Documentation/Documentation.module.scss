@@ -3,17 +3,17 @@
 
 .docs {
   display: flex;
-  width: 35rem;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  height: 50rem;
+  width: 35rem;
   padding: 0.5rem;
   gap: 1rem;
-  color: $color-light;
-  font-size: 1.7rem;
-  box-shadow: -0.5rem 0.3rem 0.9rem $color-dark;
-  height: 500px;
   overflow-y: scroll;
+  font-size: 1.7rem;
+  color: $color-light;
+  box-shadow: -0.5rem 0.3rem 0.9rem $color-dark;
   &::-webkit-scrollbar {
     width: 1rem;
   }
@@ -22,7 +22,8 @@
     border-radius: 1rem;
   }
   &::-webkit-scrollbar-track {
-    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    box-shadow: 5px 5px 5px -5px $color-dark inset;
+    -webkit-box-shadow: 5px 5px 5px -5px $color-dark inset;
     background-color: $color-header-scrolled;
     width: 1rem;
     border-radius: 1rem;
@@ -51,7 +52,7 @@
   }
 
   &__defaultValue {
-    color: #2bab7c;
+    color: $color-default-value;
   }
 
   &__symbol {
@@ -61,7 +62,7 @@
 
   &__args {
     padding-left: 2rem;
-    color: #ff6b8b;
+    color: $color-button-active;
   }
 
   &__link {
@@ -69,7 +70,7 @@
   }
 
   &__query {
-    color: #7aa2f7;
+    color: $color-query;
   }
 
   &__base {
