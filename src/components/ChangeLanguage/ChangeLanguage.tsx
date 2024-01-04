@@ -28,4 +28,4 @@ const ChangeLanguage = () => {
   );
 };
 
-export default ChangeLanguage;
+export { ChangeLanguage };

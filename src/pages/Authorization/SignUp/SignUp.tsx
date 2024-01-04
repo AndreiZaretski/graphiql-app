@@ -1,4 +1,4 @@
-import Layout from '@layout/Layout';
+import { Layout } from '@layout/Layout';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
@@ -10,6 +10,12 @@ import { LanguageContext } from '@context/LanguageContext';
 import { FirebaseError } from '@firebase/util';
 import { Inputs } from '@type/interfaces/auth.interface';
 import styles from './SignUp.module.scss';
+import { useEmailError } from '@utils/customHooks/useEmailError';
+import {
+  usePasswordError,
+  usePasswordRepeatError,
+} from '@utils/customHooks/usePasswordError';
+import { useFirebaseError } from '@utils/customHooks/useFirebaseError';
 
 const SignUp = () => {
   const { user, createUser } = useContext(UserContext) || {};
@@ -24,13 +30,14 @@ const SignUp = () => {
       },
       formErrorMessage: {
         emailError,
+        loginError,
         emailInvalid,
         otherError,
+        tooManyRequests,
         oneNumberError,
         oneUpperLetterError,
         oneLowerLetterError,
         oneSpecialCharacterError,
-        passwordNotMatchError,
         minLength,
         required,
         notMatch,
@@ -38,7 +45,7 @@ const SignUp = () => {
     },
   } = useContext(LanguageContext);
 
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -50,19 +57,6 @@ const SignUp = () => {
   } = useForm({
     mode: 'all',
     resolver: yupResolver(SchemaRegistration),
-    context: {
-      languageError: {
-        emailInvalid,
-        oneNumberError,
-        oneUpperLetterError,
-        oneLowerLetterError,
-        oneSpecialCharacterError,
-        passwordNotMatchError,
-        minLength,
-        required,
-        notMatch,
-      },
-    },
   });
 
   const onSubmitHandler = async ({ email, password }: Inputs) => {
@@ -72,19 +66,40 @@ const SignUp = () => {
         navigate('/main');
       } catch (err) {
         if (err instanceof FirebaseError) {
-          if (String(err.code) === 'auth/email-already-in-use') {
-            setError(emailError);
-          } else {
-            setError(otherError);
-          }
+          setErrorMessage(err.code);
         }
       }
     reset();
   };
 
+  const emailErrorMessage = useEmailError(errors, required, emailInvalid);
+  const passwordErrorMessage = usePasswordError(
+    errors,
+    required,
+    minLength,
+    oneNumberError,
+    oneUpperLetterError,
+    oneLowerLetterError,
+    oneSpecialCharacterError
+  );
+
+  const passwordRepeatErrorMessage = usePasswordRepeatError(
+    errors,
+    required,
+    notMatch
+  );
+
+  const firebaseError = useFirebaseError(
+    errorMessage,
+    emailError,
+    loginError,
+    tooManyRequests,
+    otherError
+  );
+
   return (
     <Layout>
-      {!user ? (
+      {!user && (
         <>
           <h1>{header}</h1>
           <p className={styles.subheader}>
@@ -97,54 +112,61 @@ const SignUp = () => {
             <div className="form__field">
               <label htmlFor="email">{email}</label>
               <input
-                id="email"
-                type="string"
-                placeholder={email}
+                type="text"
+                style={{ position: 'absolute', left: '-9999px' }}
                 {...register('email')}
+                autoComplete="username"
               />
-              <p className="form__error">
-                {errors.email?.message ? errors.email.message : ''}
-              </p>
+              <div className="input_wrapper">
+                <input
+                  id="email"
+                  type="string"
+                  placeholder={email}
+                  {...register('email')}
+                  autoComplete="username"
+                />
+                <p className="form__error">{emailErrorMessage}</p>
+              </div>
             </div>
             <div className="form__field">
               <label htmlFor="password">{password}</label>
-              <input
-                id="password"
-                type="password"
-                placeholder={password}
-                {...register('password')}
-              />
-              <p className="form__error">
-                {errors.password?.message ? errors.password.message : ''}
-              </p>
+              <div className="input_wrapper">
+                <input
+                  id="password"
+                  type="password"
+                  placeholder={password}
+                  {...register('password')}
+                  autoComplete="new-password"
+                />
+                <p className="form__error">{passwordErrorMessage}</p>
+              </div>
             </div>
             <div className="form__field">
               <label htmlFor="passwordRepeat">{password}</label>
-              <input
-                id="passwordRepeat"
-                type="password"
-                placeholder={password}
-                {...register('passwordRepeat')}
-              />
-              <p className="form__error">
-                {errors.passwordRepeat?.message
-                  ? errors.passwordRepeat.message
-                  : ''}
-              </p>
+              <div className="input_wrapper">
+                <input
+                  id="passwordRepeat"
+                  type="password"
+                  placeholder={password}
+                  {...register('passwordRepeat')}
+                  autoComplete="new-password"
+                />
+                <p className="form__error">{passwordRepeatErrorMessage}</p>
+              </div>
             </div>
             <div className="button_wrapper">
               <button disabled={!isValid} className="button">
                 {signUp}
               </button>
             </div>
-            <p className="form__error-server">{error ? error : ''}</p>
+            {errorMessage && (
+              <p className="form__error-server">{firebaseError}</p>
+            )}
           </form>
         </>
-      ) : (
-        ''
       )}
     </Layout>
   );
 };
 
-export default SignUp;
+export { SignUp };

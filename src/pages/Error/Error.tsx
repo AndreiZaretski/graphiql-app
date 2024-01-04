@@ -1,6 +1,6 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
 import styles from './Error.module.scss';
-import Layout from '@layout/Layout';
+import { Layout } from '@layout/Layout';
 import { LanguageContext } from '@context/LanguageContext';
 
 interface ErrorProps {
@@ -47,4 +47,4 @@ class ErrorBoundary extends Component<ErrorProps, ErrorState> {
   }
 }
 
-export default ErrorBoundary;
+export { ErrorBoundary };

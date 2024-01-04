@@ -1,5 +1,6 @@
-@import '../../styles/abstract/constant';
-@import '../../styles/abstract/mixins';
+@import '@styles/abstract/constant';
+@import '@styles/abstract/mixins';
+@import '@styles/abstract/placeholder';
 
 .info_header {
   display: flex;
@@ -59,6 +60,7 @@
   gap: 2rem;
   padding: 1rem 2rem;
   margin-bottom: 4rem;
+  @extend %shadow-border-right;
   @include media-mobile {
     display: block;
   }

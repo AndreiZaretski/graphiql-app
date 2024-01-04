@@ -2,10 +2,10 @@
 
 .mirror_panel {
   &_header {
-    background-color: lighten($color-form, 7);
-    padding: 0.5rem;
     display: flex;
+    padding: 0.5rem;
     justify-content: space-between;
+    background-color: lighten($color-form, 7);
 
     &__buttons {
       display: flex;

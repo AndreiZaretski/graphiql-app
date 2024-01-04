@@ -1,5 +1,5 @@
 import { IntrospectionObjectType } from 'graphql';
-import ReturnType from './ReturnType';
+import { ReturnType } from './ReturnType';
 import { DocType } from '@type/interfaces/props.interface';
 import styles from '../Documentation.module.scss';
 
@@ -48,4 +48,4 @@ function Queries(props: Props) {
   );
 }
 
-export default Queries;
+export { Queries };

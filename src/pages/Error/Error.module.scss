@@ -1,8 +1,10 @@
+@import '@styles/abstract/constant';
+
 .error_page {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  background-color: red;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
+  background-color: $color-danger;
 }

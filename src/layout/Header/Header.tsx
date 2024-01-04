@@ -1,12 +1,12 @@
-import ChangeLanguage from '@components/ChangeLanguage/ChangeLanguage';
+import { ChangeLanguage } from '@components/ChangeLanguage/ChangeLanguage';
 import styles from './Header.module.scss';
-import Auth from '@layout/Auth/Auth';
+import { Auth } from '@layout/Auth/Auth';
 import { RoutesPath } from '@type/enums/routes.enum';
-import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from '@context/LanguageContext';
 import { UserContext } from '@context/AuthContext';
 import logo from '@assets/icons/logo.svg';
+import { NavigationLink } from '@layout/Header/NavigationLink';
 
 const Header = () => {
   const {
@@ -34,7 +34,7 @@ const Header = () => {
     };
   }, []);
 
-  const handleToggle = () => {
+  const handleIsActiveToggle = () => {
     setIsActive((prev) => !prev);
   };
 
@@ -58,17 +58,9 @@ const Header = () => {
             >
               <nav>
                 <ul className={styles.navigation}>
-                  <li className={styles.navigation__item}>
-                    <Link to={RoutesPath.Welcome} className="link">
-                      {welcome}
-                    </Link>
-                  </li>
+                  <NavigationLink to={RoutesPath.Welcome} text={welcome} />
                   {user ? (
-                    <li className={styles.navigation__item}>
-                      <Link to={RoutesPath.Main} className="link">
-                        {main}
-                      </Link>
-                    </li>
+                    <NavigationLink to={RoutesPath.Main} text={main} />
                   ) : null}
                   <Auth />
                   <li className={styles.navigation__item}>
@@ -78,7 +70,7 @@ const Header = () => {
               </nav>
               <div
                 className={styles.navigation__overlay}
-                onClick={() => handleToggle()}
+                onClick={handleIsActiveToggle}
               ></div>
             </div>
           </div>
@@ -88,9 +80,7 @@ const Header = () => {
                 ? `${styles.hamburger} ${styles.hamburger_active}`
                 : styles.hamburger
             }
-            onClick={() => {
-              handleToggle();
-            }}
+            onClick={handleIsActiveToggle}
           >
             <span className={styles.hamburger_icon}></span>
           </div>
@@ -100,4 +90,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export { Header };

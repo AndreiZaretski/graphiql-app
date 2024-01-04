@@ -132,4 +132,4 @@ function ReturnType(props: DocTypeProps) {
   );
 }
 
-export default ReturnType;
+export { ReturnType };

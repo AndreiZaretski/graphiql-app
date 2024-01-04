@@ -4,7 +4,7 @@
   flex-direction: column;
 
   margin: 0 auto;
-  padding: 2rem 2rem;
+  padding: 2rem 2rem 4rem 2rem;
   gap: 3.5rem;
   @include font($size: 1.8rem, $weight: 300);
   background-color: $color-form;
@@ -17,7 +17,6 @@
 }
 
 .form__field {
-  position: relative;
   display: flex;
   justify-content: space-between;
   gap: 10rem;
@@ -41,6 +40,7 @@
     input {
       min-width: 24rem;
     }
+    margin-bottom: 2rem;
   }
 }
 
@@ -54,22 +54,38 @@
 
 .form__error {
   position: absolute;
-  color: $color-danger;
-  top: 3rem;
+  top: 3.2rem;
   left: 50%;
-  width: 100%;
   transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  color: $color-danger;
+  @include font($size: 1.6rem, $weight: 300);
+
+  @include media-tablet {
+    font-size: 1.4rem;
+  }
 }
 
 .form__error-server {
   position: absolute;
-  color: $color-danger;
-  bottom: -2rem;
   left: 50%;
-  width: 100%;
   transform: translateX(-50%);
+  bottom: 2rem;
+  width: 100%;
+  color: $color-danger;
+  text-align: center;
+  @include font($size: 1.6rem, $weight: 300);
+
+  @include media-tablet {
+    font-size: 1.4rem;
+  }
 }
 
 .button_wrapper {
   margin: 0 auto;
+}
+
+.input_wrapper {
+  position: relative;
 }

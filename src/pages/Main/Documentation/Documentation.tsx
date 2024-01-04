@@ -3,8 +3,8 @@ import {
   IntrospectionSchema,
   IntrospectionType,
 } from 'graphql';
-import Queries from './components/Queries';
-import Types from './components/Types';
+import { Queries } from './components/Queries';
+import { Types } from './components/Types';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/store';
 import {
@@ -19,7 +19,6 @@ interface Props {
 
 function Documentation(props: Props) {
   const { schema } = props;
-  console.log(schema);
   const openTypes = useSelector(
     (state: RootState) => state.documentationSlice.openTypes
   );

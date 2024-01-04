@@ -14,4 +14,4 @@ const ProtectedRoutes = ({ children }: Props) => {
   return children;
 };
 
-export default ProtectedRoutes;
+export { ProtectedRoutes };
