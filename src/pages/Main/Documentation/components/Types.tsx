@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useLayoutEffect } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect, useMemo } from 'react';
 import { IntrospectionType } from 'graphql';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedType } from '@store/features/documentationSlice';
@@ -16,9 +16,13 @@ function Types(props: Props) {
   const selectedType = useSelector(memoizedSelectSelectedType);
   const dispatch = useDispatch();
   const [openType, setOpenType] = useState<boolean[]>(
-    types.map((el) => {
-      return el.name === selectedType;
-    })
+    useMemo(
+      () =>
+        types.map((el) => {
+          return el.name === selectedType;
+        }),
+      [selectedType]
+    )
   );
   const openTypeRef = useRef<HTMLDivElement | null>(null);
 
@@ -33,6 +37,8 @@ function Types(props: Props) {
   useLayoutEffect(() => {
     openTypeRef.current?.scrollIntoView();
   });
+
+  if (!types) return;
 
   return (
     types && (

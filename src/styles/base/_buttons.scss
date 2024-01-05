@@ -38,6 +38,10 @@
     padding: 0.6rem 1rem;
     @include font($size: 1.6rem, $weight: 700);
   }
+  @include media-mobile {
+    padding: 0.6rem 0.6rem;
+    @include font($size: 1.4rem, $weight: 700);
+  }
 }
 
 .button_l {

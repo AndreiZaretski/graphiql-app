@@ -1,4 +1,4 @@
-import { lazy, Suspense, useContext, useState } from 'react';
+import { lazy, Suspense, useCallback, useContext, useState } from 'react';
 import { Layout } from '@layout/Layout';
 import { Request } from './Request/Request';
 import { Response } from './Response/Response';
@@ -50,7 +50,7 @@ const Main = () => {
     },
   } = useContext(LanguageContext);
 
-  const errorJSON = () => {
+  const errorJSON = useCallback(() => {
     let error: string | string[] = '';
     if (validHeaderJson) {
       error = validHeaderMessage;
@@ -65,7 +65,12 @@ const Main = () => {
     }
 
     return error;
-  };
+  }, [
+    validHeaderJson,
+    validVariableJson,
+    validHeaderMessage,
+    validHeaderMessage,
+  ]);
 
   let errorMessage: unknown | undefined | unknown[] = undefined;
 
