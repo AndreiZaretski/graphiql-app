@@ -5,7 +5,11 @@ export const IsJsonString = (str: string) => {
   }
   try {
     const result = JSON.parse(str);
-    return typeof result === 'object' && result !== null;
+    return (
+      typeof result === 'object' &&
+      result !== null &&
+      !(result instanceof Array)
+    );
   } catch (e) {
     return false;
   }
