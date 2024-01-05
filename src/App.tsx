@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import { SignUp } from '@pages/Authorization/SignUp/SignUp';
 import { SignIn } from '@pages/Authorization/SignIn/SignIn';
 import { AuthContextProvider } from '@context/AuthContext';
+import { FailedLoad } from '@pages/NotFound/FailedLoad';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
               <Route
                 path={RoutesPath.Welcome}
                 element={<Welcome />}
-                errorElement={<NotFound />}
+                errorElement={<FailedLoad />}
               />
               <Route
                 path={RoutesPath.Main}
@@ -30,17 +31,17 @@ function App() {
                     <Main />
                   </ProtectedRoutes>
                 }
-                errorElement={<NotFound />}
+                errorElement={<FailedLoad />}
               />
               <Route
                 path={RoutesPath.Login}
                 element={<SignIn />}
-                errorElement={<NotFound />}
+                errorElement={<FailedLoad />}
               />
               <Route
                 path={RoutesPath.SignUp}
                 element={<SignUp />}
-                errorElement={<NotFound />}
+                errorElement={<FailedLoad />}
               />
 
               <Route path="*" element={<NotFound />} />
