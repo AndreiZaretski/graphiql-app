@@ -1,6 +1,7 @@
 {
   "notFound": {
-    "text": "Page not found"
+    "text": "Page not found",
+    "failedLoad": "Failed to load page"
   },
   "error": "Something went wrong, but we are working to fix the problem",
   "auth": {

@@ -1,6 +1,7 @@
 export interface LanguageContent {
   notFound: {
     text: string;
+    failedLoad: string;
   };
   error: string;
   auth: {

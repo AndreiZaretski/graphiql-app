@@ -29,7 +29,9 @@ const Welcome = () => {
         </div>
       </div>
       <div className={styles.about_us}>
-        <div className={styles.header}>{developer}</div>
+        <div className={styles.header} data-testid="developer">
+          {developer}
+        </div>
         {developerImages.map((item, index) => (
           <WelcomeDeveloperItem
             key={index}

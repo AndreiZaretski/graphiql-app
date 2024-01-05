@@ -91,6 +91,7 @@ const SignIn = () => {
               <div className="input_wrapper">
                 <input
                   id="email"
+                  data-testid="inputSignInEmail"
                   type="email"
                   placeholder={email}
                   {...register('email')}
@@ -104,6 +105,7 @@ const SignIn = () => {
               <div className="input_wrapper">
                 <input
                   id="password"
+                  data-testid="inputSignInPassword"
                   type="password"
                   placeholder={password}
                   {...register('password')}
@@ -113,12 +115,21 @@ const SignIn = () => {
               </div>
             </div>
             <div className="button_wrapper">
-              <button disabled={!isValid} className="button">
+              <button
+                disabled={!isValid}
+                data-testid="buttonSignin"
+                className="button"
+              >
                 {login}
               </button>
             </div>
             {errorMessage && (
-              <p className="form__error-server">{firebaseError}</p>
+              <p
+                className="form__error-server"
+                data-testid="errorFirebaseSignin"
+              >
+                {firebaseError}
+              </p>
             )}
           </form>
         </>
