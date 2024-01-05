@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { MirrorEditor } from '../MirrorEditor/MirrorEditor';
 import { LanguageContext } from '@context/LanguageContext';
 import styles from './EditorVariablesHeaders.module.scss';
+import arrowUp from '@assets/icons/arrow-up.png';
+import arrowDown from '@assets/icons/arrow-down.png';
 
 const EditorVariablesHeaders = () => {
   const { variables, headers } = useSelector(
@@ -52,7 +54,7 @@ const EditorVariablesHeaders = () => {
     setShowEditor(true);
   };
 
-  const showHideText = showEditor ? '⮝' : '⮟';
+  const showHideText = showEditor ? arrowUp : arrowDown;
 
   return (
     <div className={styles.mirror_panel} role="editorVariable">
@@ -75,11 +77,11 @@ const EditorVariablesHeaders = () => {
         </div>
 
         <button
-          className="button"
+          className="button button_square hide_block__button"
           data-testid="toggleButtonEditor"
           onClick={() => toggleEditor(showEditor)}
         >
-          {showHideText}
+          <img src={showHideText} alt="arrow" />
         </button>
       </div>
 

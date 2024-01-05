@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import {
   IntrospectionObjectType,
   IntrospectionSchema,
@@ -6,11 +7,14 @@ import {
 import { Queries } from './components/Queries';
 import { Types } from './components/Types';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@store/store';
 import {
   setOpenQueries,
   setOpenTypes,
 } from '@store/features/documentationSlice';
+import {
+  memoizedSelectOpenQueries,
+  memoizedSelectOpenTypes,
+} from '@store/selectors/selectors';
 import styles from './Documentation.module.scss';
 
 interface Props {
@@ -19,18 +23,20 @@ interface Props {
 
 function Documentation(props: Props) {
   const { schema } = props;
-  const openTypes = useSelector(
-    (state: RootState) => state.documentationSlice.openTypes
-  );
-  const openQueries = useSelector(
-    (state: RootState) => state.documentationSlice.openQueries
-  );
+  const openTypes = useSelector(memoizedSelectOpenTypes);
+  const openQueries = useSelector(memoizedSelectOpenQueries);
   const dispatch = useDispatch();
-  const queryType = schema?.types.find(
-    ({ name }) => name === 'Query' || name === 'Root' || name === 'query_root'
+  const queryTypeName = schema.queryType.name;
+  const queryType = useMemo(
+    () => schema?.types.find(({ name }) => name === queryTypeName),
+    [schema, queryTypeName]
   );
-  const mainTypes = schema?.types.filter(
-    ({ name }) => name !== 'Query' && !name.startsWith('__')
+  const mainTypes = useMemo(
+    () =>
+      schema?.types.filter(
+        ({ name }) => name !== queryTypeName && !name.startsWith('__')
+      ),
+    [schema, queryTypeName]
   );
 
   return (

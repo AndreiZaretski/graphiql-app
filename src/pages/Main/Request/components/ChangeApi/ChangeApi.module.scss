@@ -56,12 +56,6 @@
   flex-grow: 0;
 }
 
-.hide_block__button {
-  @include media-mobile {
-    align-self: center;
-  }
-}
-
 .message {
   min-height: 3rem;
   text-align: center;

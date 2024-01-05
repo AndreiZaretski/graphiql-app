@@ -33,7 +33,7 @@ const Main = () => {
   };
 
   const getDocumentation = async () => {
-    if (!schemaVisible) {
+    if (!schema) {
       await getDocumentationMutation(baseUrl);
     }
     setSchemaVisible((prev) => !prev);
@@ -82,7 +82,7 @@ const Main = () => {
       {isFetching && <Spinner />}
       {isFetchingDoc && <Spinner />}
       <Layout>
-        <ChangeApi />
+        <ChangeApi getDocumentationMutation={getDocumentationMutation} />
         <section className={styles.main__section}>
           <div>
             <button

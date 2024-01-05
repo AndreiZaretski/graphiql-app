@@ -46,3 +46,16 @@
     width: 16rem;
   }
 }
+
+.hide_block__button {
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 50%;
+  }
+  @include media-mobile {
+    align-self: center;
+  }
+}
