@@ -10,7 +10,7 @@ const renderChangeApi = (valueLang: LanguageContextType) => {
   render(
     <LanguageContext.Provider value={valueLang}>
       <Provider store={store}>
-        <ChangeApi />
+        <ChangeApi getDocumentationMutation={vi.fn()} />
       </Provider>
     </LanguageContext.Provider>
   );

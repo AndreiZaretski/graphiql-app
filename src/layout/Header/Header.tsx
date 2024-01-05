@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { ChangeLanguage } from '@components/ChangeLanguage/ChangeLanguage';
 import styles from './Header.module.scss';
 import { Auth } from '@layout/Auth/Auth';
@@ -34,9 +35,9 @@ const Header = () => {
     };
   }, []);
 
-  const handleIsActiveToggle = () => {
+  const handleIsActiveToggle = useCallback(() => {
     setIsActive((prev) => !prev);
-  };
+  }, [setIsActive]);
 
   return (
     <>

@@ -5,8 +5,39 @@ import { isValidUrl } from '@utils/validationUrl';
 import { useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './ChangeApi.module.scss';
+import { MutationTrigger } from '@reduxjs/toolkit/dist/query/react/buildHooks';
+import {
+  MutationDefinition,
+  BaseQueryFn,
+  FetchBaseQueryError,
+  FetchArgs,
+  FetchBaseQueryMeta,
+} from '@reduxjs/toolkit/query';
+import { IntrospectionSchema } from 'graphql';
+import arrowUp from '@assets/icons/arrow-up.png';
+import arrowDown from '@assets/icons/arrow-down.png';
+import arrowLeft from '@assets/icons/arrow-left.png';
+import arrowRight from '@assets/icons/arrow-right.png';
 
-const ChangeApi = () => {
+interface ChangeApiProps {
+  getDocumentationMutation: MutationTrigger<
+    MutationDefinition<
+      string,
+      BaseQueryFn<
+        string | FetchArgs,
+        unknown,
+        FetchBaseQueryError,
+        object,
+        FetchBaseQueryMeta
+      >,
+      never,
+      IntrospectionSchema,
+      'graphiqlApi'
+    >
+  >;
+}
+
+const ChangeApi: React.FC<ChangeApiProps> = ({ getDocumentationMutation }) => {
   const { baseUrl } = useSelector((state: AppState) => state.request);
 
   const [inputBaseUrl, setInputBaseUrl] = useState(baseUrl);
@@ -33,12 +64,13 @@ const ChangeApi = () => {
     setInputBaseUrl(e.target.value);
   };
 
-  const handleClickBaseUrl = () => {
+  const handleClickBaseUrl = async () => {
     if (isValidUrl(inputBaseUrl)) {
       dispatch(setBaseUrl(inputBaseUrl));
       setHasMessageUrl(false);
       setHasShowBlockChange(false);
       showSuccesMessage();
+      await getDocumentationMutation(inputBaseUrl);
     } else {
       setHasMessageUrl(true);
     }
@@ -57,9 +89,9 @@ const ChangeApi = () => {
 
   const showHideText = () => {
     if (window.innerWidth < 576) {
-      return hasShowBlockChange ? '⮝' : '⮟';
+      return hasShowBlockChange ? arrowUp : arrowDown;
     }
-    return hasShowBlockChange ? '❮' : '❯';
+    return hasShowBlockChange ? arrowLeft : arrowRight;
   };
 
   return (
@@ -91,11 +123,11 @@ const ChangeApi = () => {
           </div>
         )}
         <button
-          className={`button ${styles.hide_block__button}`}
+          className="button button_square hide_block__button"
           data-testid="toggleButton"
           onClick={() => toggleBlockChange(hasShowBlockChange)}
         >
-          {showHideText()}
+          <img src={showHideText()} alt="arrow" />
         </button>
       </div>
       {hasMessageUrl && (
