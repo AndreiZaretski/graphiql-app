@@ -6,6 +6,7 @@ import { LocalStorageServise } from '@services/localStorageService';
 import { LanguageKey } from '@type/enums/language.enum';
 
 describe('LanguageProvider', () => {
+  afterEach(() => LocalStorageServise.clear());
   it('renders default language', () => {
     render(
       <LanguageProvider>

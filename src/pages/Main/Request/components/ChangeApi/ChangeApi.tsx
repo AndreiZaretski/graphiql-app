@@ -98,6 +98,7 @@ const ChangeApi: React.FC<ChangeApiProps> = ({ getDocumentationMutation }) => {
     <div className={styles.change_api}>
       <p className={styles.current_url_text}>
         {currentUrl}
+        {window.innerWidth < 576 && <br />}
         <b> {baseUrl}</b>
       </p>
       <div className={styles.replace_url}>

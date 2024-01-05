@@ -35,12 +35,20 @@ function App() {
               />
               <Route
                 path={RoutesPath.Login}
-                element={<SignIn />}
+                element={
+                  <ProtectedRoutes>
+                    <SignIn />
+                  </ProtectedRoutes>
+                }
                 errorElement={<FailedLoad />}
               />
               <Route
                 path={RoutesPath.SignUp}
-                element={<SignUp />}
+                element={
+                  <ProtectedRoutes>
+                    <SignUp />
+                  </ProtectedRoutes>
+                }
                 errorElement={<FailedLoad />}
               />
 
