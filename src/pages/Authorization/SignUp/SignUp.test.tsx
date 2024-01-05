@@ -78,7 +78,7 @@ describe('SignUp', () => {
     );
   });
 
-  it('should be button disabled and redirect on main page after success signin', async () => {
+  it('should be button disabled and redirect on main page after success registration', async () => {
     renderForm(mockValueEn, UserValueFailedMock, router);
 
     const button = screen.getByTestId('buttonSignUp');
@@ -106,7 +106,7 @@ describe('SignUp', () => {
     expect(router.state.location.pathname).toBe(RoutesPath.Main);
   });
 
-  it("should be button disabled and don't redirect on main page after failed signin", async () => {
+  it("should be button disabled and don't redirect on main page after failed registration", async () => {
     renderForm(mockValueEn, UnauthUserValue, router);
 
     const button = screen.getByTestId('buttonSignUp');
