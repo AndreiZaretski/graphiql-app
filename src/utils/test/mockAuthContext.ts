@@ -1,11 +1,8 @@
-import { UserContext } from '@context/AuthContext';
-import { render } from '@testing-library/react';
 import { mockUserAuth, mockUserUnauth } from './mockUser';
-import { Props } from '@type/interfaces/props.interface';
 import { UserCredential } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 
-export const mockCreateUserAuth = vi.fn(
+export const mockCreateUserSuccess = vi.fn(
   (): Promise<UserCredential> =>
     Promise.resolve({
       user: mockUserAuth,
@@ -14,7 +11,7 @@ export const mockCreateUserAuth = vi.fn(
     })
 );
 
-export const mockSignInAuth = vi.fn(
+export const mockSignInSuccess = vi.fn(
   (): Promise<UserCredential> =>
     Promise.resolve({
       user: mockUserAuth,
@@ -24,7 +21,7 @@ export const mockSignInAuth = vi.fn(
 );
 export const mockLogoutAuth = vi.fn(() => Promise.resolve());
 
-const mockCreateUserUnauth = vi.fn(() =>
+export const mockCreateUserFailed = vi.fn(() =>
   Promise.reject(
     new FirebaseError(
       'auth/email-already-in-use',
@@ -33,7 +30,7 @@ const mockCreateUserUnauth = vi.fn(() =>
   )
 );
 
-export const mockSignInUnauth = vi.fn(() =>
+export const mockSignInFailed = vi.fn(() =>
   Promise.reject(
     new FirebaseError(
       'auth/invalid-credential',
@@ -43,40 +40,22 @@ export const mockSignInUnauth = vi.fn(() =>
 );
 
 export const AuthUserValue = {
-  createUser: mockCreateUserAuth,
+  createUser: mockCreateUserSuccess,
   user: mockUserAuth,
-  signIn: mockSignInAuth,
+  signIn: mockSignInSuccess,
   logout: mockLogoutAuth,
 };
 
 export const UnauthUserValue = {
-  createUser: mockCreateUserUnauth,
+  createUser: mockCreateUserFailed,
   user: mockUserUnauth,
-  signIn: mockSignInUnauth,
+  signIn: mockSignInFailed,
   logout: mockLogoutAuth,
 };
 
-export const SignInUserValue = {
-  createUser: mockCreateUserAuth,
+export const UserValueFailedMock = {
+  createUser: mockCreateUserSuccess,
   user: mockUserUnauth,
-  signIn: mockSignInAuth,
+  signIn: mockSignInSuccess,
   logout: mockLogoutAuth,
-};
-
-//ToDo Delete this after writen test if you don't need it
-
-export const MockContextAuth = ({ children }: Props) => {
-  return render(
-    <UserContext.Provider value={AuthUserValue}>
-      {children}
-    </UserContext.Provider>
-  );
-};
-
-export const MockContextUnauth = ({ children }: Props) => {
-  return render(
-    <UserContext.Provider value={UnauthUserValue}>
-      {children}
-    </UserContext.Provider>
-  );
 };

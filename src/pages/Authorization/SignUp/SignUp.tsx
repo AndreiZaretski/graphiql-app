@@ -120,12 +120,15 @@ const SignUp = () => {
               <div className="input_wrapper">
                 <input
                   id="email"
+                  data-testid="inputSignUpEmail"
                   type="string"
                   placeholder={email}
                   {...register('email')}
                   autoComplete="username"
                 />
-                <p className="form__error">{emailErrorMessage}</p>
+                <p className="form__error" data-testid="errorEmail">
+                  {emailErrorMessage}
+                </p>
               </div>
             </div>
             <div className="form__field">
@@ -134,11 +137,14 @@ const SignUp = () => {
                 <input
                   id="password"
                   type="password"
+                  data-testid="inputSignUpPassword"
                   placeholder={password}
                   {...register('password')}
                   autoComplete="new-password"
                 />
-                <p className="form__error">{passwordErrorMessage}</p>
+                <p className="form__error" data-testid="passwordError">
+                  {passwordErrorMessage}
+                </p>
               </div>
             </div>
             <div className="form__field">
@@ -147,20 +153,32 @@ const SignUp = () => {
                 <input
                   id="passwordRepeat"
                   type="password"
+                  data-testid="inputSignUpPasswordRepeat"
                   placeholder={password}
                   {...register('passwordRepeat')}
                   autoComplete="new-password"
                 />
-                <p className="form__error">{passwordRepeatErrorMessage}</p>
+                <p className="form__error" data-testid="passwordErrorRepeat">
+                  {passwordRepeatErrorMessage}
+                </p>
               </div>
             </div>
             <div className="button_wrapper">
-              <button disabled={!isValid} className="button">
+              <button
+                disabled={!isValid}
+                className="button"
+                data-testid="buttonSignUp"
+              >
                 {signUp}
               </button>
             </div>
             {errorMessage && (
-              <p className="form__error-server">{firebaseError}</p>
+              <p
+                className="form__error-server"
+                data-testid="errorFirebaseSignUp"
+              >
+                {firebaseError}
+              </p>
             )}
           </form>
         </>

@@ -1,14 +1,10 @@
-import { UserContext } from '@context/AuthContext';
-import { LanguageContextType, LanguageContext } from '@context/LanguageContext';
-import { store } from '@store/store';
-import { render, waitFor, screen, fireEvent } from '@testing-library/react';
-import { UserContextType } from '@type/interfaces/auth.interface';
-import { Provider } from 'react-redux';
-import { RouterProvider, createMemoryRouter } from 'react-router-dom';
+import { waitFor, screen, fireEvent } from '@testing-library/react';
+import { createMemoryRouter } from 'react-router-dom';
 import { Logout } from './Logout';
 import { mockValueEn } from '@utils/test/mockLanguageContext';
 import { RoutesPath } from '@type/enums/routes.enum';
 import { AuthUserValue, mockLogoutAuth } from '@utils/test/mockAuthContext';
+import { renderForm } from '@utils/test/renderTestAuthForm';
 
 const routes = [
   {
@@ -26,24 +22,9 @@ const router = createMemoryRouter(routes, {
   initialIndex: 0,
 });
 
-const renderLogout = (
-  valueLang: LanguageContextType,
-  value: UserContextType | null
-) => {
-  render(
-    <LanguageContext.Provider value={valueLang}>
-      <UserContext.Provider value={value}>
-        <Provider store={store}>
-          <RouterProvider router={router} />
-        </Provider>
-      </UserContext.Provider>
-    </LanguageContext.Provider>
-  );
-};
-
 describe('LogOut', () => {
   it('should logout', async () => {
-    renderLogout(mockValueEn, AuthUserValue);
+    renderForm(mockValueEn, AuthUserValue, router);
     const button = screen.getByText('Logout');
 
     expect(button).toBeInTheDocument();
