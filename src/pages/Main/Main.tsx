@@ -1,4 +1,4 @@
-import { lazy, Suspense, useContext, useState } from 'react';
+import { lazy, Suspense, useCallback, useContext, useState } from 'react';
 import { Layout } from '@layout/Layout';
 import { Request } from './Request/Request';
 import { Response } from './Response/Response';
@@ -33,7 +33,7 @@ const Main = () => {
   };
 
   const getDocumentation = async () => {
-    if (!schemaVisible) {
+    if (!schema) {
       await getDocumentationMutation(baseUrl);
     }
     setSchemaVisible((prev) => !prev);
@@ -50,7 +50,7 @@ const Main = () => {
     },
   } = useContext(LanguageContext);
 
-  const errorJSON = () => {
+  const errorJSON = useCallback(() => {
     let error: string | string[] = '';
     if (validHeaderJson) {
       error = validHeaderMessage;
@@ -65,7 +65,12 @@ const Main = () => {
     }
 
     return error;
-  };
+  }, [
+    validHeaderJson,
+    validVariableJson,
+    validHeaderMessage,
+    validVariableMessage,
+  ]);
 
   let errorMessage: unknown | undefined | unknown[] = undefined;
 
@@ -82,11 +87,12 @@ const Main = () => {
       {isFetching && <Spinner />}
       {isFetchingDoc && <Spinner />}
       <Layout>
-        <ChangeApi />
+        <ChangeApi getDocumentationMutation={getDocumentationMutation} />
         <section className={styles.main__section}>
           <div>
             <button
               type="submit"
+              data-testid="buttonDoc"
               onClick={getDocumentation}
               className={
                 schemaVisible

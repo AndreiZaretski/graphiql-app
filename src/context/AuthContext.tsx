@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState, useCallback } from 'react';
 import {
   User,
   createUserWithEmailAndPassword,
@@ -45,17 +45,17 @@ const AuthContextProvider = ({ children }: Props) => {
     providerId: '',
   });
 
-  const createUser = (email: string, password: string) => {
+  const createUser = useCallback((email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password);
-  };
+  }, []);
 
-  const signIn = (email: string, password: string) => {
+  const signIn = useCallback((email: string, password: string) => {
     return signInWithEmailAndPassword(auth, email, password);
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     return signOut(auth);
-  };
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {

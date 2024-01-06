@@ -2,6 +2,7 @@ export const prettifyData = (data: string, initialTab?: number) => {
   let dataPrettified = '';
   let tabIndex = initialTab || 0;
   let firstBracket = true;
+  let firstSpace = true;
 
   for (let i = 0; i < data.length; i++) {
     switch (data[i]) {
@@ -39,6 +40,20 @@ export const prettifyData = (data: string, initialTab?: number) => {
           tabIndex + 1
         );
         i = closeBracket;
+        break;
+      }
+      case ' ': {
+        const symbols = ['(', ')', '[', ']', '{', '}', ':', '"'];
+        if (
+          !symbols.includes(data[i + 1]) &&
+          !symbols.includes(data[i - 1]) &&
+          !firstSpace
+        )
+          dataPrettified += '\n' + '  '.repeat(tabIndex + 1);
+        else {
+          firstSpace = false;
+          dataPrettified += data[i];
+        }
         break;
       }
       default: {

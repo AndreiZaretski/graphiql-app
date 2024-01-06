@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef, useLayoutEffect } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect, useMemo } from 'react';
 import { IntrospectionType } from 'graphql';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@store/store';
 import { setSelectedType } from '@store/features/documentationSlice';
 import { ReturnType } from './ReturnType';
+import { memoizedSelectSelectedType } from '@store/selectors/selectors';
 import { DocType } from '@type/interfaces/props.interface';
 import styles from '../Documentation.module.scss';
 
@@ -13,14 +13,16 @@ interface Props {
 
 function Types(props: Props) {
   const { types } = props;
-  const selectedType = useSelector(
-    (state: RootState) => state.documentationSlice.selectedType
-  );
+  const selectedType = useSelector(memoizedSelectSelectedType);
   const dispatch = useDispatch();
   const [openType, setOpenType] = useState<boolean[]>(
-    types.map((el) => {
-      return el.name === selectedType;
-    })
+    useMemo(
+      () =>
+        types.map((el) => {
+          return el.name === selectedType;
+        }),
+      [selectedType, types]
+    )
   );
   const openTypeRef = useRef<HTMLDivElement | null>(null);
 
@@ -35,6 +37,8 @@ function Types(props: Props) {
   useLayoutEffect(() => {
     openTypeRef.current?.scrollIntoView();
   });
+
+  if (!types) return;
 
   return (
     types && (

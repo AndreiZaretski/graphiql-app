@@ -4,9 +4,13 @@ export const IsJsonString = (str: string) => {
     return true;
   }
   try {
-    JSON.parse(str);
+    const result = JSON.parse(str);
+    return (
+      typeof result === 'object' &&
+      result !== null &&
+      !(result instanceof Array)
+    );
   } catch (e) {
     return false;
   }
-  return true;
 };

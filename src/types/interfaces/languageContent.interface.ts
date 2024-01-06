@@ -1,7 +1,6 @@
 export interface LanguageContent {
   notFound: {
-    text: string;
-    failedLoad: string;
+    [key: string]: string;
   };
   error: string;
   auth: {
@@ -13,41 +12,17 @@ export interface LanguageContent {
     email: string;
     password: string;
     loginPage: {
-      header: string;
-      subheader: string;
+      [key: string]: string;
     };
     signUpPage: {
-      header: string;
-      subheader: string;
+      [key: string]: string;
     };
   };
   formErrorMessage: {
-    loginError: string;
-    otherError: string;
-    tooManyRequests: string;
-    emailError: string;
-    emailInvalid: string;
-    oneNumberError: string;
-    oneUpperLetterError: string;
-    oneLowerLetterError: string;
-    oneSpecialCharacterError: string;
-    minLength: string;
-    required: string;
-    notMatch: string;
+    [key: string]: string;
   };
   mainPage: {
-    changeApi: string;
-    changeApiBtn: string;
-    variableName: string;
-    headersName: string;
-    doc: string;
-    loading: string;
-    validHeaderMessage: string;
-    validVariableMessage: string;
-    validUrlMessage: string;
-    currentUrl: string;
-    successChangeUrlMessage: string;
-    errorCorsMessage: string;
+    [key: string]: string;
   };
   welcome: {
     rsSchool: string;
