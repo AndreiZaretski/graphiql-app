@@ -92,6 +92,7 @@ const Main = () => {
           <div>
             <button
               type="submit"
+              data-testid="buttonDoc"
               onClick={getDocumentation}
               className={
                 schemaVisible
