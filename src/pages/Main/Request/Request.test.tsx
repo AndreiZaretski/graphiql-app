@@ -147,15 +147,27 @@ describe('Request', () => {
     await waitFor(() => fireEvent.click(prettify));
     expect(mockDispatch).toHaveBeenCalledTimes(3);
     expect(mockDispatch).toHaveBeenCalledWith(
-      setQuery(prettifyData(removeTrailingSpacesEnterComments(query)))
+      setQuery(
+        prettifyData(removeTrailingSpacesEnterComments(query), {
+          mode: 'request',
+        })
+      )
     );
 
     expect(mockDispatch).toHaveBeenCalledWith(
-      setVariables(prettifyData(removeTrailingSpacesEnterComments(variables)))
+      setVariables(
+        prettifyData(removeTrailingSpacesEnterComments(variables), {
+          mode: 'request',
+        })
+      )
     );
 
     expect(mockDispatch).toHaveBeenCalledWith(
-      setHeaders(prettifyData(removeTrailingSpacesEnterComments(headers)))
+      setHeaders(
+        prettifyData(removeTrailingSpacesEnterComments(headers), {
+          mode: 'request',
+        })
+      )
     );
   });
 });
