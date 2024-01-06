@@ -43,16 +43,22 @@ describe('Documentation', () => {
     renderComponent(mockValueEn);
     fireEvent.click(screen.getByText('Query'));
     fireEvent.click(screen.getByText('Nested-2-2-btn'));
+    expect(screen.queryByText('Nested-2-2-btn')).not.toBeInTheDocument();
     fireEvent.click(screen.getByText('Query'));
     fireEvent.click(screen.getByText('Nested-2-btn'));
+    expect(screen.queryByText('Nested-2-btn')).not.toBeInTheDocument();
     fireEvent.click(screen.getByText('Query'));
     fireEvent.click(screen.getByText('Nested-3-3-btn'));
+    expect(screen.queryByText('Nested-3-3-btn')).not.toBeInTheDocument();
     fireEvent.click(screen.getByText('Query'));
     fireEvent.click(screen.getByText('Nested-3-btn'));
+    expect(screen.queryByText('Nested-3-btn')).not.toBeInTheDocument();
     fireEvent.click(screen.getByText('Query'));
     fireEvent.click(screen.getByText('Nested-1-1-btn'));
+    expect(screen.queryByText('Nested-1-1-btn')).not.toBeInTheDocument();
     fireEvent.click(screen.getByText('Query'));
     fireEvent.click(screen.getByText('Nested-1-btn'));
+    expect(screen.queryByText('Nested-1-btn')).not.toBeInTheDocument();
     fireEvent.click(screen.getByText('Query'));
   });
 

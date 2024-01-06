@@ -21,7 +21,7 @@ function Types(props: Props) {
         types.map((el) => {
           return el.name === selectedType;
         }),
-      [selectedType]
+      [selectedType, types]
     )
   );
   const openTypeRef = useRef<HTMLDivElement | null>(null);

@@ -69,7 +69,7 @@ const Main = () => {
     validHeaderJson,
     validVariableJson,
     validHeaderMessage,
-    validHeaderMessage,
+    validVariableMessage,
   ]);
 
   let errorMessage: unknown | undefined | unknown[] = undefined;
