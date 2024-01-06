@@ -10,7 +10,13 @@ const Response = (props: ResponseProps) => {
     <section className={styles.response} data-testid="response">
       <MirrorEditor
         height="560px"
-        value={data ? prettifyData(JSON.stringify(data)) : ''}
+        value={
+          data
+            ? prettifyData(JSON.stringify(data), {
+                mode: 'response',
+              })
+            : ''
+        }
         editable={false}
       />
     </section>

@@ -59,12 +59,26 @@ const Request = (props: RequestProps) => {
   );
 
   const handlePrettify = useCallback(() => {
-    dispatch(setQuery(prettifyData(removeTrailingSpacesEnterComments(query))));
     dispatch(
-      setVariables(prettifyData(removeTrailingSpacesEnterComments(variables)))
+      setQuery(
+        prettifyData(removeTrailingSpacesEnterComments(query), {
+          mode: 'request',
+        })
+      )
     );
     dispatch(
-      setHeaders(prettifyData(removeTrailingSpacesEnterComments(headers)))
+      setVariables(
+        prettifyData(removeTrailingSpacesEnterComments(variables), {
+          mode: 'request',
+        })
+      )
+    );
+    dispatch(
+      setHeaders(
+        prettifyData(removeTrailingSpacesEnterComments(headers), {
+          mode: 'request',
+        })
+      )
     );
   }, [dispatch, headers, query, variables]);
 
