@@ -73,14 +73,14 @@ const Request = (props: RequestProps) => {
     dispatch(
       setVariables(
         prettifyData(removeTrailingSpacesEnterComments(variables), {
-          mode: 'request',
+          mode: 'variables/headers',
         })
       )
     );
     dispatch(
       setHeaders(
         prettifyData(removeTrailingSpacesEnterComments(headers), {
-          mode: 'headers',
+          mode: 'variables/headers',
         })
       )
     );

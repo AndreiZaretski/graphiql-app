@@ -1,10 +1,10 @@
 interface PrettifyProps {
-  mode: 'request' | 'response' | 'headers';
+  mode: 'request' | 'response' | 'variables/headers';
   initialTab?: number;
 }
 
 interface PrettifyParametersProps {
-  mode: 'request' | 'response' | 'headers';
+  mode: 'request' | 'response' | 'variables/headers';
   tabIndex: number;
 }
 
@@ -65,7 +65,7 @@ export const prettifyData = (
           !firstSpace
         )
           dataPrettified += '\n' + '  '.repeat(tabIndex + 1);
-        else if (mode === 'headers' && data[i - 1] === ',') {
+        else if (mode === 'variables/headers' && data[i - 1] === ',') {
           break;
         } else {
           firstSpace = false;
