@@ -1,10 +1,10 @@
 interface PrettifyProps {
-  mode: 'request' | 'response';
+  mode: 'request' | 'response' | 'headers';
   initialTab?: number;
 }
 
 interface PrettifyParametersProps {
-  mode: 'request' | 'response';
+  mode: 'request' | 'response' | 'headers';
   tabIndex: number;
 }
 
@@ -43,7 +43,8 @@ export const prettifyData = (
         break;
       }
       case ',': {
-        dataPrettified += data[i] + '\n';
+        dataPrettified += data[i] + '  ' + '\n';
+
         break;
       }
       case '(': {
@@ -56,7 +57,7 @@ export const prettifyData = (
         break;
       }
       case ' ': {
-        const symbols = ['(', ')', '[', ']', '{', '}', ':', '"'];
+        const symbols = ['(', ')', '[', ']', '{', '}', ':', '"', ','];
         if (
           mode === 'request' &&
           !symbols.includes(data[i + 1]) &&
@@ -64,7 +65,9 @@ export const prettifyData = (
           !firstSpace
         )
           dataPrettified += '\n' + '  '.repeat(tabIndex + 1);
-        else {
+        else if (mode === 'headers' && data[i - 1] === ',') {
+          break;
+        } else {
           firstSpace = false;
           dataPrettified += data[i];
         }
@@ -98,12 +101,12 @@ const prettifyFunctionParameters = (
           prettifyData(el.trim(), { mode, initialTab: tabIndex + 1 })
         );
       })
-      .join(',');
+      .join(', ');
   }
 
   return parametersData
     ? '(' + parametersData + '\n' + '  '.repeat(tabIndex) + ')'
-    : data;
+    : data.split(',').join(', ');
 };
 
 export const removeTrailingSpacesEnterComments = (data: string) => {
@@ -139,7 +142,9 @@ export const removeTrailingSpacesEnterComments = (data: string) => {
       stringFromData[i] === ' ' &&
       (stringFromData[i - 1] === ' ' ||
         stringFromData[i - 1] === '{' ||
-        stringFromData[i - 1] === '}')
+        stringFromData[i - 1] === '}' ||
+        stringFromData[i - 1] === ':' ||
+        stringFromData[i - 1] === ',')
     ) {
       continue;
     } else {

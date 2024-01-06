@@ -42,9 +42,13 @@ const Request = (props: RequestProps) => {
       dispatch(setValidHeaderJson(IsJsonString(headers)));
 
       if (IsJsonString(headers) && IsJsonString(variables)) {
-        const newHeaders = headers
-          ? new Headers(JSON.parse(headers))
-          : new Headers();
+        let newHeaders = new Headers();
+        try {
+          if (headers) newHeaders = new Headers(JSON.parse(headers));
+        } catch {
+          dispatch(setValidHeaderJson(false));
+        }
+
         const newVariables = variables ? JSON.parse(variables) : {};
 
         getResponse({
@@ -76,7 +80,7 @@ const Request = (props: RequestProps) => {
     dispatch(
       setHeaders(
         prettifyData(removeTrailingSpacesEnterComments(headers), {
-          mode: 'request',
+          mode: 'headers',
         })
       )
     );
