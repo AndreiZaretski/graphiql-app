@@ -42,9 +42,13 @@ const Request = (props: RequestProps) => {
       dispatch(setValidHeaderJson(IsJsonString(headers)));
 
       if (IsJsonString(headers) && IsJsonString(variables)) {
-        const newHeaders = headers
-          ? new Headers(JSON.parse(headers))
-          : new Headers();
+        let newHeaders = new Headers();
+        try {
+          if (headers) newHeaders = new Headers(JSON.parse(headers));
+        } catch {
+          dispatch(setValidHeaderJson(false));
+        }
+
         const newVariables = variables ? JSON.parse(variables) : {};
 
         getResponse({
@@ -59,12 +63,26 @@ const Request = (props: RequestProps) => {
   );
 
   const handlePrettify = useCallback(() => {
-    dispatch(setQuery(prettifyData(removeTrailingSpacesEnterComments(query))));
     dispatch(
-      setVariables(prettifyData(removeTrailingSpacesEnterComments(variables)))
+      setQuery(
+        prettifyData(removeTrailingSpacesEnterComments(query), {
+          mode: 'request',
+        })
+      )
     );
     dispatch(
-      setHeaders(prettifyData(removeTrailingSpacesEnterComments(headers)))
+      setVariables(
+        prettifyData(removeTrailingSpacesEnterComments(variables), {
+          mode: 'variables/headers',
+        })
+      )
+    );
+    dispatch(
+      setHeaders(
+        prettifyData(removeTrailingSpacesEnterComments(headers), {
+          mode: 'variables/headers',
+        })
+      )
     );
   }, [dispatch, headers, query, variables]);
 

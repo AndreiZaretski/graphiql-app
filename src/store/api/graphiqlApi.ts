@@ -13,21 +13,22 @@ export const graphiqlApi = createApi({
   }),
   endpoints: (build) => ({
     searchByQuery: build.mutation<APIResponse, RequestParams>({
-      query: (params: RequestParams) => ({
-        url: params.baseUrl,
-        method: 'POST',
-        body: JSON.stringify({
-          query: params.query,
-          variables: params.variables || '',
-        }),
-        headers: params.headers,
-      }),
+      query: (params: RequestParams) => {
+        return {
+          url: params.baseUrl,
+          method: 'POST',
+          body: JSON.stringify({
+            query: params.query,
+            variables: params.variables || '',
+          }),
+          headers: params.headers,
+        };
+      },
     }),
     getDocumentation: build.mutation({
       query: (baseUrl: string) => ({
         url: baseUrl,
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: getIntrospectionQuery() }),
       }),
       transformResponse: (response: Record<'data', IntrospectionQuery>) => {

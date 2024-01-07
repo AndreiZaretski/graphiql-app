@@ -10,6 +10,12 @@ You can use any API that supports CORS to work. We hope you will be satisfied wi
 
 Please send all suggestions for improving the operation of the application to the developers.
 
+## Description
+
+[YouTube](https://www.youtube.com/watch?v=9UIMJKMj8Ws) - video with an explanation of how each of the items listed in the evaluation criteria is implemented.
+
+[Task](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md) - task description and requirements.
+
 ## Technologies
 
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
