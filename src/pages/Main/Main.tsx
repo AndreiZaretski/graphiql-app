@@ -20,8 +20,10 @@ import Spinner from '@components/Spinner/Spinner';
 const Main = () => {
   const [getResponseMutation, { isLoading: isFetching, data, error }] =
     useSearchByQueryMutation();
-  const [getDocumentationMutation, { isLoading: isFetchingDoc, data: schema }] =
-    useGetDocumentationMutation();
+  const [
+    getDocumentationMutation,
+    { isLoading: isFetchingDoc, data: schema, error: errorDoc },
+  ] = useGetDocumentationMutation();
   const [schemaVisible, setSchemaVisible] = useState(false);
 
   const { baseUrl, validHeaderJson, validVariableJson } = useSelector(
@@ -46,6 +48,7 @@ const Main = () => {
         validHeaderMessage,
         validVariableMessage,
         errorCorsMessage,
+        emptyDocMessage,
       },
     },
   } = useContext(LanguageContext);
@@ -82,6 +85,14 @@ const Main = () => {
     errorMessage = [errorCorsMessage, error];
   }
 
+  if (errorDoc && 'data' in errorDoc) {
+    errorMessage = errorDoc.data;
+  }
+
+  if (errorDoc && !('data' in errorDoc)) {
+    errorMessage = [errorCorsMessage, errorDoc];
+  }
+
   return (
     <>
       {isFetching && <Spinner />}
@@ -100,11 +111,13 @@ const Main = () => {
                   : `button button_square ${styles.button_doc_closed}`
               }
             ></button>
-            {schemaVisible && schema && (
+            {schemaVisible && schema ? (
               <Suspense fallback={<div>{loading}</div>}>
                 <Documentation schema={schema} />
               </Suspense>
-            )}
+            ) : schemaVisible && !schema ? (
+              <div>{emptyDocMessage}</div>
+            ) : null}
           </div>
 
           <div className={styles.code_wrapper}>
