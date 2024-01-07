@@ -1,0 +1,91 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem 2rem;
+  gap: 3.5rem;
+  @include font($size: 1.8rem, $weight: 300);
+  background-color: $color-form;
+  border: 0.3rem solid $color-form-border;
+  border-radius: 1rem;
+
+  @include media-tablet {
+    gap: 2rem;
+  }
+}
+
+.form__field {
+  display: flex;
+  justify-content: space-between;
+  gap: 10rem;
+  input {
+    min-width: 40rem;
+    height: 3rem;
+    padding: 0.2rem 1rem;
+    @include font($size: 1.8rem, $weight: 300);
+    border-radius: 0.5rem;
+  }
+
+  @include media-tablet {
+    gap: 1rem;
+
+    flex-direction: column;
+    input {
+      min-width: 32rem;
+    }
+  }
+  @include media-mobile {
+    input {
+      min-width: 24rem;
+    }
+    margin-bottom: 2rem;
+  }
+}
+
+.form__gender {
+  display: flex;
+}
+
+.form__accept {
+  display: flex;
+}
+
+.form__error {
+  position: absolute;
+  top: 3.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  color: $color-danger;
+  @include font($size: 1.6rem, $weight: 300);
+
+  @include media-tablet {
+    font-size: 1.4rem;
+  }
+}
+
+.form__error-server {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2rem;
+  width: 100%;
+  color: $color-danger;
+  text-align: center;
+  @include font($size: 1.6rem, $weight: 300);
+
+  @include media-tablet {
+    font-size: 1.4rem;
+  }
+}
+
+.button_wrapper {
+  margin: 0 auto;
+}
+
+.input_wrapper {
+  position: relative;
+}

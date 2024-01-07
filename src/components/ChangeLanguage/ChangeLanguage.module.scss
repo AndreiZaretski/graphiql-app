@@ -1,0 +1,57 @@
+@import '@styles/abstract/constant';
+@import '@styles/abstract/mixins';
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.7rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  @include sliderSwitchLanguage($background-color: $color-dark);
+  cursor: pointer;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 1.3rem;
+  width: 1.3rem;
+  @include sliderSwitchLanguage($left: 0.2rem, $bottom: 0.2rem);
+}
+
+input:checked + .slider {
+  background-color: $color-dark;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $color-light;
+}
+
+input:checked + .slider:before {
+  transform: translateX(1.3rem);
+}
+
+.slider.round {
+  border-radius: 1.7rem;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

@@ -1,0 +1,25 @@
+@import './styles/base/normalize';
+@import './styles/abstract/constant';
+@import './styles/base/buttons';
+@import './styles/base/links';
+@import './styles/abstract/typography';
+@import './styles/base/form';
+@import './styles/base/editor';
+
+html {
+  font-size: 10px;
+}
+
+.container {
+  max-width: 128rem;
+  margin: 0 auto;
+}
+
+body {
+  background: linear-gradient(142deg, #020024 0%, #ffaaaa 100%);
+}
+
+h1 {
+  @include font($size: 3rem);
+  margin-bottom: 1rem;
+}

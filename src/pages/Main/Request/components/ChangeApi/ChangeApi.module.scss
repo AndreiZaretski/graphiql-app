@@ -1,0 +1,71 @@
+@import '@styles/abstract/constant';
+@import '@styles/abstract/mixins';
+@import '@styles/abstract/placeholder';
+
+.current_url_text {
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  @extend %shadow-text;
+  font-weight: 800;
+  color: $color-hamburger;
+  text-align: left;
+
+  @include media-mobile {
+    font-size: 1.5rem;
+    text-align: center;
+    word-break: break-all;
+  }
+}
+
+.input_url {
+  width: 70rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: left;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include media-laptop {
+    padding: 0.6rem 1rem;
+    width: auto;
+    flex-grow: 10;
+  }
+}
+
+.hide_block,
+.replace_url {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 0.8rem;
+
+  @include media-laptop {
+    flex-grow: 10;
+  }
+
+  @include media-mobile {
+    flex-direction: column;
+    text-align: center;
+    align-items: stretch;
+    row-gap: 0.8rem;
+  }
+}
+
+.change_api__button {
+  flex-grow: 0;
+}
+
+.message {
+  min-height: 3rem;
+  text-align: center;
+}
+
+.error_url {
+  color: $color-danger;
+}
+
+.success_message {
+  color: $color-success;
+}

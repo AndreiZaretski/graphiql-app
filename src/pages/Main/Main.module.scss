@@ -1,0 +1,48 @@
+@import '@styles/abstract/constant';
+@import '@styles/abstract/mixins';
+
+.main__section {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 7rem;
+
+  @include media-tablet {
+    flex-direction: column;
+  }
+}
+
+.code_wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(40rem, 60rem));
+  align-items: flex-start;
+  max-width: 100%;
+  min-height: 80vh;
+  @include media-desktop {
+    grid-template-columns: minmax(40rem, 60rem);
+  }
+  @include media-laptop {
+    grid-template-columns: minmax(40rem, 55rem);
+  }
+  @include media-tablet {
+    grid-template-columns: minmax(40rem, 100%);
+  }
+  @include media-mobile {
+    grid-template-columns: minmax(20rem, 100%);
+  }
+}
+
+.button_doc_open,
+.button_doc_closed {
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 1rem;
+}
+.button_doc_open {
+  background-image: url('/src/assets/icons/book-opened.png');
+}
+
+.button_doc_closed {
+  background-image: url('/src/assets/icons/book-closed.png');
+}

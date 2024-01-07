@@ -1,0 +1,11 @@
+%shadow-border-right {
+  box-shadow: 0.5rem 0.3rem 0.3rem $color-dark;
+}
+
+%shadow-border-left {
+  box-shadow: -0.5rem 0.3rem 0.3rem $color-dark;
+}
+
+%shadow-text {
+  text-shadow: 0.5rem 0.3rem 0.3rem $color-dark;
+}

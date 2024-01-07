@@ -1,0 +1,31 @@
+@import '@styles/abstract/constant';
+@import '@styles/abstract/mixins';
+@import '@styles/abstract/placeholder';
+
+.request {
+  position: relative;
+  border: 0.3rem solid $color-form-border;
+  border-radius: 0.2rem;
+  @extend %shadow-border-left;
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    @include media-mobile {
+      top: 0.5rem;
+      right: 0.5rem;
+    }
+  }
+}
+
+.button_prettify {
+  background-image: url('/src/assets/icons/brush.png');
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}

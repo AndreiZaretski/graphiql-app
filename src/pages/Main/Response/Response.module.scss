@@ -1,0 +1,8 @@
+@import '@styles/abstract/constant';
+@import '@styles/abstract/placeholder';
+
+.response {
+  border: 0.3rem solid $color-form-border;
+  border-radius: 0.2rem;
+  @extend %shadow-border-left;
+}
