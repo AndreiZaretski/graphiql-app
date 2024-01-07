@@ -122,7 +122,9 @@ const Main = () => {
 
           <div className={styles.code_wrapper}>
             <Request getResponse={getResponse} />
-            <Response data={errorJSON() || data?.data || errorMessage || {}} />
+            <Response
+              data={errorJSON() || errorMessage || data?.data || data || {}}
+            />
           </div>
         </section>
       </Layout>
